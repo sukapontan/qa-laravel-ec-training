@@ -26,7 +26,7 @@ class CreateMUsersTable extends Migration
             $table->string('email',128)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number',16);
-            // $table->string('user_classification_id'); FK
+            $table->integer('user_classification_id');
             $table->string('company_name',128);
             $table->rememberToken();
             $table->timestamps();
