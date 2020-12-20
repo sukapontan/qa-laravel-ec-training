@@ -14,11 +14,10 @@ class CreateMUsersClassificationsTable extends Migration
     public function up()
     {
         Schema::create('m_users_classifications', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned()->index();
+            $table->increments('id');
+            $table->string('user_classification_name',32);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->timestamps();
         });
     }
 
