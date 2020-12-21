@@ -17,7 +17,6 @@ class CreateMUsersClassificationsTable extends Migration
             $table->increments('id');
             $table->string('user_classification_name',32);
             $table->timestamps();
-            // $table->timestamps();
         });
     }
 

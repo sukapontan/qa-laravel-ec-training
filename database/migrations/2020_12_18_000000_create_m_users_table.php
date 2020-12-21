@@ -34,6 +34,7 @@ class CreateMUsersTable extends Migration
             $table->softDeletes(); 
 
             $table->foreign('user_classification_id')->references('id')->on('m_users_classifications')->onDelete('cascade');
+            
         });
     }
 
