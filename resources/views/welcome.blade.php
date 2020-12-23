@@ -14,7 +14,7 @@
             <div class="col-xs-12 col-md-6 text-center pb-5">
                 <button type="button" class="btn btn-primary btn-md">新規登録</button>
             </div>
-            <div class="colcol-xs-12 col-md-6 text-center pb-5">
+            <div class="col-xs-12 col-md-6 text-center pb-5">
                 <button type="button" class="btn btn-primary btn-md">ログイン</button>
             </div>
         </div>
