@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class OrdersDetailsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('t_orders_details')->insert([
+            [
+                'order_detail_id' => 1,
+                'products_id' => 1,
+                'order_id' => 1,
+                'shipment_status_id' => 1,
+                'order_detail_number' => '1',
+                'order_quanity' => 1,
+                'shipment_date' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'order_detail_id' => 2,
+                'products_id' => 2,
+                'order_id' => 2,
+                'shipment_status_id' => 2,
+                'order_detail_number' => '2',
+                'order_quanity' => 2,
+                'shipment_date' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'order_detail_id' => 3,
+                'products_id' => 3,
+                'order_id' => 3,
+                'shipment_status_id' => 3,
+                'order_detail_number' => '3',
+                'order_quanity' => 3,
+                'shipment_date' => date('Y-m-d H:i:s'),
+            ],
+        ]);
+    }
+}

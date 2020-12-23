@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+    $this->call(
+        [
+            ShipmentsStatusesTableSeeder::class,
+            OrdersTableSeeder::class,
+            OrdersDetailsTableSeeder::class,
+        ]
+    );
+        // 外部キーについてテーブルのシーディング子要素から親要素
     }
 }
