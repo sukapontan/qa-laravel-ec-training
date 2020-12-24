@@ -2,43 +2,106 @@
 
 @section('content')
 
-    <div class="center jumbotron bg-warning">
-        <div class="text-center text-white">
-            <h1>YouTubeまとめ × SNS</h1>
+    <div class="container">
+        <div class="text-center my-5">
+            <h3>お客様登録情報</h3>
         </div>
-    </div>
-
-    <div class="text-center">
-        <h3 class="login_title text-left d-inline-block mt-5">新規ユーザー登録</h3>
-    </div>
-
-    <div class="row mt-5 mb-5">
-        <div class="col-sm-6 offset-sm-3">
-
-            {!! Form::open(['route' => 'signup.post']) !!}
-                <div class="form-group">
-                    {!! Form::label('name', '名前') !!}
-                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
+        {!! Form::open(['route' => 'signup.post']) !!}
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                氏名
+                <div class="row justify-content-center">
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::label('last_name', '姓') !!}
+                        {!! Form::text('last_name', old('last_name'), ['class' => 'form-control col-sm-5']) !!}
+                        <div class="form-group col-sm-6">
+                            {!! Form::label('first_name', '名') !!}
+                            {!! Form::text('first_name', old('first_name'), ['class' => 'form-control col-sm-11']) !!}
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('email', 'メールアドレス') !!}
-                    {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                郵便番号
+                <div class="row">
+                    <div class="form-group col-sm-6 form-inline">
+                        {!! Form::text('zipcode', old('zipcode'), ['class' => 'form-control col-sm-12']) !!}
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                住所
+                <div class="row justify-content-center">
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::label('prefecture', '都道府県') !!}
+                        {!! Form::text('prefecture', old('prefecture'), ['class' => 'form-control col-sm-10']) !!}
+                    </div>
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::label('municipality', '市町村区') !!}
+                        {!! Form::text('municipality', old('municipality'), ['class' => 'form-control col-sm-10']) !!}
+                    </div>
+                    <div class="form-group col-sm-11 form-inline">
+                        {!! Form::label('address', '番地') !!}
+                        {!! Form::text('address', old('address'), ['class' => 'form-control col-sm-11']) !!}
+                    </div>
 
-                <div class="form-group">
-                    {!! Form::label('password', 'パスワード') !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
+                    <div class="form-group col-sm-12">
+                        {!! Form::label('apartments', 'マンション名・部屋番号') !!}
+                        {!! Form::text('apartments', old('apartments'), ['class' => 'form-control col-sm-10 offset-sm-1']) !!}
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('password_confirmation', 'パスワード確認') !!}
-                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                メールアドレス
+                <div class="row">
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::text('email', old('email'), ['class' => 'form-control col-sm-10 offset-sm-1']) !!}
+                    </div>
                 </div>
-
-                {!! Form::submit('新規登録', ['class' => 'btn btn-primary mt-2']) !!}
-            {!! Form::close() !!}
-
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                電話番号
+                <div class="row">
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::text('phone_number', old('phone_number'), ['class' => 'form-control col-sm-10 offset-sm-1']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                パスワード
+                <div class="row">
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::text('password', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                パスワード再入力
+                <div class="row">
+                    <div class="form-group col-sm-12 form-inline">
+                        {!! Form::text('password', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {!! Form::close() !!}
+        <div class="text-center">
+            <p><a href="#" class="btn btn-primary mt-3">登録</a></p>
+        </div>
+        <div class="text-center">
+            <a href="#">ログインはこちらから</a>
         </div>
     </div>
 
