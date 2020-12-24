@@ -13,7 +13,7 @@
             crossorigin="anonymous"
         >
         {{-- CSS --}}
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/top_page.css') }}">
     </head>
 
     <body>
