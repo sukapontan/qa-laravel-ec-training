@@ -3,7 +3,16 @@
     探求学園Laravel専攻
     </a>
     <ul class="list-inline navbar-brand-01 text-dark">
-        <li class="list-inline-item"><a class="nav-link" href="#">ログイン</a></li>
-        <li class="list-inline-item"><a class="nav-link" href="#">新規登録</a></li>
+        @if (Auth::check())
+            <li class="nav-item">
+                {!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link']) !!}
+            </li>
+            <li class="nav-item"><a href="" class="nav-link">マイページ</a></li>
+        @else
+            <li class="nav-item">
+                {!! link_to_route('signup', '新規ユーザ登録', [], ['class' => 'nav-link']) !!}
+            </li>
+            <li class="nav-item"><a href="" class="nav-link">ログイン</a></li>
+        @endif
     </ul>
 </header>
