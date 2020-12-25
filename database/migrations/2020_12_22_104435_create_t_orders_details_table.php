@@ -16,8 +16,7 @@ class CreateTOrdersDetailsTable extends Migration
     {
         Schema::create('t_orders_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_detail_id');
-            $table->integer('products_id');
+            $table->integer('products_id')->unsigned();
             $table->integer('order_id')->unsigned();
             $table->integer('shipment_status_id')->unsigned();
             $table->string('order_detail_number', 64);
@@ -27,6 +26,11 @@ class CreateTOrdersDetailsTable extends Migration
             ->references('id')
             ->on('m_shipments_statuses')
             ->onDelete('cascade');
+            // ↓は、まだ作成されていないファイルへの外部キー制約なのでコメントにしております
+            // $table->foreign('products_id')
+            // ->references('id')
+            // ->on('m_products')
+            // ->onDelete('cascade');
             $table->foreign('order_id')
             ->references('id')
             ->on('t_orders')

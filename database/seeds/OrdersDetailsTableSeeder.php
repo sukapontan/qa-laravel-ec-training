@@ -13,7 +13,6 @@ class OrdersDetailsTableSeeder extends Seeder
     {
         DB::table('t_orders_details')->insert([
             [
-                'order_detail_id' => 1,
                 'products_id' => 1,
                 'order_id' => 1,
                 'shipment_status_id' => 1,
@@ -22,7 +21,6 @@ class OrdersDetailsTableSeeder extends Seeder
                 'shipment_date' => date('Y-m-d H:i:s'),
             ],
             [
-                'order_detail_id' => 2,
                 'products_id' => 2,
                 'order_id' => 2,
                 'shipment_status_id' => 2,
@@ -31,7 +29,6 @@ class OrdersDetailsTableSeeder extends Seeder
                 'shipment_date' => date('Y-m-d H:i:s'),
             ],
             [
-                'order_detail_id' => 3,
                 'products_id' => 3,
                 'order_id' => 3,
                 'shipment_status_id' => 3,
