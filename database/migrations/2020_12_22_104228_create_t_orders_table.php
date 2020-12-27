@@ -17,11 +17,10 @@ class CreateTOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->timestamp('order_date');
-            // ↓フクさんのファイルへの外部キー制約です
-            // $table->foreign('user_id')
-            // ->references('id')
-            // ->on('m_users')
-            // ->onDelete('cascade');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('m_users')
+            ->onDelete('cascade');
         });
     }
 

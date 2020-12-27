@@ -20,7 +20,7 @@ class CreateTOrdersDetailsTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->integer('shipment_status_id')->unsigned();
             $table->string('order_detail_number', 64);
-            $table->integer('order_quanity');
+            $table->integer('order_quantity');
             $table->timestamp('shipment_date');
             $table->foreign('shipment_status_id')
             ->references('id')

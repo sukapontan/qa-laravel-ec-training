@@ -13,12 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         // 外部キーについてテーブルのシーディング子要素から親要素
         $this->call([
-            ShipmentsStatusesTableSeeder::class,
-            OrdersTableSeeder::class,
-            OrdersDetailsTableSeeder::class,
             UsersClassificationsTableSeeder::class,
             UsersTableSeeder::class,
             SalesStatusesTableSeeder::class,
+            OrdersTableSeeder::class,
+            ShipmentsStatusesTableSeeder::class,
+            OrdersDetailsTableSeeder::class,
         ]);
     }
 }

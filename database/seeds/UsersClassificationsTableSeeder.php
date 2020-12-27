@@ -23,13 +23,5 @@ class UsersClassificationsTableSeeder extends Seeder
             'id' => '3',
             'user_classification_name' => 'ゲスト',
             ]);
-        DB::table('m_users_classifications')->insert([
-            'id' => '4',
-            'user_classification_name' => '管理者',
-            ]);
-        DB::table('m_users_classifications')->insert([
-            'id' => '5',
-            'user_classification_name' => '開発者',
-            ]);
     }
 }

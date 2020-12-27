@@ -23,9 +23,5 @@ class SalesStatusesTableSeeder extends Seeder
             'id' => '3',
             'sale_status_name' => '入荷待ち',
             ]);
-        DB::table('m_sales_statuses')->insert([
-            'id' => '4',
-            'sale_status_name' => '入荷未定',
-            ]);
     }
 }
