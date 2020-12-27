@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="text-center">
-        <h3 class="login_title text-left d-inline-block mt-5">ログイン</h3>
+        <h3 class="login_title text-left d-inline-block mt-5">ログイン画面</h3>
     </div>
     <div class="row mt-5 mb-5">
         <div class="col-sm-6 offset-sm-3">
