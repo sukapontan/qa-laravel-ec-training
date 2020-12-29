@@ -56,35 +56,5 @@ class UsersTableSeeder extends Seeder
             'user_classification_id' => '3',
             'company_name' => '株式会社Minami',
             ]);
-        DB::table('m_users')->insert([
-            'id' => '4',
-            'last_name' => '沖',
-            'first_name' => '幸平',
-            'email' => 'sample4@gmail.com',
-            'password' => bcrypt('沖'),
-            'zipcode' => '9040031',
-            'prefecture' => '沖縄県',
-            'municipality' => '那覇市松山',
-            'address' => '1-2-1',
-            'apartments' => '沖アパート201',
-            'phone_number' => '09043782114',
-            'user_classification_id' => '4',
-            'company_name' => '沖建設合同会社',
-            ]);
-        DB::table('m_users')->insert([
-            'id' => '5',
-            'last_name' => '木元',
-            'first_name' => '周平',
-            'email' => 'sample5@gmail.com',
-            'password' => bcrypt('木元'),
-            'zipcode' => '8100022',
-            'prefecture' => '福岡県',
-            'municipality' => '中央区薬院',
-            'address' => '1-14-5',
-            'apartments' => 'MG薬院ビル7F',
-            'phone_number' => '09053872832',
-            'user_classification_id' => '5',
-            'company_name' => 'ホープ株式会社',
-            ]);
     }
 }
