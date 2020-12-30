@@ -26,5 +26,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 //ログイン後
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/login_after', 'LoginAfterController@index')->name('login_after');
+    Route::get('/top', 'TopController@index')->name('top');
 });

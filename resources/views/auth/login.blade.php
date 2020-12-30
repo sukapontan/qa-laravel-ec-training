@@ -16,7 +16,7 @@
                     {!! Form::label('password', 'パスワード') !!}
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
-                {!! Form::submit('ログイン', ['class' => 'btn btn btn-primary mt-2 offset-sm-5']) !!}
+                {!! Form::submit('ログイン', ['class' => 'btn btn-primary mt-2 offset-sm-5']) !!}
             {!! Form::close() !!}
             <p class="mt-3 offset-sm-3">{!! link_to_route('signup', 'まだ登録がお済みでない方はこちら') !!}</p>
         </div>

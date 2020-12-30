@@ -41,7 +41,7 @@
                         {!! Form::text('prefecture', old('prefecture'), ['class' => 'form-control col-sm-10']) !!}
                     </div>
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::label('municipality', '市町村区') !!}
+                        {!! Form::label('municipality', '市区町村') !!}
                         {!! Form::text('municipality', old('municipality'), ['class' => 'form-control col-sm-10']) !!}
                     </div>
                     <div class="form-group col-sm-11 form-inline">
