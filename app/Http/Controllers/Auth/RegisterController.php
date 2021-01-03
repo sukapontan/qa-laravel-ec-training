@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+// TODO
+// 新規登録のバリデーションと新規登録機能未実装
+// 新規登録フォームのみ作成しましたので、実装をお願いします
+
 class RegisterController extends Controller
 {
     /*
@@ -28,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

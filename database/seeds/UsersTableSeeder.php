@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => '佐藤',
             'first_name' => '隆二',
             'email' => 'sample1@gmail.com',
-            'password' => bcrypt('佐藤'),
+            'password' => bcrypt('test1'),
             'zipcode' => '1050011',
             'prefecture' => '東京都',
             'municipality' => '港区芝公園',
@@ -25,13 +25,13 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0334335111',
             'user_classification_id' => '1',
             'company_name' => '佐藤株式会社',
-            ]);
+        ]);
         DB::table('m_users')->insert([
             'id' => '2',
             'last_name' => '鈴木',
             'first_name' => 'たかし',
             'email' => 'sample2@gmail.com',
-            'password' => bcrypt('鈴木'),
+            'password' => bcrypt('test2'),
             'zipcode' => '0648620',
             'prefecture' => '北海道',
             'municipality' => '札幌市中央区南9条西',
@@ -40,13 +40,13 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0115112796',
             'user_classification_id' => '2',
             'company_name' => '株式会社鈴木',
-            ]);
+        ]);
         DB::table('m_users')->insert([
             'id' => '3',
             'last_name' => '高橋',
             'first_name' => 'ミナミ',
             'email' => 'sample3@gmail.com',
-            'password' => bcrypt('高橋'),
+            'password' => bcrypt('test3'),
             'zipcode' => '5780912',
             'prefecture' => '大阪府',
             'municipality' => '東大阪市角田',
@@ -55,6 +55,6 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '08058473223',
             'user_classification_id' => '3',
             'company_name' => '株式会社Minami',
-            ]);
+        ]);
     }
 }

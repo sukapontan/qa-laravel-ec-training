@@ -7,14 +7,16 @@
             <div class="col-xs-12 col-md-6 text-center mt-5">
                 <h5>まだアカウントを<br>お持ちでない方はこちら
                     <div class="col-xs-12 col-md-12 text-center py-3">
-                        <button type="button" class="btn btn-primary btn-md">新規登録</button>
+                        {!! link_to_route('signup', '新規登録', [], ['class' => 'btn btn-primary btn-md']) !!}
                     </div>
                 </h5>
             </div>
             <div class="col-xs-12 col-md-6 text-center mt-5">
                 <h5>すでにアカウントを<br>お持ちの方はこちら
                     <div class="col-xs-12 col-md-12 text-center py-3">
-                        <button type="button" class="btn btn-primary btn-md">ログイン</button>
+                        <button type="button" onclick="location.href='login';" 
+                            class="btn btn-primary btn-md">ログイン
+                        </button>
                     </div>
                 </h5>
             </div>
