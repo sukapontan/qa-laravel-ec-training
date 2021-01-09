@@ -28,3 +28,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/top', 'TopController@index')->name('top');
 });
+
+//商品詳細画面
+Route::get('product/show', 'ProductController@show')->name('product/show');
+//エラー
+Route::get('product/index', 'ProductController@index')->name('product/index');
