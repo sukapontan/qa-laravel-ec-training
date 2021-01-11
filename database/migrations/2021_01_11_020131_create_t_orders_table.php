@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+// 注文テーブルを作成
 class CreateTOrdersTable extends Migration
 {
     /**
@@ -14,8 +15,8 @@ class CreateTOrdersTable extends Migration
     public function up()
     {
         Schema::create('t_orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id'); // ユーザーID
+            $table->bigIncrements('id'); // 注文ID(PK)
+            $table->unsignedBigInteger('user_id'); // ユーザID(FK)
             $table->timestamps('ordar_date'); // 注文日
         });
     }
