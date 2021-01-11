@@ -14,15 +14,15 @@ class CreateMProductsTable extends Migration
     public function up()
     {
         Schema::create('m_products', function (Blueprint $table) {
-            $table->increments('id')->comment('商品id');
+            $table->bigIncrements('id')->comment('商品ID');
             $table->string('product_name', 64)->comment('商品名');
-            $table->integer('category_id')->comment('カテゴリー');
+            $table->unsignedBigInteger('category_id')->comment('カテゴリー');
             $table->integer('price')->unsigned()->comment('販売単価');
             $table->string('description', 256)->nullable()->comment('商品説明');
-            $table->integer('sale_status_id')->comment('販売状態');
-            $table->integer('product_status_id')->comment('商品状態');
-            $table->timestamps('regist_date')->comment('商品登録');
-            $table->integer('user_id')->unsigned()->comment('ユーザid');
+            $table->unsignedBigInteger('sale_status_id')->comment('販売状態');
+            $table->unsignedBigInteger('product_status_id')->comment('商品状態');
+            $table->timestamp('regist_date')->comment('商品登録');
+            $table->unsignedBigInteger('user_id')->unsigned()->comment('ユーザID');
             $table->char('delete_flag', 1)->comment('deleteフラグ');
             //まだファイルがないのでコメント表示にしています
             //$table->foreign('category_id')->references('id')->on('m_categories')->onDelete('cascade');
