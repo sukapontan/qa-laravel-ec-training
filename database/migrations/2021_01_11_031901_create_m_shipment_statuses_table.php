@@ -15,8 +15,8 @@ class CreateMShipmentStatusesTable extends Migration
     public function up()
     {
         Schema::create('m_shipment_statuses', function (Blueprint $table) {
-            $table->bigIncrements('id'); // 発送状態ID(PK)
-            $table->string('shipment_status_name', 32); // 発送状態名
+            $table->increments('id')->comment('発送状態ID'); // PK
+            $table->string('shipment_status_name', 32)->comment('発送状態名');
         });
     }
 

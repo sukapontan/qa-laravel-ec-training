@@ -15,8 +15,8 @@ class CreateMUserClassificationsTable extends Migration
     public function up()
     {
         Schema::create('m_user_classifications', function (Blueprint $table) {
-            $table->bigIncrements('id'); // ユーザ種別ID(PK)
-            $table->string('user_classification_name', 32); // ユーザ種別名(FK)
+            $table->increments('id')->comment('ユーザ種別ID'); // PK
+            $table->string('user_classification_name', 32)->comment('ユーザ種別名'); // FK
         });
     }
 

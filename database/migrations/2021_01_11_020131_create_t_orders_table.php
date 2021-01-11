@@ -15,8 +15,8 @@ class CreateTOrdersTable extends Migration
     public function up()
     {
         Schema::create('t_orders', function (Blueprint $table) {
-            $table->bigIncrements('id'); // 注文ID(PK)
-            $table->unsignedBigInteger('user_id'); // ユーザID(FK)
+            $table->increments('id')->comment('注文ID'); // PK
+            $table->unsignedInteger('user_id')->comment('ユーザID'); // FK
             $table->timestamps('ordar_date'); // 注文日
         });
     }
