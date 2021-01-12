@@ -13,7 +13,8 @@ class MUsersTableSeeder extends Seeder
     public function run()
     {
         // ダミーユーザーのセット
-        DB::table('users')->insert([
+        DB::table('m_users')->insert([
+            'id' => '1',
             'password' => 'hoge1111',
             'last_name' => '佐藤',
             'first_name' => '一郎',
@@ -28,7 +29,8 @@ class MUsersTableSeeder extends Seeder
             'company_name' => '株式会社LaravelQuest',
         ]);
 
-        DB::table('users')->insert([
+        DB::table('m_users')->insert([
+            'id' => '2',
             'password' => 'hoge2222',
             'last_name' => '佐藤',
             'first_name' => '二郎',
