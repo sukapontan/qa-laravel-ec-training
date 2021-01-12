@@ -18,6 +18,8 @@ class CreateTOrdersTable extends Migration
             $table->increments('id')->comment('注文ID'); // PK
             $table->unsignedInteger('user_id')->comment('ユーザID'); // FK
             $table->timestamps('ordar_date'); // 注文日
+
+            $table->foreign('user_id')->reference('id')->on('m_users');
         });
     }
 
