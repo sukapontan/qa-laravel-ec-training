@@ -29,7 +29,7 @@ class CreateMUsersTable extends Migration
             $table->string('company_name', 128)->comment('会社名');
             $table->char('delete_flag', 1)->comment('deleteフラグ');
 
-            $table->foreign('user_classification_id')->reference('id')->on('m_user_classifications');
+            $table->foreign('user_classification_id')->reference('id')->on('m_user_classifications'); // ユーザ種別IDの外部キー制約
         });
     }
 
