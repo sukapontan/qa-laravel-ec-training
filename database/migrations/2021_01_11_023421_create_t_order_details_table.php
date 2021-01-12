@@ -22,6 +22,10 @@ class CreateTOrderDetailsTable extends Migration
             $table->string('order_detail_number', 64)->comment('注文番号');
             $table->integer('order_quantity')->comment('注文個数');
             $table->timestamps('shipment_date'); // 発送日
+
+            $table->foreign('products_id')->reference('id')->on('m_products'); // 商品IDの外部キー制約
+            $table->foreign('order_id')->reference('id')->on('t_orders'); // 注文IDの外部キー制約
+            $table->foreign('shipment_status_id')->reference('id')->on('m_shipment_statuses'); // 発送状態IDの外部キー制約
         });
     }
 
