@@ -23,9 +23,8 @@ class ProductsTableSeeder extends Seeder
             'id' => '2',
             'product_name' => 'わさび',
             'category_id' => '2',
-            'product_name' => 'おかか',
             'price' => '5000',
-            'description' => '快眠でる程の安らぎの味',
+            'description' => 'つんとくる味',
             'delete_flag' => '1',
         ]);
         DB::table('m_products')->insert([
@@ -33,7 +32,7 @@ class ProductsTableSeeder extends Seeder
             'product_name' => 'とまと',
             'category_id' => '1',
             'price' => '300',
-            'description' => '快眠でる程の安らぎの味',
+            'description' => '甘いトマト',
             'delete_flag' => '1',
         ]);
         DB::table('m_products')->insert([
