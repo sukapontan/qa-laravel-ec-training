@@ -12,15 +12,20 @@ class TOrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        // ダミー注文データのセット
+        // '注文'ダミーデータのセット
         DB::table('t_orders')->insert([
             'id' => '1',
-            'order_date' => '2021-01-12 12:48:35',
+            'order_date' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('t_orders')->insert([
             'id' => '2',
-            'order_date' => '2021-01-13 08:11:24',
+            'order_date' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('t_orders')->insert([
+            'id' => '3',
+            'order_date' => date('Y-m-d H:i:s'),
         ]);
     }
 }

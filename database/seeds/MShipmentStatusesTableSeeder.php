@@ -22,5 +22,10 @@ class MShipmentStatusesTableSeeder extends Seeder
             'id' => '2',
             'shipment_status_name' => '発送済み',
         ]);
+
+        DB::table('m_shipment_Statuses')->insert([
+            'id' => '3',
+            'shipment_status_name' => '配送中',
+        ]);
     }
 }

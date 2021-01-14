@@ -12,7 +12,7 @@ class MUserClassificationsTableSeeder extends Seeder
      */
     public function run()
     {
-        // ダミーユーザー種別のセット
+        // 'ユーザー種別'ダミーデータのセット
         DB::table('m_user_classifications')->insert([
             'id' => '1',
             'user_classification_name' => '個人',
@@ -21,6 +21,11 @@ class MUserClassificationsTableSeeder extends Seeder
         DB::table('m_user_classifications')->insert([
             'id' => '2',
             'user_classification_name' => '法人',
+        ]);
+
+        DB::table('m_user_classifications')->insert([
+            'id' => '3',
+            'user_classification_name' => 'その他',
         ]);
     }
 }

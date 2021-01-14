@@ -12,7 +12,7 @@ class TOrderDetailsTableSeeder extends Seeder
      */
     public function run()
     {
-        // ダミー注文詳細データのセット
+        // '注文詳細'ダミーデータのセット
         DB::table('t_order_details')->insert([
             'id' => '1',
             'products_id' => '1',
@@ -20,7 +20,7 @@ class TOrderDetailsTableSeeder extends Seeder
             'shipment_status_id' => '1',
             'order_detail_number' => '1',
             'order_quantity' => '3',
-            'shipment_date' => '2021-01-13 12:48:35',
+            'shipment_date' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('t_order_details')->insert([
@@ -30,7 +30,17 @@ class TOrderDetailsTableSeeder extends Seeder
             'shipment_status_id' => '2',
             'order_detail_number' => '2',
             'order_quantity' => '4',
-            'shipment_date' => '2021-01-13 13:17:41',
+            'shipment_date' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('t_order_details')->insert([
+            'id' => '3',
+            'products_id' => '3',
+            'order_id' => '3',
+            'shipment_status_id' => '1',
+            'order_detail_number' => '3',
+            'order_quantity' => '5',
+            'shipment_date' => date('Y-m-d H:i:s'),
         ]);
     }
 }
