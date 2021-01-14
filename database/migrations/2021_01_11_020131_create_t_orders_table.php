@@ -19,7 +19,8 @@ class CreateTOrdersTable extends Migration
             $table->unsignedInteger('user_id')->comment('ユーザID'); // FK
             $table->timestamps('ordar_date'); // 注文日
 
-            $table->foreign('user_id')->reference('id')->on('m_users'); // ユーザIDの外部キー制約
+            // ↓個人でのテスト時は外部キー制約は一時的に無効にする↓
+            // $table->foreign('user_id')->reference('id')->on('m_users'); // ユーザIDの外部キー制約
         });
     }
 

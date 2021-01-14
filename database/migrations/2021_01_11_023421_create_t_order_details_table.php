@@ -23,9 +23,10 @@ class CreateTOrderDetailsTable extends Migration
             $table->integer('order_quantity')->comment('注文個数');
             $table->timestamps('shipment_date'); // 発送日
 
-            $table->foreign('products_id')->reference('id')->on('m_products'); // 商品IDの外部キー制約
-            $table->foreign('order_id')->reference('id')->on('t_orders'); // 注文IDの外部キー制約
-            $table->foreign('shipment_status_id')->reference('id')->on('m_shipment_statuses'); // 発送状態IDの外部キー制約
+            // ↓個人でのテスト時は外部キー制約は一時的に無効にする↓
+            // $table->foreign('products_id')->reference('id')->on('m_products'); // 商品IDの外部キー制約
+            // $table->foreign('order_id')->reference('id')->on('t_orders'); // 注文IDの外部キー制約
+            // $table->foreign('shipment_status_id')->reference('id')->on('m_shipment_statuses'); // 発送状態IDの外部キー制約
         });
     }
 
