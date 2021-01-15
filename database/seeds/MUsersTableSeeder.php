@@ -16,7 +16,7 @@ class MUsersTableSeeder extends Seeder
         // 'ユーザ'のダミーデータのセット
         DB::table('m_users')->insert([
             'id' => '1',
-            'password' => Str::random(8),
+            'password' => bcrypt('password'),
             'last_name' => '佐藤',
             'first_name' => '一郎',
             'zipcode' => '111-1111',
@@ -32,7 +32,7 @@ class MUsersTableSeeder extends Seeder
 
         DB::table('m_users')->insert([
             'id' => '2',
-            'password' => Str::random(8),
+            'password' => bcrypt('password'),
             'last_name' => '佐藤',
             'first_name' => '二郎',
             'zipcode' => '222-2222',
@@ -48,7 +48,7 @@ class MUsersTableSeeder extends Seeder
 
         DB::table('m_users')->insert([
             'id' => '3',
-            'password' => Str::random(8),
+            'password' => bcrypt('password'),
             'last_name' => '佐藤',
             'first_name' => '三郎',
             'zipcode' => '333-3333',
