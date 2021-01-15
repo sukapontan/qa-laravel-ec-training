@@ -20,10 +20,10 @@ class CreateTPurchasesTable extends Migration
             $table->string('purchase_company', 128);
             $table->timestamp('order_date')->nullable();
             $table->timestamp('purchase_date')->nullable();
-            // $table->foreign('product_id')
-            // ->reference('id')
-            // ->on('m_products')
-            // ->onDelete('cascade');
+            $table->foreign('product_id')
+            ->reference('id')
+            ->on('m_products')
+            ->onDelete('cascade');
         });
     }
 
