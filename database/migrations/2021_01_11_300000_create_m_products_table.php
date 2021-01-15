@@ -21,16 +21,13 @@ class CreateMProductsTable extends Migration
             $table->string('description', 256)->nullable()->comment('商品説明');
             $table->unsignedInteger('sale_status_id')->comment('販売状態');
             $table->unsignedInteger('product_status_id')->comment('商品状態');
-            $table->timestamp('regist_date')->comment('商品登録');
+            $table->timestamp('regist_date')->comment('商品登録日');
             $table->unsignedInteger('user_id')->unsigned()->comment('ユーザID');
-            $table->char('delete_flag', 1)->comment('deleteフラグ');
+            $table->integer('delete_flag')->comment('deleteフラグ');
             //まだファイルがないのでコメント表示にしています
-            //$table->foreign('category_id')->references('id')->on('m_categories')->onDelete('cascade');
-
-            //$table->foreign('sale_status_id')->references('id')->on('m_sale_statuses)->onDelete('cascade');
-
-            //$table->foreign('product_status_id')->references('id')->on('m_product_statuses')->onDelete('cascade');
-
+            $table->foreign('category_id')->references('id')->on('m_categories')->onDelete('cascade');
+            $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses')->onDelete('cascade');
+            $table->foreign('product_status_id')->references('id')->on('m_product_statuses')->onDelete('cascade');
             //$table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
 
         });

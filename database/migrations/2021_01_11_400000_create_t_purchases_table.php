@@ -19,10 +19,9 @@ class CreateTPurchasesTable extends Migration
             $table->integer('purchase_quantity')->unsigned()->comment('仕入個数');
             $table->string('purchase_company', 128)->comment('仕入先会社');
             $table->timestamp('order_date')->comment('発送日');
-            $table->timestamp('purchase_date')->comment('納入日');
+            $table->timestamp('purchase_date')->nullable()->comment('納入日');
             $table->unsignedInteger('product_id')->unsigned()->comment('商品ID');
-            //まだファイルがないのでコメント表示にしています
-            //$table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
 
         });
     }
