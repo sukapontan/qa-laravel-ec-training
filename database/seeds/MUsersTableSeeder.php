@@ -17,7 +17,7 @@ class MUsersTableSeeder extends Seeder
         DB::table('m_users')->insert([
             'id' => '1',
             'password' => bcrypt('password'),
-            'last_name' => '佐藤',
+            'last_name' => '羅々部流',
             'first_name' => '一郎',
             'zipcode' => '111-1111',
             'prefecture' => '東京都',
@@ -33,7 +33,7 @@ class MUsersTableSeeder extends Seeder
         DB::table('m_users')->insert([
             'id' => '2',
             'password' => bcrypt('password'),
-            'last_name' => '佐藤',
+            'last_name' => '経句',
             'first_name' => '二郎',
             'zipcode' => '222-2222',
             'prefecture' => '東京都',
@@ -49,7 +49,7 @@ class MUsersTableSeeder extends Seeder
         DB::table('m_users')->insert([
             'id' => '3',
             'password' => bcrypt('password'),
-            'last_name' => '佐藤',
+            'last_name' => '流比井',
             'first_name' => '三郎',
             'zipcode' => '333-3333',
             'prefecture' => '東京都',
