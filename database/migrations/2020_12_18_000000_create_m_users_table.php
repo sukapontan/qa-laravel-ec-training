@@ -30,7 +30,7 @@ class CreateMUsersTable extends Migration
             $table->string('company_name', 128);
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes(); 
+            $table->softDeletes();
             $table->foreign('user_classification_id')
             ->references('id')
             ->on('m_users_classifications')
