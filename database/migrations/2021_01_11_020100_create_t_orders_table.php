@@ -16,11 +16,11 @@ class CreateTOrdersTable extends Migration
     {
         Schema::create('t_orders', function (Blueprint $table) {
             $table->increments('id')->comment('注文ID'); // PK
-            $table->unsignedInteger('user_id')->comment('ユーザID'); // FK
-            $table->timestamps('ordar_date'); // 注文日
+            $table->integer('user_id')->unsigned()->comment('ユーザID'); // FK
+            $table->timestamp('ordar_date'); // 注文日
 
-            // ↓個人でのテスト時は外部キー制約は一時的に無効にする↓
-            // $table->foreign('user_id')->reference('id')->on('m_users'); // ユーザIDの外部キー制約
+            // ユーザIDの外部キー制約
+            $table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
         });
     }
 
