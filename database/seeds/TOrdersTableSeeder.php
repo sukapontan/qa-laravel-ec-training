@@ -12,7 +12,7 @@ class TOrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        // '注文'ダミーデータのセット
+        // '注文'テーブルのダミーデータのセット
         DB::table('t_orders')->insert([
             'id' => '1',
             'user_id' => '1',

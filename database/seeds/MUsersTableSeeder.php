@@ -13,7 +13,7 @@ class MUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // 'ユーザ'のダミーデータのセット
+        // 'ユーザ'テーブルのダミーデータのセット
         DB::table('m_users')->insert([
             'id' => '1',
             'password' => bcrypt('password'),
@@ -23,7 +23,7 @@ class MUsersTableSeeder extends Seeder
             'prefecture' => '東京都',
             'municipality' => '港区',
             'address' => '虎ノ門1-1',
-            'apartments' => 'LaravelQuestタワー11F',
+            'apartments' => 'Laravelタワー11F',
             'email' => Str::random(10) . '@gmail.com',
             'phone_number' => '0312345678',
             'user_classification_id' => '1',
@@ -38,12 +38,12 @@ class MUsersTableSeeder extends Seeder
             'zipcode' => '222-2222',
             'prefecture' => '東京都',
             'municipality' => '港区',
-            'address' => '虎ノ門1-1',
-            'apartments' => 'LaravelQuestタワー22F',
+            'address' => '虎ノ門2-2',
+            'apartments' => 'Cakeハウス2F',
             'email' => Str::random(10) . '@gmail.com',
             'phone_number' => '0323456789',
             'user_classification_id' => '2',
-            'company_name' => '株式会社LaravelQuest',
+            'company_name' => '株式会社CakeQuest',
         ]);
 
         DB::table('m_users')->insert([
@@ -54,12 +54,12 @@ class MUsersTableSeeder extends Seeder
             'zipcode' => '333-3333',
             'prefecture' => '東京都',
             'municipality' => '港区',
-            'address' => '虎ノ門2-2',
-            'apartments' => 'LaravelQuestタワー33F',
+            'address' => '虎ノ門3-3',
+            'apartments' => 'Rubyタワー33F',
             'email' => Str::random(10) . '@gmail.com',
             'phone_number' => '0301234567',
             'user_classification_id' => '2',
-            'company_name' => '株式会社LaravelQuest',
+            'company_name' => '株式会社RubyQuest',
         ]);
     }
 }
