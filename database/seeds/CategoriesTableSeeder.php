@@ -13,15 +13,15 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_categories')->insert([
-            'id' => 'A',
+            'id' => '1',
             'category_name' => 'ストレート',
         ]);
         DB::table('m_categories')->insert([
-            'id' => 'B',
+            'id' => '2',
             'category_name' => 'ブレンド',
         ]);
         DB::table('m_categories')->insert([
-            'id' => 'C',
+            'id' => '3',
             'category_name' => 'その他',
         ]);
     }

@@ -16,7 +16,6 @@ class CreateMSaleStatusesTable extends Migration
         Schema::create('m_sale_statuses', function (Blueprint $table) {
             $table->increments('id')->comment('販売状態ID');
             $table->string('sale_status_name', 32)->comment('販売状態名');
-
         });
     }
 

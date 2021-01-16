@@ -24,12 +24,23 @@ class CreateMProductsTable extends Migration
             $table->timestamp('regist_date')->comment('商品登録日');
             $table->unsignedInteger('user_id')->unsigned()->comment('ユーザID');
             $table->integer('delete_flag')->comment('deleteフラグ');
+            $table->foreign('category_id')
+            ->references('id')
+            ->on('m_categories')
+            ->onDelete('cascade');
+            $table->foreign('sale_status_id')
+            ->references('id')
+            ->on('m_sale_statuses')
+            ->onDelete('cascade');
+            $table->foreign('product_status_id')
+            ->references('id')
+            ->on('m_product_statuses')
+            ->onDelete('cascade');
             //まだファイルがないのでコメント表示にしています
-            $table->foreign('category_id')->references('id')->on('m_categories')->onDelete('cascade');
-            $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses')->onDelete('cascade');
-            $table->foreign('product_status_id')->references('id')->on('m_product_statuses')->onDelete('cascade');
-            //$table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
-
+            //$table->foreign('user_id')
+            //->references('id')
+            //->on('m_users')
+            //->onDelete('cascade');
         });
     }
 

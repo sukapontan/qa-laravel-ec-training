@@ -17,8 +17,8 @@ class PurchasesTableSeeder extends Seeder
             'purchase_price' => '300',
             'purchase_quantity' => '100',
             'purchase_company' => '株式会社AA珈琲',
-            'order_date' => '2021-01-16 12:00:00',
-            'purchase_date' => '2021-1-17 15:00:00',
+            'order_date' => date('Y-m-d H:i:s'),
+            'purchase_date' => date('Y-m-d H:i:s'),
             'product_id' => '1',
         ]);
         DB::table('t_purchases')->insert([
@@ -26,8 +26,8 @@ class PurchasesTableSeeder extends Seeder
             'purchase_price' => '700',
             'purchase_quantity' => '30',
             'purchase_company' => '株式会社BB珈琲',
-            'order_date' => '2021-01-16 12:00:00',
-            'purchase_date' => '2021-1-17 16:00:00',
+            'order_date' => date('Y-m-d H:i:s'),
+            'purchase_date' => date('Y-m-d H:i:s'),
             'product_id' => '2',
         ]);
         DB::table('t_purchases')->insert([
@@ -35,8 +35,8 @@ class PurchasesTableSeeder extends Seeder
             'purchase_price' => '250',
             'purchase_quantity' => '70',
             'purchase_company' => '株式会社AA珈琲',
-            'order_date' => '2021-01-16 12:00:00',
-            'purchase_date' => '2021-1-17 15:00:00',
+            'order_date' => date('Y-m-d H:i:s'),
+            'purchase_date' => date('Y-m-d H:i:s'),
             'product_id' => '3',
         ]);
     }
