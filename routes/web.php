@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UsersController@index');
 
 // 新規登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
@@ -27,4 +25,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 //ログイン後
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/top', 'TopController@index')->name('top');
+    Route::get('users/users', 'UsersController@show')->name('users.show');
+    // Route::get('users/users/{id}/edit', 'UsersController@edit')->name('user.edit');
+    // Route::post('users/users/{id}/edit', 'UsersController@update')->name('user.update');
+    // Route::destroy('/', 'UsersController@destroy')->name('user.delete');
 });
