@@ -23,8 +23,8 @@ class CreateTOrderDetailsTable extends Migration
             $table->integer('order_quantity')->comment('注文個数');
             $table->timestamp('shipment_date')->comment('発送日');
 
-            // 商品IDの外部キー制約(個人でのテスト時は一時的に無効にする)
-            // $table->foreign('products_id')->references('id')->on('m_products');
+            // 商品IDの外部キー制約(個人でのmigrateテスト時は一時的に無効にする)
+            $table->foreign('products_id')->references('id')->on('m_products');
 
             // 注文IDの外部キー制約
             $table->foreign('order_id')->references('id')->on('t_orders');
