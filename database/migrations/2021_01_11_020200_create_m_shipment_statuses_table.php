@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-// 発送状態テーブルを作成
+// 「発送状態」テーブルを作成
 class CreateMShipmentStatusesTable extends Migration
 {
     /**
@@ -15,7 +15,7 @@ class CreateMShipmentStatusesTable extends Migration
     public function up()
     {
         Schema::create('m_shipment_statuses', function (Blueprint $table) {
-            $table->increments('id')->comment('発送状態ID'); // PK
+            $table->increments('id')->comment('発送状態ID');
             $table->string('shipment_status_name', 32)->comment('発送状態名');
         });
     }

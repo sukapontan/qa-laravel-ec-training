@@ -12,7 +12,7 @@ class MShipmentStatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        // 'ダミー発送状態'テーブルのダミーデータのセット
+        // 「発送状態」テーブルのダミーデータのセット
         DB::table('m_shipment_statuses')->insert([
             'id' => '1',
             'shipment_status_name' => '発送準備中',

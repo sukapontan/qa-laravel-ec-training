@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-// ユーザ種別テーブルを作成
+// 「ユーザ種別」テーブルを作成
 class CreateMUserClassificationsTable extends Migration
 {
     /**
@@ -15,7 +15,7 @@ class CreateMUserClassificationsTable extends Migration
     public function up()
     {
         Schema::create('m_user_classifications', function (Blueprint $table) {
-            $table->increments('id')->comment('ユーザ種別ID'); // PK
+            $table->increments('id')->comment('ユーザ種別ID');
             $table->string('user_classification_name', 32)->comment('ユーザ種別名');
         });
     }

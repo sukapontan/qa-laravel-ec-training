@@ -13,7 +13,7 @@ class MUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // 'ユーザ'テーブルのダミーデータのセット
+        // 「ユーザ」テーブルのダミーデータのセット
         DB::table('m_users')->insert([
             'id' => '1',
             'password' => bcrypt('password'),

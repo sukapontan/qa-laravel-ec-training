@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-// ユーザテーブルを作成
+// 「ユーザ」テーブルを作成
 class CreateMUsersTable extends Migration
 {
     /**
@@ -15,7 +15,7 @@ class CreateMUsersTable extends Migration
     public function up()
     {
         Schema::create('m_users', function (Blueprint $table) {
-            $table->increments('id')->comment('ユーザID'); // PK
+            $table->increments('id')->comment('ユーザID');
             $table->string('password', 64)->comment('パスワード');
             $table->string('last_name', 16)->comment('姓');
             $table->string('first_name', 16)->comment('名');
@@ -26,9 +26,9 @@ class CreateMUsersTable extends Migration
             $table->string('apartments', 32)->nullable()->comment('マンション、部屋番号');
             $table->string('email', 128)->comment('メールアドレス')->unique()->safeEmai;
             $table->string('phone_number', 14)->comment('電話番号')->unique();
-            $table->integer('user_classification_id')->unsigned()->comment('ユーザ種別ID'); // FK
+            $table->integer('user_classification_id')->unsigned()->comment('ユーザ種別ID');
             $table->string('company_name', 128)->nullable()->comment('会社名');
-            $table->integer('delete_flag')->nullable()->comment('deleteフラグ');
+            $table->char('delete_flag', 1)->default(0)->comment('deleteフラグ');
 
             // ユーザ種別IDの外部キー制約
             $table->foreign('user_classification_id')

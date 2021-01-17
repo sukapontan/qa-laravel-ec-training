@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-// 注文テーブルを作成
+// 「注文」テーブルを作成
 class CreateTOrdersTable extends Migration
 {
     /**
@@ -15,11 +15,10 @@ class CreateTOrdersTable extends Migration
     public function up()
     {
         Schema::create('t_orders', function (Blueprint $table) {
-            $table->increments('id')->comment('注文ID'); // PK
-            $table->integer('user_id')->unsigned()->comment('ユーザID'); // FK
+            $table->increments('id')->comment('注文ID');
+            $table->integer('user_id')->unsigned()->comment('ユーザID');
             $table->timestamp('order_date')->comment('注文日');
 
-            // ユーザIDの外部キー制約
             $table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
         });
     }
