@@ -13,16 +13,18 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_categories')->insert([
-            'id' => '1',
-            'category_name' => 'ストレート',
-        ]);
-        DB::table('m_categories')->insert([
-            'id' => '2',
-            'category_name' => 'ブレンド',
-        ]);
-        DB::table('m_categories')->insert([
-            'id' => '3',
-            'category_name' => 'その他',
+            [
+                'id' => '1',
+                'category_name' => 'ストレート',
+            ],
+            [
+                'id' => '2',
+                'category_name' => 'ブレンド',
+            ],
+            [
+                'id' => '3',
+                'category_name' => 'その他',
+            ],
         ]);
     }
 }

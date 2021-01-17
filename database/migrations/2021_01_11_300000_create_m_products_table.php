@@ -22,7 +22,7 @@ class CreateMProductsTable extends Migration
             $table->unsignedInteger('sale_status_id')->comment('販売状態');
             $table->unsignedInteger('product_status_id')->comment('商品状態');
             $table->timestamp('regist_date')->comment('商品登録日');
-            $table->unsignedInteger('user_id')->unsigned()->comment('ユーザID');
+            $table->unsignedInteger('user_id')->comment('ユーザID');
             $table->integer('delete_flag')->comment('deleteフラグ');
             $table->foreign('category_id')
             ->references('id')

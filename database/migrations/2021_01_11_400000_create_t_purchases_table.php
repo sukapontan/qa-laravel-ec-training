@@ -20,7 +20,7 @@ class CreateTPurchasesTable extends Migration
             $table->string('purchase_company', 128)->comment('仕入先会社');
             $table->timestamp('order_date')->comment('発送日');
             $table->timestamp('purchase_date')->nullable()->comment('納入日');
-            $table->unsignedInteger('product_id')->unsigned()->comment('商品ID');
+            $table->unsignedInteger('product_id')->comment('商品ID');
             $table->foreign('product_id')
             ->references('id')
             ->on('m_products')
