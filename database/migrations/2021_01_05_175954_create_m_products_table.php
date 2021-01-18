@@ -22,6 +22,12 @@ class CreateMProductsTable extends Migration
             // $table->integer('sale_status_id')->unsigned();
             // $table->integer('product_status_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->timestamp('regist_date');
+            $table->char('delete_flag', 1);
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('m_users')
+                    ->onDelete('cascade');
             // $table->foreign('sale_status_id')
             //       ->references('id')
             //       ->on('m_sales_statuses')
@@ -30,12 +36,6 @@ class CreateMProductsTable extends Migration
             //       ->references('id')
             //       ->on('m_products_statuses')
             //       ->onDelete('cascade');
-            $table->timestamp('regist_date');
-            $table->foreign('user_id')
-                    ->references('id')
-                    ->on('m_users')
-                    ->onDelete('cascade');
-            $table->boolean('delete_flag');
         });
     }
 
