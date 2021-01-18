@@ -19,7 +19,7 @@ class UsersController extends Controller
     // ユーザ情報の確認・修正・削除
     public function show()
     {
-        return view('users.users', ['user' => Auth::user() ]);
+        return view('users.users', ['user' => Auth::user()]);
     }
 
     // public function edit()
