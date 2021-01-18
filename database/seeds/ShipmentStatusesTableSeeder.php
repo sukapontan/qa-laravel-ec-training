@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MShipmentStatusesTableSeeder extends Seeder
+class ShipmentStatusesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
