@@ -21,7 +21,7 @@ class CreateMProductsTable extends Migration
             $table->string('description', 256);
             // $table->integer('sale_status_id')->unsigned();
             // $table->integer('product_status_id')->unsigned();
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             // $table->foreign('sale_status_id')
             //       ->references('id')
             //       ->on('m_sales_statuses')
