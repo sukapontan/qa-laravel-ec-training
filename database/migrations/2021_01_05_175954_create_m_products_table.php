@@ -19,6 +19,8 @@ class CreateMProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('price');
             $table->string('description', 256);
+            // $table->integer('sale_status_id');
+            // $table->integer('product_status_id');
             $table->integer('user_id')->unsigned()->nullable();
             // $table->foreign('sale_status_id')
             //       ->references('id')
