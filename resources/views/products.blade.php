@@ -1,4 +1,4 @@
-{{-- headerを定義 --}}
+{{-- 商品検索画面を定義 --}}
 @section('products')
 
 <div class="row mt-4">
@@ -43,11 +43,13 @@
             <thead class="bg-warning">
                 <tr>
                     <th>商品名</th>
-                    <th>商品化カテゴリ</th>
+                    <th>商品カテゴリ</th>
                     <th>価格</th>
                     <th>詳細</th>
                 </tr>
             </thead>
+            {{-- ここを@foreacehで処理したい --}}
+            {{-- まずは商品詳細のModelとControllerを実装する --}}
             <tbody>
                 <tr>
                     <td>商品名1</td>
@@ -80,6 +82,7 @@
 </div>
 
 {{-- ページネーション --}}
+{{-- 1ページの表示件数を設定するだけだったような..？ --}}
 <nav aria-label="...">
     <ul class="pagination pagination" style="justify-content: center;">
         <li class="page-item disabled">
