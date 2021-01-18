@@ -19,7 +19,7 @@ class CreateMProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('price');
             $table->string('description', 256);
-            //外部キー制約
+            $table->integer('user_id')->unsigned()->nullable();
             // $table->foreign('sale_status_id')
             //       ->references('id')
             //       ->on('m_sales_statuses')

@@ -17,6 +17,7 @@ class ProductsTableSeeder extends Seeder
             'category_id' => '1',
             'price' => '2000',
             'description' => '快眠でる程の安らぎの味',
+            'user_id' => '3',
             'delete_flag' => '1',
         ]);
         DB::table('m_products')->insert([
@@ -25,6 +26,7 @@ class ProductsTableSeeder extends Seeder
             'category_id' => '2',
             'price' => '5000',
             'description' => 'つんとくる味',
+            'user_id' => '1',
             'delete_flag' => '1',
         ]);
         DB::table('m_products')->insert([
@@ -33,6 +35,7 @@ class ProductsTableSeeder extends Seeder
             'category_id' => '1',
             'price' => '300',
             'description' => '甘いトマト',
+            'user_id' => '2',
             'delete_flag' => '1',
         ]);
         DB::table('m_products')->insert([
@@ -41,6 +44,7 @@ class ProductsTableSeeder extends Seeder
             'category_id' => '5',
             'price' => '2000',
             'description' => '食べ応えあり',
+            'user_id' => '1',
             'delete_flag' => '1',
         ]);
         DB::table('m_products')->insert([
@@ -49,6 +53,7 @@ class ProductsTableSeeder extends Seeder
             'category_id' => '1',
             'price' => '10000',
             'description' => 'さらっと食べれる',
+            'user_id' => '3',
             'delete_flag' => '0',
         ]);
         DB::table('m_products')->insert([
@@ -57,6 +62,7 @@ class ProductsTableSeeder extends Seeder
             'category_id' => '2',
             'price' => '50',
             'description' => '力の源',
+            'user_id' => '2',
             'delete_flag' => '0',
         ]);
     }
