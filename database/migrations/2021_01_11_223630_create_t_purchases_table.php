@@ -22,9 +22,9 @@ class CreateTPurchasesTable extends Migration
             $table->timestamp('order_date')->nullable();
             $table->timestamp('purchase_date')->nullable();
             $table->foreign('product_id')
-            ->references('id')
-            ->on('m_products')
-            ->onDelete('cascade');
+                  ->references('id')
+                  ->on('m_products')
+                  ->onDelete('cascade');
         });
     }
 
