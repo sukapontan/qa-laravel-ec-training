@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             ShipmentsStatusesTableSeeder::class,
             OrdersDetailsTableSeeder::class,
             ProductsTableSeeder::class,
+            PurchasesTableSeeder::class,
+            CategoryTableSeeder::class,
             ProductsStatusTableSeeder::class,
         ]);
     }
