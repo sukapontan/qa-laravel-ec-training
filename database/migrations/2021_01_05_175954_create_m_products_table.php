@@ -32,10 +32,10 @@ class CreateMProductsTable extends Migration
                   ->references('id')
                   ->on('m_products_statuses')
                   ->onDelete('cascade');
-            // $table->foreign('sale_status_id')
-            //       ->references('id')
-            //       ->on('m_sales_statuses')
-            //       ->onDelete('cascade');
+            $table->foreign('sale_status_id')
+                  ->references('id')
+                  ->on('m_sales_statuses')
+                  ->onDelete('cascade');
         });
     }
 
