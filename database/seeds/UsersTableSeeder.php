@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
     {
         // 「ユーザ」テーブルのダミーデータのセット
         DB::table('m_users')->insert([
-            'id' => '1',
             'password' => bcrypt('password'),
             'last_name' => '羅々部流',
             'first_name' => '一郎',
@@ -31,7 +30,6 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('m_users')->insert([
-            'id' => '2',
             'password' => bcrypt('password'),
             'last_name' => '経句',
             'first_name' => '二郎',
@@ -47,7 +45,6 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('m_users')->insert([
-            'id' => '3',
             'password' => bcrypt('password'),
             'last_name' => '流比井',
             'first_name' => '三郎',

@@ -13,19 +13,11 @@ class UserClassificationsTableSeeder extends Seeder
     public function run()
     {
         // 「ユーザ種別」テーブルのダミーデータのセット
-        DB::table('m_user_classifications')->insert([
-            'id' => '1',
-            'user_classification_name' => '出品者',
-        ]);
-
-        DB::table('m_user_classifications')->insert([
-            'id' => '2',
-            'user_classification_name' => '購入者',
-        ]);
-
-        DB::table('m_user_classifications')->insert([
-            'id' => '3',
-            'user_classification_name' => '管理者',
-        ]);
+        $userClassications = ['出品者', '購入者', '管理者'];
+        foreach ($userClassications as $userClassication) {
+            DB::table('m_user_classifications')->insert([
+            'user_classification_name' => $userClassication,
+            ]);
+        };
     }
 }

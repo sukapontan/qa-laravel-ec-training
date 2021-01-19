@@ -14,7 +14,6 @@ class OrderDetailsTableSeeder extends Seeder
     {
         // 「注文詳細」テーブルのダミーデータのセット
         DB::table('t_order_details')->insert([
-            'id' => '1',
             'products_id' => '1',
             'order_id' => '1',
             'shipment_status_id' => '1',
@@ -24,7 +23,6 @@ class OrderDetailsTableSeeder extends Seeder
         ]);
 
         DB::table('t_order_details')->insert([
-            'id' => '2',
             'products_id' => '2',
             'order_id' => '2',
             'shipment_status_id' => '2',
@@ -34,7 +32,6 @@ class OrderDetailsTableSeeder extends Seeder
         ]);
 
         DB::table('t_order_details')->insert([
-            'id' => '3',
             'products_id' => '3',
             'order_id' => '3',
             'shipment_status_id' => '1',
