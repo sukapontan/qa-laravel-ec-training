@@ -15,7 +15,7 @@ class CreateMCategoriesTable extends Migration
     {
         Schema::create('m_categories', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('m_category_name', 32);
+            $table->string('category_name', 32);
         });
     }
 

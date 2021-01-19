@@ -13,15 +13,15 @@ class CategoryTableSeeder extends Seeder
     {
         DB::table('m_categories')->insert([
             'id' => '1',
-            'm_category_name' => 'ふりかけ',
+            'category_name' => '食品',
         ]);
         DB::table('m_categories')->insert([
             'id' => '2',
-            'm_category_name' => '食器',
+            'category_name' => '食器類',
         ]);
         DB::table('m_categories')->insert([
             'id' => '3',
-            'm_category_name' => '野菜',
+            'category_name' => '書籍',
         ]);
     }
 }
