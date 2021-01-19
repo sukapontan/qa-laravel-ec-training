@@ -16,11 +16,11 @@ class CreateMProductsTable extends Migration
         Schema::create('m_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product_name', 64);
-            $table->integer('category_id')->unsigned();
-            $table->integer('price');
+            $table->integer('price')->unsigned();
             $table->string('description', 256);
-            // $table->integer('sale_status_id')->unsigned();
-            // $table->integer('product_status_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->integer('sale_status_id')->unsigned();
+            $table->integer('product_status_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamp('regist_date');
             $table->char('delete_flag', 1);
@@ -35,6 +35,10 @@ class CreateMProductsTable extends Migration
             // $table->foreign('product_status_id')
             //       ->references('id')
             //       ->on('m_products_statuses')
+            //       ->onDelete('cascade');
+            // $table->foreign('category_id')
+            //       ->references('id')
+            //       ->on('m_categories')
             //       ->onDelete('cascade');
         });
     }
