@@ -30,6 +30,27 @@ class User extends Authenticatable
         'company_name',
     ];
 
+    public function selectUserFindById($id)
+    {
+        $query = $this->select([
+            'id',
+            'last_name',
+            'first_name',
+            'zipcode',
+            'prefecture',
+            'municipality',
+            'address',
+            'apartments',
+            'email',
+            'phone_number',
+            'company_name',
+        ])->where([
+            'id' => $id
+        ]);
+
+        return $query->first();
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
