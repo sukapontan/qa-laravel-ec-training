@@ -15,8 +15,11 @@ class MProductController extends Controller
     public function index(Request $request)
     {
         // 商品一覧ページを表示する
+        // ※現状はm_productテーブルがDBに無いのでエラーになる
         $items = MProduct::all();
         return view('products.index', ['items' => $items]);
+        
+        // 作業メモ：$itemsはCollectionクラスのインスタンスである
     }
 
 }

@@ -33,13 +33,14 @@
 </form>
 
 {{-- 検索結果の表示(※未実装) --}}
-
 <div class="container mt-4">
     <div class="panel panel-default">
+        {{-- 検索結果から表示件数を取得して表示するようにする --}}
         <div class="panel-heading">全○○件</div>
         <div class="panel-body">
         </div>
         <table border="1" class="table" style="border-collapse: collapse">
+            {{-- 表の見出し --}}
             <thead class="bg-warning">
                 <tr>
                     <th>商品名</th>
@@ -48,41 +49,24 @@
                     <th>詳細</th>
                 </tr>
             </thead>
-            {{-- ここを@foreacehで処理したい --}}
-            {{-- まずは商品詳細のModelとControllerを実装する --}}
-            <tbody>
-                <tr>
-                    <td>商品名1</td>
-                    <td>食料品</td>
-                    <td>100円</td>
-                    <td type="submit" name="name" value="商品詳細" class="btn btn-primary">
-                        商品詳細
-                    </td>
-                </tr>
-                <tr>
-                    <td>商品名2</td>
-                    <td>食料品</td>
-                    <td>200円</td>
-                    <td type="submit" name="name" value="商品詳細" class="btn btn-primary">
-                        商品詳細
-                    </td>
-                </tr>
-                <tr>
-                    <td>商品名3</td>
-                    <td>食料品</td>
-                    <td>400円</td>
-                    <td type="submit" name="name" value="商品詳細" class="btn btn-primary">
-                        商品詳細
-                    </td>
-                </tr>
 
+            {{-- 各商品を$itemインスタンスとして展開する --}}
+            <tbody>
+                @foreach ($items as $item)
+                <tr>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->category }}</td>
+                    <td>{{ $item->price }}</td>
+                    <td type="submit" name="name" value="商品詳細" class="btn btn-primary">商品詳細</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 </div>
 
 {{-- ページネーション --}}
-{{-- 1ページの表示件数を設定するだけだったような..？ --}}
+{{-- 1ページの表示件数を設定するだけだったような..あとで改良する --}}
 <nav aria-label="...">
     <ul class="pagination pagination" style="justify-content: center;">
         <li class="page-item disabled">
