@@ -12,24 +12,26 @@ class MProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // 商品一覧ページを表示する
     public function index(Request $request)
     {
-        // 商品一覧ページを表示する
-        // ModelからEloquentで全件取得する
         // ※現状はm_productテーブルがDBに無いのでエラーになる
-        $items = MProduct::all();
-
-        // 検索フォームより受け取った文字列を$serch_textに格納
-        $serch_text = $request->serch_text;
-
-        // ここからロジックを実装する
         // 具体的には分岐処理で、カテゴリidと商品名部分一致で検索を行う
         // もしカテゴリが未選択で検索フォームも空白だったら処理は行わずにviewを表示する
         // 入力があれば第1ソート=カテゴリ(昇順)、第2ソート=商品名(昇順)
 
-        // viewを表示する
-        // viewに渡すデータは何？商品と件数？件数は$query_numbersとか？
-        return view('products.index', ['items' => $items]);
+        // まず単純に商品カテゴリーidで昇順にソートするパターン
+        // モデルにおいてローカルスコープを実装したいところ
+        $items = MProduct::orderBy('product_category_id', 'asc')->paginate();
+
+        // 検索フォームより受け取った文字列を$serch_textに格納
+        $serch_text = $request->serch_text;
+
+        // このあたりを分岐処理で行いたい
+
+        // viewに渡すデータ(商品の一覧と取得件数)
+        $params = ['items' => $items, 'query_numbers' => $query_numbers];
+        return view('products.index', $params);
         
         // 作業メモ：$itemsはCollectionクラスのインスタンスである
     }
