@@ -36,11 +36,11 @@ class CreateMProductsTable extends Migration
             ->references('id')
             ->on('m_product_statuses')
             ->onDelete('cascade');
-            //まだファイルがないのでコメント表示にしています
-            //$table->foreign('user_id')
-            //->references('id')
-            //->on('m_users')
-            //->onDelete('cascade');
+            // ユーザIDの外部キー制約(※ユーザテーブルが無い状態でのmigrateテスト時は一時的に無効にすること)
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('m_users')
+            ->onDelete('cascade');
         });
     }
 
