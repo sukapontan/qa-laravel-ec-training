@@ -25,21 +25,17 @@ class CreateMProductsTable extends Migration
             $table->timestamp('regist_date');
             $table->char('delete_flag', 1);
             $table->foreign('user_id')
-                    ->references('id')
-                    ->on('m_users')
-                    ->onDelete('cascade');
-            // $table->foreign('sale_status_id')
-            //       ->references('id')
-            //       ->on('m_sales_statuses')
-            //       ->onDelete('cascade');
-            // $table->foreign('product_status_id')
-            //       ->references('id')
-            //       ->on('m_products_statuses')
-            //       ->onDelete('cascade');
-            // $table->foreign('category_id')
-            //       ->references('id')
-            //       ->on('m_categories')
-            //       ->onDelete('cascade');
+                  ->references('id')
+                  ->on('m_users')
+                  ->onDelete('cascade');
+            $table->foreign('product_status_id')
+                  ->references('id')
+                  ->on('m_products_statuses')
+                  ->onDelete('cascade');
+            $table->foreign('sale_status_id')
+                  ->references('id')
+                  ->on('m_sales_statuses')
+                  ->onDelete('cascade');
         });
     }
 
