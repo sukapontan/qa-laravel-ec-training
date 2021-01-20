@@ -11,10 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(SaleStatusesTableSeeder::class);
-        $this->call(ProductStatusesTableSeeder::class);
-        $this->call(ProductsTableSeeder::class);
-        $this->call(PurchasesTableSeeder::class);
+        // ユーザー関連と注文関連のSeederを実行(Migrateと同じ順序とすること)
+        $this->call(UserClassificationsTableSeeder::class); // ユーザ種別
+        $this->call(UsersTableSeeder::class); // ユーザ
+        $this->call(OrdersTableSeeder::class); // 注文
+        $this->call(ShipmentStatusesTableSeeder::class); // 発送状態
+        $this->call(CategoriesTableSeeder::class); // カテゴリー
+        $this->call(SaleStatusesTableSeeder::class); // 販売状態
+        $this->call(ProductStatusesTableSeeder::class); // 商品状態
+        $this->call(ProductsTableSeeder::class); // 商品
+        $this->call(PurchasesTableSeeder::class); // 仕入れ
+        $this->call(OrderDetailsTableSeeder::class); // 注文詳細
     }
 }
