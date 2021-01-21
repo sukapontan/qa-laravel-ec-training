@@ -1,9 +1,11 @@
 @extends('app')
 
+@section('title','オーガニック 珈琲屋さん(仮)')
+
 @section('content')
 
 <div class="container">
-    <h1 class="text-center py-5">オーガニック 珈琲屋さん(仮)</h1>
+    <h1 class="text-center py-5">@yield('title')</h1>
     <div class="row">
         <div class="col-xs-12 col-md-6 text-center mt-5">
             <h5>まだアカウントを<br>お持ちでない方はこちら</h5>
