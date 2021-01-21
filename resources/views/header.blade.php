@@ -3,11 +3,9 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
         {{-- サイトロゴ --}}
         <a class="navbar-brand text-dark" href="/">{{ config('app.name', 'サイトロゴ(仮)') }}</a>
-
         {{-- 右寄せメニュー --}}
         <div class="collapse navbar-collapse" id="nav-bar">
-            <ul class="navbar-nav mr-auto"></ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
                 {{-- ログインしている場合 --}}
                 @auth
                 <li class="nav-item">
