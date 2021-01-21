@@ -1,19 +1,25 @@
 {{-- 商品検索画面を定義 --}}
-@section('products')
+@extends('app')
+
+@section('title', '商品検索画面')
+
+@section('content')
 
 <div class="row mt-4">
     <div class="col-lg-12 text-center">
-        <h1>商品検索画面</h1>
+        <h1>@yield('title')</h1>
     </div>
 </div>
 
 {{-- 商品検索フォーム --}}
-<form>
+<form action="{{ 'MProductController@index' }}" method="GET" id="serch">
+    @csrf
     <div class="row">
         <div class="input-group mt-4 col-md-7 offset-2">
             <h2 class="mr-4">商品名</h2>
             <input type="text" name="keyword" required class="form-control ">
             <span class="input-group-btn">
+                {{ csrf_field() }}
                 <input type="submit" class="btn btn-primary ml-4" value="検索">
             </span>
         </div>
@@ -23,19 +29,19 @@
         <div class="input-group mt-4 col-md-7 offset-2">
             <h2>商品カテゴリ</h2>
             <select class="ml-2" style=" width:50%; text-align-last:center;">
-                <option>全て</option>
-                <option>ブレンド</option>
+                <option>未選択</option>
                 <option>ストレート</option>
-                <option>デカフェ</option>
+                <option>ブレンド</option>
+                <option>その他</option>
             </select>
         </div>
     </div>
 </form>
 
-{{-- 検索結果の表示(※未実装) --}}
+{{-- 検索結果の表示 --}}
 <div class="container mt-4">
     <div class="panel panel-default">
-        {{-- 検索結果から表示件数を取得して表示するようにする --}}
+        {{-- 検索結果から表示件数を取得して表示(※未実装) --}}
         <div class="panel-heading">全○○件</div>
         <div class="panel-body">
         </div>
@@ -54,10 +60,11 @@
             <tbody>
                 @foreach ($items as $item)
                 <tr>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->category }}</td>
+                    <td>{{ $item->product_name }}</td>
+                    <td>{{ $item->category_name }}</td>
                     <td>{{ $item->price }}</td>
-                    <td type="submit" name="name" value="商品詳細" class="btn btn-primary">商品詳細</td>
+                    {{-- 商品idを取得してアクションにする？ --}}
+                    <td><a class="btn btn-primary" href="#">商品詳細</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -65,8 +72,11 @@
     </div>
 </div>
 
-{{-- ページネーション --}}
-{{-- 1ページの表示件数を設定するだけだったような..あとで改良する --}}
+{{-- ページネーションリンク --}}
+<div class="d-flex justify-content-center my-auto">
+    {{ $items->links() }}
+</div>
+{{-- モックアップの記述 
 <nav aria-label="...">
     <ul class="pagination pagination" style="justify-content: center;">
         <li class="page-item disabled">
@@ -76,5 +86,5 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
 </nav>
-
+--}}
 @endsection

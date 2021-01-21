@@ -15,25 +15,29 @@ class MProductController extends Controller
     // 商品一覧ページを表示する
     public function index(Request $request)
     {
-        // ※現状はm_productテーブルがDBに無いのでエラーになる
-        // 具体的には分岐処理で、カテゴリidと商品名部分一致で検索を行う
-        // もしカテゴリが未選択で検索フォームも空白だったら処理は行わずにviewを表示する
-        // 入力があれば第1ソート=カテゴリ(昇順)、第2ソート=商品名(昇順)
-
-        // まず単純に商品カテゴリーidで昇順にソートするパターン
-        // モデルにおいてローカルスコープを実装したいところ
-        $items = MProduct::orderBy('product_category_id', 'asc')->paginate();
-
         // 検索フォームより受け取った文字列を$serch_textに格納
-        $serch_text = $request->serch_text;
+        $search_text = $request->search_text;
 
-        // このあたりを分岐処理で行いたい
+        if ($search_text != '') {
+            // 検索フォームからのデータが空白でない場合は部分一致検索
+            $items = MProduct::where('body', 'like', '%' . $search_text . '%')
+                ->orderBy('category_id', 'asc')
+                ->orderBy('product_name', 'asc')
+                ->paginate(2); // とりあえず動作確認用に2件としている
+            
+        } else {
+            // そうでない場合は単純に昇順で表示
+            $items = MProduct::orderBy('category_id', 'asc')
+                ->orderBy('product_name', 'asc')
+                ->paginate(2); // とりあえず動作確認用に2件としている
+        }
 
-        // viewに渡すデータ(商品の一覧と取得件数)
-        $params = ['items' => $items, 'query_numbers' => $query_numbers];
-        return view('products.index', $params);
-        
-        // 作業メモ：$itemsはCollectionクラスのインスタンスである
+        // 検索結果の取得件数を格納(未実装)
+        // 0件の場合はエラーメッセージを表示させる
+        // $query_numbers = count($items);
+
+        // viewに渡すデータ(商品の一覧と取得件数を渡す)
+        $params = ['items' => $items,];
+        return view('products', $params);        
     }
-
 }
