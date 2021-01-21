@@ -1,8 +1,8 @@
 {{-- headerを定義 --}}
 <header class="mb-5">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
         {{-- サイトロゴ --}}
-        <a class="navbar-brand" href="/">{{ config('app.name', 'サイトロゴ(仮)') }}</a>
+        <a class="navbar-brand text-dark" href="/">{{ config('app.name', 'サイトロゴ(仮)') }}</a>
 
         {{-- 右寄せメニュー --}}
         <div class="collapse navbar-collapse" id="nav-bar">
@@ -11,26 +11,26 @@
                 {{-- ログインしている場合 --}}
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="#">商品検索</a>
+                    <a class="nav-link text-dark" href="#">商品検索</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">カート</a>
+                    <a class="nav-link text-dark" href="#">カート</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">注文履歴</a>
+                    <a class="nav-link text-dark" href="#">注文履歴</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ログアウト</a>
+                    <a class="nav-link text-dark" href="#">ログアウト</a>
                 </li>
                 @endauth
 
                 {{-- ログインしていない場合 --}}
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ログイン</a>
+                    <a class="nav-link text-dark" href="#">ログイン</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">新規登録</a>
+                    <a class="nav-link text-dark" href="#">新規登録</a>
                 </li>
                 @endguest
             </ul>
