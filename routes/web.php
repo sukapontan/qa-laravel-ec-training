@@ -30,3 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::post('users/users/{id}/edit', 'UsersController@update')->name('user.update');
     // Route::destroy('/', 'UsersController@destroy')->name('user.delete');
 });
+
+//商品詳細画面
+Route::get('product/show', 'ProductController@show')->name('product/show');
+//エラー
+Route::get('product/index', 'ProductController@index')->name('product/index');
+//カート画面
+Route::get('cart/show', 'CartController@show')->name('cart/show');
+//カートエラー
+Route::get('cart/index', 'CartController@index')->name('cart/index');
