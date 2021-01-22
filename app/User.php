@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
-{
+{    
     protected $table = 'm_users';
     use Notifiable;
 
@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'id',
         'password',
         'last_name',
         'first_name',
@@ -30,7 +31,7 @@ class User extends Authenticatable
         'company_name',
     ];
 
-    public function selectUserFindById($id)
+    public function selectUserId($id)
     {
         $query = $this->select([
             'id',
@@ -49,6 +50,23 @@ class User extends Authenticatable
         ]);
 
         return $query->first();
+    }
+
+    public function updateUserInfo($user)
+    {
+        return $this->where([
+            'id' => $user['id']
+        ])->update([
+            'last_name' => $user['last_name'],
+            'first_name' => $user['first_name'],
+            'zipcode' => $user['zipcode'],
+            'prefecture' => $user['prefecture'],
+            'municipality' => $user['municipality'],
+            'address' => $user['address'],
+            'apartments' => $user['apartments'],
+            'email' => $user['email'],
+            'phone_number' => $user['phone_number'],
+        ]);
     }
 
     /**

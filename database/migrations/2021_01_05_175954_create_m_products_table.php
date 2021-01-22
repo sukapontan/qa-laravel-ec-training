@@ -28,12 +28,12 @@ class CreateMProductsTable extends Migration
             //       ->references('id')
             //       ->on('m_products_statuses')
             //       ->onDelete('cascade');
-            $table->timestamp('regist_date');
-            $table->foreign('user_id')
-                    ->references('id')
-                    ->on('m_users')
-                    ->onDelete('cascade');
-            $table->boolean('delete_flag');
+            // $table->timestamp('regist_date');
+            // $table->foreign('user_id')
+            //         ->references('id')
+            //         ->on('m_users')
+            //         ->onDelete('cascade');
+            // $table->boolean('delete_flag');
         });
     }
 

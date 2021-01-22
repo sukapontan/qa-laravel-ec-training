@@ -28,32 +28,36 @@ class UsersController extends Controller
         $this->user = $user;
     }
 
-    public function getEdit($id)
+    public function edit($id)
     {
-        $user = $this->user->selectUserFindById($id);
+        $user = $this->user->selectUserId($id);
         return view('users.edit', compact('user'));
     }
 
-    // public function edit()
-    // {
-    //     return view('user.edit', ['auth' => $auth ]);
-    // }
+    public function update($id, Request $request)
+    {       
+        $request->validate([
+            'last_name' => 'required|max:10',
+            'first_name' => 'required|max:10',
+            'zipcode' => 'required|size:7|regex:/^[0-9]+$/',
+            'prefecture' => 'required|max:5',
+            'municipality' => 'required|max:10',
+            'address' => 'required|max:15',
+            'apartments' => 'required|max:20',
+            'email' => 'required|email|unique:m_users,email,'.$request->id.'',
+            'phone_number' => 'required|max:15|regex:/^[0-9]+$/',
+        ]);
 
-    // public function update(Request $request, $id)
-    // {
-    //     $user_update = $request->all();
-    //     $user = Auth::user();
-    //     unset($form['_token']);
-    //     $user->fill($user_update)->save();
+        $user = $request->post();
+        $this->user->updateUserInfo($user);
+        return redirect()->route('users.edit', ['id' => $id]);
+    }
 
-    //     return redirect('/user_edit');
-    // }
-    
-    // public function destroy($id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     $user->delete();
+    public function delete(Request $request)
+    {
+        $id = $request->input('id');
+        User::find($id)->delete();
 
-    //     return view('/');
-    // }
+        return redirect('/');
+    }
 }

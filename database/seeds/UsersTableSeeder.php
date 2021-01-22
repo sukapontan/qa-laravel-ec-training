@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'first_name' => 'たかし',
             'email' => 'sample2@gmail.com',
             'password' => bcrypt('test2'),
-            'zipcode' => '0648620',
+            'zipcode' => '6486201',
             'prefecture' => '北海道',
             'municipality' => '札幌市中央区南9条西',
             'address' => '5-421',
