@@ -31,17 +31,11 @@ class MProductController extends Controller
                 ->orderBy('product_name', 'asc')
                 ->paginate(2); // とりあえず動作確認用に2件としている
         }
-
-        // 検索結果の取得件数を格納
-        // 現状、ページネイトされてからカウントしている。。
-        // 0件の場合はエラーメッセージを表示させる
-        $count_results = count($items);
         
         // viewに渡すデータ(商品の一覧と取得件数を渡す)
         $params = [
             'items' => $items,
             'search_text' => $search_text,
-            'count_results' => $count_results,
         ];
         return view('products', $params);
     }

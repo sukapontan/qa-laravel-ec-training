@@ -47,9 +47,9 @@
 <div class="container my-5">
     <div class="panel panel-default my-5">
         {{-- 検索結果から表示件数を取得して表示(※未実装) --}}
-        <label class="panel-heading">全 {{ $count_items }} 件</label>
+        <label class="panel-heading">全 {{ $items->total() }} 件中 {{ $items->count() }} 件表示</label>
         <div class="panel-body">
-            <table border="2" class="table" style="border-collapse: collapse">
+            <table border="1" class="table" style="border-collapse: collapse">
                 {{-- 表の見出し --}}
                 <thead class="bg-warning">
                     <tr>
