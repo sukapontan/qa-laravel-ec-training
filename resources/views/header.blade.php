@@ -1,4 +1,3 @@
-{{-- headerを定義 --}}
 <header class="mb-5">
     <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
         {{-- サイトロゴ --}}
@@ -6,7 +5,8 @@
         {{-- 右寄せメニュー --}}
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav ml-auto">
-                {{-- ログインしている場合 --}}
+                {{-- 下記箇所は動作確認未実施の為、ログイン機能実装時に要動作確認 --}}
+                {{-- ログインしている場合 （動作確認未実施）--}}
                 @auth
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">商品検索</a>
@@ -22,7 +22,7 @@
                 </li>
                 @endauth
 
-                {{-- ログインしていない場合 --}}
+                {{-- ログインしていない場合（動作確認済み） --}}
                 @guest
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">ログイン</a>

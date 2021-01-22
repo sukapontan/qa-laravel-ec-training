@@ -3,7 +3,6 @@
 @section('title','オーガニック 珈琲屋さん(仮)')
 
 @section('content')
-
 <div class="container">
     <h1 class="text-center py-5">@yield('title')</h1>
     <div class="row">
@@ -21,5 +20,4 @@
         </div>
     </div>
 </div>
-
 @endsection
