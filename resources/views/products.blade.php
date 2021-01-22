@@ -7,17 +7,21 @@
 
 <div class="row mt-4">
     <div class="col-lg-12 text-center">
-        <h1>@yield('title')</h1>
+        <h1 class="h2">@yield('title')</h1>
     </div>
 </div>
 
 {{-- 商品検索フォーム --}}
-<form action="{{ 'MProductController@index' }}" method="GET" id="serch">
-    @csrf
+<form action="{{ action('MProductController@index') }}" method="get" id="search">
+
+    {{-- 商品名 --}}
     <div class="row">
-        <div class="input-group mt-4 col-md-7 offset-2">
-            <h2 class="mr-4">商品名</h2>
-            <input type="text" name="keyword" required class="form-control ">
+        <div class="input-group mt-4 col-md-5 offset-2">
+            <label class="mr-4">商品名</label>
+            {{-- テキストフォーム --}}
+            <input type="text" name="search_text" class="form-control" value="{{ $search_text }}">
+
+            {{-- 検索ボタン --}}
             <span class="input-group-btn">
                 {{ csrf_field() }}
                 <input type="submit" class="btn btn-primary ml-4" value="検索">
@@ -25,9 +29,10 @@
         </div>
     </div>
 
+    {{-- カテゴリの選択 --}}
     <div class="row">
-        <div class="input-group mt-4 col-md-7 offset-2">
-            <h2>商品カテゴリ</h2>
+        <div class="input-group mt-4 col-md-5 offset-2">
+            <label>商品カテゴリ</label>
             <select class="ml-2" style=" width:50%; text-align-last:center;">
                 <option>未選択</option>
                 <option>ストレート</option>
@@ -39,52 +44,42 @@
 </form>
 
 {{-- 検索結果の表示 --}}
-<div class="container mt-4">
-    <div class="panel panel-default">
+<div class="container my-5">
+    <div class="panel panel-default my-5">
         {{-- 検索結果から表示件数を取得して表示(※未実装) --}}
-        <div class="panel-heading">全○○件</div>
+        <label class="panel-heading">全 {{ $count_items }} 件</label>
         <div class="panel-body">
-        </div>
-        <table border="1" class="table" style="border-collapse: collapse">
-            {{-- 表の見出し --}}
-            <thead class="bg-warning">
-                <tr>
-                    <th>商品名</th>
-                    <th>商品カテゴリ</th>
-                    <th>価格</th>
-                    <th>詳細</th>
-                </tr>
-            </thead>
+            <table border="2" class="table" style="border-collapse: collapse">
+                {{-- 表の見出し --}}
+                <thead class="bg-warning">
+                    <tr>
+                        <th>商品名</th>
+                        <th>商品カテゴリ</th>
+                        <th>価格</th>
+                        <th>詳細</th>
+                    </tr>
+                </thead>
 
-            {{-- 各商品を$itemインスタンスとして展開する --}}
-            <tbody>
-                @foreach ($items as $item)
-                <tr>
-                    <td>{{ $item->product_name }}</td>
-                    <td>{{ $item->category_name }}</td>
-                    <td>{{ $item->price }}</td>
-                    {{-- 商品idを取得してアクションにする？ --}}
-                    <td><a class="btn btn-primary" href="#">商品詳細</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                {{-- 各商品を$itemインスタンスとして展開する --}}
+                <tbody>
+                    @foreach ($items as $item)
+                    <tr>
+                        <td>{{ $item->product_name }}</td>
+                        <td>{{ $item->category_name }}</td>
+                        <td>{{ $item->price }}</td>
+                        {{-- 商品idを取得してアクションにする？ --}}
+                        <td><a class="btn btn-primary" href="#">商品詳細</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {{-- ページネーションリンク --}}
+    <div class="d-flex justify-content-center my-auto">
+        {{ $items->links() }}
     </div>
 </div>
 
-{{-- ページネーションリンク --}}
-<div class="d-flex justify-content-center my-auto">
-    {{ $items->links() }}
-</div>
-{{-- モックアップの記述 
-<nav aria-label="...">
-    <ul class="pagination pagination" style="justify-content: center;">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">1</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-    </ul>
-</nav>
---}}
 @endsection
