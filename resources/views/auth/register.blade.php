@@ -9,21 +9,21 @@
         <h3>お客様登録情報</h3>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-sm-7">
+    <div class="row justify-content-center mt-3">
+        <div class="col-sm-9">
             {!! Form::open(['route' => 'signup.post']) !!}
                 氏名
-                <div class="form-group col-sm-12 form-inline">
-                    <label class="col-sm-1">
+                <div class="form-group form-inline">
+                    <label class="col-sm-6">
                         {!! Form::label('last_name', '姓') !!}
                         {!! Form::text('last_name', old('last_name'), ['class' => 'form-control']) !!}
                     </label>
-                    <label class="col-sm-1">
+                    <label class="col-sm-6">
                         {!! Form::label('first_name', '名') !!}
                         {!! Form::text('first_name', old('first_name'), ['class' => 'form-control']) !!}
                     </label>
                 </div>
-                <div class="row">
+                <div class="row mt-2 mb-2">
                     <div class="form-group col-sm-6 form-inline">
                         {!! Form::label('zipcode', '郵便番号') !!}
                         {!! Form::text('zipcode', old('zipcode'), ['class' => 'form-control']) !!}
@@ -56,26 +56,27 @@
                         </label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-sm-12 form-inline">
+                <div class="row mt-2 mb-2">
+                    <div class="form-group col-sm-10">
                         {!! Form::label('email', 'メールアドレス') !!}
                         {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
                     </div>
-                    <div class="form-group col-sm-12 form-inline">
+                    <div class="form-group col-sm-10">
                         {!! Form::label('phone_number', '電話番号') !!}
                         {!! Form::text('phone_number', old('phone_number'), ['class' => 'form-control']) !!}
                     </div>
-                    <div class="form-group col-sm-12 form-inline">
+                    <div class="form-group col-sm-7">
                         {!! Form::label('password', 'パスワード') !!}
                         {!! Form::password('password', ['class' => 'form-control']) !!}
                     </div>
-                    <div class="form-group col-sm-12 form-inline">
-                        パスワード再入力
+                    <div class="form-group col-sm-7">
                         {!! Form::label('password_confirmation', 'パスワード再入力') !!}
                         {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                     </div>
-                    <div class="text-center">
+                    <div class="text-center col-sm-12">
                         {!! Form::submit('登録', ['class' => 'btn btn-primary mt-3']) !!}
+                    </div>
+                    <div class="text-center col-sm-12">
                         <a href="#">ログインはこちらから</a>
                     </div>
                 </div>
