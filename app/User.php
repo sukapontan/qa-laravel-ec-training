@@ -33,7 +33,8 @@ class User extends Authenticatable
 
     public function selectUserId($id)
     {
-        $query = $this->select([
+        $query = $this->
+        select([
             'id',
             'last_name',
             'first_name',
@@ -45,7 +46,8 @@ class User extends Authenticatable
             'email',
             'phone_number',
             'company_name',
-        ])->where([
+        ])->
+        where([
             'id' => $id
         ]);
 
@@ -54,9 +56,11 @@ class User extends Authenticatable
 
     public function updateUserInfo($user)
     {
-        return $this->where([
+        return $this->
+        where([
             'id' => $user['id']
-        ])->update([
+        ])->
+        update([
             'last_name' => $user['last_name'],
             'first_name' => $user['first_name'],
             'zipcode' => $user['zipcode'],

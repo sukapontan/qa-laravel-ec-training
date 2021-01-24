@@ -12,6 +12,11 @@ class UsersController extends Controller
 {
     protected $user;
 
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     public function index()
     {   
         return view('welcome');
@@ -23,15 +28,15 @@ class UsersController extends Controller
         return view('users.users', ['user' => Auth::user()]);
     }
 
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
     public function edit($id)
     {
-        $user = $this->user->selectUserId($id);
-        return view('users.edit', compact('user'));
+        if (\Auth::id() == $id) 
+        {
+            $user = $this->user->selectUserId($id);    
+            return view('users.edit', compact('user'));   
+        }
+
+        return redirect('/top')->with('flash_message', '不適切なURLです。');
     }
 
     public function update($id, Request $request)
@@ -49,6 +54,7 @@ class UsersController extends Controller
         ]);
 
         $user = $request->post();
+
         $this->user->updateUserInfo($user);
         return redirect()->route('users.edit', ['id' => $id]);
     }

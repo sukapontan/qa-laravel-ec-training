@@ -19,4 +19,12 @@
             </li>
         @endif
     </ul>
+    <script>
+        @if (session('flash_message'))
+            $(function ()
+            {
+                toastr.warning('{{ session('flash_message') }}');
+            });
+        @endif
+    </script>
 </header>
