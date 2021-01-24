@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\MUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -66,13 +66,21 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\MUser
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return MUser::create([
+            'last_name' => $data['last_name'],
+            'first_name' => $data['first_name'],
+            'zipcode' => $data['zipcode'],
+            'prefecture' => $data['prefecture'],
+            'prefecture' => $data['prefecture'],
+            'municipality' => $data['municipality'],
+            'address' => $data['address'],
+            'apartments' => $data['apartments'],
             'email' => $data['email'],
+            'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
         ]);
     }
