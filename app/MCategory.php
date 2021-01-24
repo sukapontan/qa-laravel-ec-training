@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MProduct extends Model
+class MCategory extends Model
 {
     protected $guarded = array('id');
-    protected $table = 'm_products';
+    protected $table = 'm_categories';
 
     // リレーションの設定
-    public function mCategory()
+    public function mProducts()
     {
-        return $this->belongsTo('App\MCategory');
+        return $this->hasMany('App\MProduct');
     }
 }

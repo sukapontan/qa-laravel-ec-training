@@ -46,7 +46,7 @@
 {{-- 検索結果の表示 --}}
 <div class="container my-5">
     <div class="panel panel-default my-5">
-        {{-- 検索結果から表示件数を取得して表示(※未実装) --}}
+        {{-- 検索結果から表示件数を取得して表示 --}}
         <label class="panel-heading">全 {{ $items->total() }} 件中 {{ $items->count() }} 件表示</label>
         <div class="panel-body">
             <table border="1" class="table" style="border-collapse: collapse">
@@ -65,9 +65,9 @@
                     @foreach ($items as $item)
                     <tr>
                         <td>{{ $item->product_name }}</td>
-                        <td>{{ $item->category_name }}</td>
+                        <td>@dump($item->category_name)</td>
                         <td>{{ $item->price }}</td>
-                        {{-- 商品idを取得してアクションにする？ --}}
+                        {{-- リンク先未実装($item->idをshowアクションに渡す) --}}
                         <td><a class="btn btn-primary" href="#">商品詳細</td>
                     </tr>
                     @endforeach
