@@ -12,6 +12,6 @@ class MProduct extends Model
     // リレーションの設定
     public function mCategory()
     {
-        return $this->belongsTo('App\MCategory', 'category_id', 'id');
+        return $this->belongsTo('App\MCategory');
     }
 }

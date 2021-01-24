@@ -19,17 +19,17 @@ class MProductController extends Controller
         // 検索フォームより受け取った文字列を$search_textに格納
         $search_text = $request->search_text;
 
-        // 検証用のコード
-        /*
+        /* 検証用のコード
         $test2 = MCategory::all();
         $test1 = MProduct::with('mCategory')->get();
         dd($test1->toArray());
         */
         
         // withを使わずに検証
+        // →この状態だとcategory_nameプロパティが見つからないエラーになる
         $products = MProduct::all();
         foreach ($products as $product) {
-            dd($product->mCategory());
+            dd($product->mCategory()->category_name);
         }
 
         if ($search_text != '') {
