@@ -66,6 +66,7 @@
                     <tr>
                         <td>{{ $item->product_name }}</td>
                         <td>@dump($item->category_name)</td>
+                        {{-- <td>{{ $item->category_name }}</td> --}}
                         <td>{{ $item->price }}</td>
                         {{-- リンク先未実装($item->idをshowアクションに渡す) --}}
                         <td><a class="btn btn-primary" href="#">商品詳細</td>

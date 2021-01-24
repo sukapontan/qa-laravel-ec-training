@@ -25,6 +25,12 @@ class MProductController extends Controller
         $test1 = MProduct::with('mCategory')->get();
         dd($test1->toArray());
         */
+        
+        // withを使わずに検証
+        $products = MProduct::all();
+        foreach ($products as $product) {
+            dd($product->mCategory());
+        }
 
         if ($search_text != '') {
             // 検索フォームからのデータがある場合は部分一致検索(平仮名カタカナは区別される？)
