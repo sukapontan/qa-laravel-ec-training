@@ -68,8 +68,8 @@
                         <td>@dump($item->category_name)</td>
                         {{-- <td>{{ $item->category_name }}</td> --}}
                         <td>{{ $item->price }}</td>
-                        {{-- リンク先未実装($item->idをshowアクションに渡す) --}}
-                        <td><a class="btn btn-primary" href="#">商品詳細</td>
+                        <td><a class="btn btn-primary"
+                                href="{{ action('MProductController@show', ['id' => $item->id]) }}">商品詳細</td>
                     </tr>
                     @endforeach
                 </tbody>

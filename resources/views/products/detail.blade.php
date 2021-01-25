@@ -18,7 +18,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12 text-right">
-        <h3>商品カテゴリ：{{ '$item->category_name' }}</h3>
+        <h3>商品カテゴリ：@dump($item->category_name)</h3>
     </div>
 </div>
 <div class="row">
@@ -42,9 +42,9 @@
     <form action="" method="post">
         @csrf
         <div class="input-group">
-            <h3>購入個数</h3>
+            <p>購入個数</p>
             <input class="form-control col-2" type="text">
-            <h3>個</h3>
+            <p>個</p>
             <input type="submit" class="btn btn-primary ml-4" value="カートへ">
         </div>
     </form>

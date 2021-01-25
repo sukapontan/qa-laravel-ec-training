@@ -53,7 +53,7 @@ class MProductController extends Controller
             'items' => $items,
             'search_text' => $search_text,
         ];
-        return view('products', $params);
+        return view('products.index', $params);
     }
 
     // 商品詳細ページを表示する
@@ -64,6 +64,6 @@ class MProductController extends Controller
             abort(404);
         }
 
-        return view('product.show', ['item' => $item]);
+        return view('products.detail', ['item' => $item]);
     }
 }
