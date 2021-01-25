@@ -15,13 +15,11 @@
 
 <body>
     @include('header')
-
     <div class="container">
+        @include('error_messages')
         @yield('content')
     </div>
-
     @include('footer')
-
 </body>
 
 </html>

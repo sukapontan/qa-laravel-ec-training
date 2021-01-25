@@ -1,4 +1,3 @@
-{{-- footerを定義 --}}
 <footer class="mt-5">
     <nav class="navbar navbar-dark bg-warning">
         <div class="navbar-brand text-dark" style="font-size:x-large;">
