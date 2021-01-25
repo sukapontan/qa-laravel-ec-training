@@ -129,8 +129,41 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'last_name' => [
+            'required' => '姓を入力してください！',
+        ],
+        'first_name' => [
+            'required' => '名を入力してください！',
+        ],
+        'email' => [
+            'required' => 'メールアドレスを入力してください！',
+            'email' => '正式なメールアドレスを入力してください！',
+            'unique' => '入力されたユーザー名は既に使用されています！',
+        ],
+        'zipcode' => [
+            'required' => '郵便番号を選択してください！',
+        ],
+        'prefecture' => [
+            'required' => '都道府県を選択してください！',
+        ],
+        'municipality' => [
+            'required' => '市区町村を選択してください！',
+        ],
+        'address' => [
+            'required' => '番地を選択してください！',
+        ],
+        'apartments' => [
+            'required' => '郵便番号を選択してください！',
+        ],
+        'phone_number' => [
+            'required' => '電話番号を選択してください！',
+        ],
+        'password' => [
+            'required' => 'パスワードを入力してください！',
+        ],
+        'password_confirm' => [
+            'required' => 'パスワードを再入力してください',
+            'same' => 'パスワードが違います。'
         ],
     ],
 
