@@ -12,6 +12,8 @@ class MCategory extends Model
     // リレーションの設定
     public function mProducts()
     {
-        return $this->hasMany('App\MProduct');
+        return $this->hasMany(MProduct::class);
+        // dd($this->hasMany(MProduct::class));
+        // return $this->hasMany('App\MProduct');
     }
 }

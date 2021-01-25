@@ -13,7 +13,7 @@ class MProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // 商品一覧ページを表示する
+    // 商品一覧ページを表示し、検索を行う
     public function index(Request $request)
     {
         // 検索フォームより受け取った文字列を$search_textに格納
@@ -25,12 +25,12 @@ class MProductController extends Controller
         dd($test1->toArray());
         */
         
-        // withを使わずに検証
-        // →この状態だとcategory_nameプロパティが見つからないエラーになる
+        /* withを使わずに検証
         $products = MProduct::all();
         foreach ($products as $product) {
-            dd($product->mCategory()->category_name);
+            dd($product->mCategory());
         }
+        */
 
         if ($search_text != '') {
             // 検索フォームからのデータがある場合は部分一致検索(平仮名カタカナは区別される？)
@@ -54,5 +54,16 @@ class MProductController extends Controller
             'search_text' => $search_text,
         ];
         return view('products', $params);
+    }
+
+    // 商品詳細ページを表示する
+    public function show(Request $request)
+    {
+        $item = MProduct::find($request->id);
+        if (empty($item)) {
+            abort(404);
+        }
+
+        return view('product.show', ['item' => $item]);
     }
 }

@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/products', 'MProductController@index');
+Route::get('/products/show', 'MProductController@show');
