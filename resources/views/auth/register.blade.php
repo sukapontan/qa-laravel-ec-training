@@ -99,8 +99,8 @@
     <div class="text-center col-sm-12">
         {!! Form::submit('登録', ['class' => 'btn btn-primary mt-3']) !!}
     </div>
-    <div class="text-center col-sm-12">
-        <a href="#">ログインはこちらから</a>
+    <div class="text-center col-sm-12 mt-3">
+        {!! link_to_route('login', 'ログインはこちらから') !!}
     </div>
     {!! Form::close() !!}
 </div>

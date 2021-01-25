@@ -18,6 +18,7 @@
                     <a class="nav-link text-dark" href="#">注文履歴</a>
                 </li>
                 <li class="nav-item">
+                    {{-- {!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link text-dark']) !!} --}}
                     <a class="nav-link text-dark" href="#">ログアウト</a>
                 </li>
                 @endauth
@@ -25,7 +26,7 @@
                 {{-- ログインしていない場合（動作確認済み） --}}
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">ログイン</a>
+                    {!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link text-dark']) !!}
                 </li>
                 <li class="nav-item">
                     {!! link_to_route('signup', '新規登録', [], ['class' => 'nav-link text-dark']) !!}
