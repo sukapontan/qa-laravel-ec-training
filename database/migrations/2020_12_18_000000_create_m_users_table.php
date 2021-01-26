@@ -18,7 +18,7 @@ class CreateMUsersTable extends Migration
             $table->string('password', 64);
             $table->string('last_name', 16);
             $table->string('first_name', 16);
-            $table->integer('zipcode');
+            $table->string('zipcode');
             $table->string('prefecture', 16);
             $table->string('municipality', 16);
             $table->string('address', 32);

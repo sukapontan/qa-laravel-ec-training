@@ -10,6 +10,12 @@ use App\User;
 
 class UsersController extends Controller
 {
+    protected $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
 
     public function index()
     {   
@@ -22,26 +28,46 @@ class UsersController extends Controller
         return view('users.users', ['user' => Auth::user()]);
     }
 
-    // public function edit()
-    // {
-    //     return view('user.edit', ['auth' => $auth ]);
-    // }
+    public function edit($id)
+    {
+        if (\Auth::id() == $id) {
+            $user = $this->user->selectUserId($id);    
+            return view('users.edit', ['user' => $user]);   
+        }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $user_update = $request->all();
-    //     $user = Auth::user();
-    //     unset($form['_token']);
-    //     $user->fill($user_update)->save();
+        return redirect('/top')->with('flash_message', '不適切なURLです。');
+    }
 
-    //     return redirect('/user_edit');
-    // }
-    
-    // public function destroy($id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     $user->delete();
+    public function update($id, Request $request)
+    {       
+        $request->validate([
+            'last_name' => 'required|max:10',
+            'first_name' => 'required|max:10',
+            'zipcode' => 'required|size:7|regex:/^[0-9]+$/',
+            'prefecture' => 'required|max:5',
+            'municipality' => 'required|max:10',
+            'address' => 'required|max:15',
+            'apartments' => 'required|max:20',
+            'email' => 'required|email|unique:m_users,email,'.$request->id.'',
+            'phone_number' => 'required|max:15|regex:/^[0-9]+$/',
+        ]);
 
-    //     return view('/');
-    // }
+        if (\Auth::id() == $id) {
+            $user = $request->post();
+            $this->user->updateUserInfo($user);
+        }
+
+        return redirect()->route('users.edit', ['id' => $id]);
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->input('id');
+        
+        if (\Auth::id() == $id) {
+            User::find($id)->delete();
+        }
+
+        return redirect('/');
+    }
 }
