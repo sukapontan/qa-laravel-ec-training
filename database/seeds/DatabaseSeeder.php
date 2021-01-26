@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             SalesStatusesTableSeeder::class,
             OrdersTableSeeder::class,
             ShipmentsStatusesTableSeeder::class,
-            OrdersDetailsTableSeeder::class,
             ProductsStatusTableSeeder::class,
             ProductsTableSeeder::class,
+            OrdersDetailsTableSeeder::class,
             PurchasesTableSeeder::class,
             CategoryTableSeeder::class,
         ]);

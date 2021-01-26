@@ -32,9 +32,9 @@ class CreateMUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_classification_id')
-            ->references('id')
-            ->on('m_users_classifications')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('m_users_classifications')
+                ->onDelete('cascade');
         });
     }
 
