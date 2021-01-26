@@ -30,10 +30,9 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        if (\Auth::id() == $id) 
-        {
+        if (\Auth::id() == $id) {
             $user = $this->user->selectUserId($id);    
-            return view('users.edit', compact('user'));   
+            return view('users.edit', ['user' => $user]);   
         }
 
         return redirect('/top')->with('flash_message', '不適切なURLです。');
@@ -53,16 +52,21 @@ class UsersController extends Controller
             'phone_number' => 'required|max:15|regex:/^[0-9]+$/',
         ]);
 
-        $user = $request->post();
+        if (\Auth::id() == $id) {
+            $user = $request->post();
+            $this->user->updateUserInfo($user);
+        }
 
-        $this->user->updateUserInfo($user);
         return redirect()->route('users.edit', ['id' => $id]);
     }
 
     public function delete(Request $request)
     {
         $id = $request->input('id');
-        User::find($id)->delete();
+        
+        if (\Auth::id() == $id) {
+            User::find($id)->delete();
+        }
 
         return redirect('/');
     }

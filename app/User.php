@@ -33,44 +33,44 @@ class User extends Authenticatable
 
     public function selectUserId($id)
     {
-        $query = $this->
-        select([
-            'id',
-            'last_name',
-            'first_name',
-            'zipcode',
-            'prefecture',
-            'municipality',
-            'address',
-            'apartments',
-            'email',
-            'phone_number',
-            'company_name',
-        ])->
-        where([
-            'id' => $id
-        ]);
+        $query = $this
+            ->select([
+                'id',
+                'last_name',
+                'first_name',
+                'zipcode',
+                'prefecture',
+                'municipality',
+                'address',
+                'apartments',
+                'email',
+                'phone_number',
+                'company_name',
+            ])
+            ->where([
+                'id' => $id
+            ]);
 
         return $query->first();
     }
 
     public function updateUserInfo($user)
     {
-        return $this->
-        where([
-            'id' => $user['id']
-        ])->
-        update([
-            'last_name' => $user['last_name'],
-            'first_name' => $user['first_name'],
-            'zipcode' => $user['zipcode'],
-            'prefecture' => $user['prefecture'],
-            'municipality' => $user['municipality'],
-            'address' => $user['address'],
-            'apartments' => $user['apartments'],
-            'email' => $user['email'],
-            'phone_number' => $user['phone_number'],
-        ]);
+        return $this
+            ->where([
+                'id' => $user['id']
+            ])
+            ->update([
+                'last_name' => $user['last_name'],
+                'first_name' => $user['first_name'],
+                'zipcode' => $user['zipcode'],
+                'prefecture' => $user['prefecture'],
+                'municipality' => $user['municipality'],
+                'address' => $user['address'],
+                'apartments' => $user['apartments'],
+                'email' => $user['email'],
+                'phone_number' => $user['phone_number'],
+            ]);
     }
 
     /**
