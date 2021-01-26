@@ -5,7 +5,6 @@
         {{-- 右寄せメニュー --}}
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav ml-auto">
-                {{-- 下記箇所は動作確認未実施の為、ログイン機能実装時に要動作確認 --}}
                 {{-- ログインしている場合 （動作確認未実施）--}}
                 @auth
                 <li class="nav-item">
@@ -18,8 +17,7 @@
                     <a class="nav-link text-dark" href="#">注文履歴</a>
                 </li>
                 <li class="nav-item">
-                    {{-- {!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link text-dark']) !!} --}}
-                    <a class="nav-link text-dark" href="#">ログアウト</a>
+                    {!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link text-dark']) !!}
                 </li>
                 @endauth
 

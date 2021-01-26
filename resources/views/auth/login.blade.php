@@ -11,7 +11,7 @@
             メールアドレス
             <div class="row">
                 <div class="form-group col-sm-12">
-                    {!! Form::email('email', old('email'), ['class' => 'form-control col-sm-9 offset-sm-1']) !!}
+                    {!! Form::email('email', old('email'), ['class' => 'form-control col-sm-10 offset-sm-1']) !!}
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
             パスワード
             <div class="row">
                 <div class="form-group col-sm-12">
-                    {!! Form::password('password', ['class' => 'form-control col-sm-9 offset-sm-1']) !!}
+                    {!! Form::password('password', ['class' => 'form-control col-sm-10 offset-sm-1']) !!}
                 </div>
             </div>
         </div>
