@@ -13,12 +13,12 @@
 
 <div class="row mt-4">
     <div class="col-lg-12 text-center">
-        <h3>{{ $item->product_name }}</h3>
+        <h3>{{ $product->product_name }}</h3>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-12 text-right">
-        <h3>商品カテゴリ：@dump($item->category_name)</h3>
+        <h3>商品カテゴリ：{{ $product->mCategory->category_name }}</h3>
     </div>
 </div>
 <div class="row">
@@ -28,12 +28,12 @@
 </div>
 <div class="row">
     <div class="col-lg-12 text-left">
-        <h3>{{ $item->description }}</h3>
+        <h3>{{ $product->description }}</h3>
     </div>
 </div>
 <div class="row mt-5">
     <div class="col-lg-12 text-left">
-        <h3>価格：{{ $item->price }}円</h3>
+        <h3>価格：{{ $product->price }}円</h3>
     </div>
 </div>
 

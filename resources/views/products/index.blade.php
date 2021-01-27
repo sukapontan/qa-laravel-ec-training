@@ -30,14 +30,15 @@
     </div>
 
     {{-- カテゴリの選択 --}}
+    {{-- 直前に選択したカテゴリーのままにできないか？ --}}
     <div class="row">
         <div class="input-group mt-4 col-md-5 offset-2">
             <label>商品カテゴリ</label>
             <select class="ml-2" style=" width:50%; text-align-last:center;">
-                <option>未選択</option>
-                <option>ストレート</option>
-                <option>ブレンド</option>
-                <option>その他</option>
+                <option value="0">未選択</option>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -47,7 +48,7 @@
 <div class="container my-5">
     <div class="panel panel-default my-5">
         {{-- 検索結果から表示件数を取得して表示 --}}
-        <label class="panel-heading">全 {{ $items->total() }} 件中 {{ $items->count() }} 件表示</label>
+        <label class="panel-heading">全 {{ $products->total() }} 件中 {{ $products->count() }} 件表示</label>
         <div class="panel-body">
             <table border="1" class="table" style="border-collapse: collapse">
                 {{-- 表の見出し --}}
@@ -60,16 +61,15 @@
                     </tr>
                 </thead>
 
-                {{-- 各商品を$itemインスタンスとして展開する --}}
+                {{-- 各商品を$productインスタンスとして展開する --}}
                 <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($products as $product)
                     <tr>
-                        <td>{{ $item->product_name }}</td>
-                        <td>@dump($item->category_name)</td>
-                        {{-- <td>{{ $item->category_name }}</td> --}}
-                        <td>{{ $item->price }}</td>
+                        <td>{{ $product->product_name }}</td>
+                        <td>{{ $product->mCategory->category_name }}</td>
+                        <td>{{ $product->price }}</td>
                         <td><a class="btn btn-primary"
-                                href="{{ action('MProductController@show', ['id' => $item->id]) }}">商品詳細</td>
+                                href="{{ action('MProductController@show', ['id' => $product->id]) }}">商品詳細</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -79,7 +79,7 @@
 
     {{-- ページネーションリンク --}}
     <div class="d-flex justify-content-center my-auto">
-        {{ $items->links() }}
+        {{ $products->links() }}
     </div>
 </div>
 
