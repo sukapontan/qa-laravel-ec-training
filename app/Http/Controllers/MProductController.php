@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MProduct;
-use App\MCategory; // 検証時にのみ用いる
+use App\MCategory;
 use Illuminate\Http\Request;
 
 class MProductController extends Controller
@@ -21,6 +21,7 @@ class MProductController extends Controller
         $search_text = $request->search_text;
 
         // 選択されたカテゴリーidも受け取って検索機能に反映させたい！
+        dd($request);
 
         if ($search_text != '') {
             // 検索フォームからのデータがある場合は部分一致検索(平仮名カタカナは区別される？)

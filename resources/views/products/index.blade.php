@@ -30,7 +30,7 @@
     </div>
 
     {{-- カテゴリの選択 --}}
-    {{-- 直前に選択したカテゴリーのままにできないか？ --}}
+    {{-- 直前に選択したカテゴリーのままにできないか？oldとselected？ --}}
     <div class="row">
         <div class="input-group mt-4 col-md-5 offset-2">
             <label>商品カテゴリ</label>
