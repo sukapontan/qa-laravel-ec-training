@@ -31,11 +31,12 @@
 
     {{-- カテゴリの選択 --}}
     {{-- 直前に選択したカテゴリーのままにできないか？oldとselected？ --}}
+    {{-- そもそもindexアクションに値を渡せていない？ --}}
     <div class="row">
         <div class="input-group mt-4 col-md-5 offset-2">
             <label>商品カテゴリ</label>
-            <select class="ml-2" style=" width:50%; text-align-last:center;">
-                <option value="0">未選択</option>
+            <select type="number" name="selected_category_id" class="ml-2" style=" width:50%; text-align-last:center;">
+                <option value="0" selected>未選択</option>
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                 @endforeach

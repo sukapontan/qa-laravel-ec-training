@@ -16,30 +16,20 @@ class MProductController extends Controller
     // 商品一覧ページを表示し、検索を行う
     public function index(Request $request)
     {
-        // 検索フォームより受け取った文字列を$search_textに格納
-        // 要バリデーション設定
+        // 検索フォームより受け取った文字列を格納(要バリデーション)
         $search_text = $request->search_text;
 
-        // 選択されたカテゴリーidも受け取って検索機能に反映させたい！
-        dd($request);
+        // プルダウンで選択されたカテゴリーidを取得する
+        $selected_category_id = $request->selected_category_id;
 
-        if ($search_text != '') {
-            // 検索フォームからのデータがある場合は部分一致検索(平仮名カタカナは区別される？)
-            $products = MProduct::with('mCategory')
-                ->where('product_name', 'like', '%' . $search_text . '%')
-                ->orderBy('category_id', 'asc')
-                ->orderBy('product_name', 'asc')
-                ->paginate(2); // ひとまず動作確認用に2件としている
-            
-        } else {
-            // そうでない場合は単純に昇順で表示
-            $products = MProduct::with('mCategory')
-                ->orderBy('category_id', 'asc')
-                ->orderBy('product_name', 'asc')
-                ->paginate(2); // ひとまず動作確認用に2件としている
-        }
+        // 部分一致で検索を行いページネイトする(平仮名カタカナは区別される？)
+        $products = MProduct::with('mCategory')
+            ->where('product_name', 'like', '%' . $search_text . '%')
+            ->orderBy('category_id', 'asc')
+            ->orderBy('product_name', 'asc')
+            ->paginate(2); // ひとまず動作確認用に2件としている
 
-        // DBに登録されているカテゴリーを取得する(プルダウンリストに使用)
+        // DBに登録されているカテゴリーを取得する(Viewのプルダウンリストで使用)
         $categories = MCategory::all();
         
         // viewに渡すデータ(商品の一覧と取得件数を渡す)
