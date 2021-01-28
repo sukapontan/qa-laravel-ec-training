@@ -81,8 +81,9 @@
                 パスワード
                 <div class="row">
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::text('password', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                        {!! Form::password('password', old('password'), ["placeholder"=>"aaa",  'class' => 'form-control col-sm-7 offset-sm-1']) !!}
                     </div>
+
                 </div>
             </div>
         </div>
@@ -91,7 +92,7 @@
                 パスワード再入力
                 <div class="row">
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::text('password_confirm', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                        {!! Form::password('password_confirm', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
                     </div>
                 </div>
             </div>

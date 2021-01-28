@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
 
     public function index()
-    {   
+    {
         return view('welcome');
     }
 
@@ -36,7 +36,7 @@ class UsersController extends Controller
 
     //     return redirect('/user_edit');
     // }
-    
+
     // public function destroy($id)
     // {
     //     $user = User::findOrFail($id);

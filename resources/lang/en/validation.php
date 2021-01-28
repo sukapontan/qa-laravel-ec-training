@@ -160,6 +160,8 @@ return [
         ],
         'password' => [
             'required' => 'パスワードを入力してください！',
+            'confirmed' => '確認パスワードと一致しません',
+            'min' => 'パスワードは8文字以上で記入してください',
         ],
         'password_confirm' => [
             'required' => 'パスワードを再入力してください',
