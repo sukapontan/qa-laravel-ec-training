@@ -7,9 +7,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
+    public function index()
+    {
+        return view('signup.index');
+    }
+
+    public function confirm(RegisterRequest $request)
+    {
+        $validated = $request->validated();
+        return view('signup.confirm')->with($validated);
+    }
     /*
     |--------------------------------------------------------------------------
     | Register Controller
