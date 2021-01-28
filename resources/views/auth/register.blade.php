@@ -91,18 +91,17 @@
                 パスワード再入力
                 <div class="row">
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::text('password', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                        {!! Form::text('password_confirmation', old('password_confirmation'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
                     </div>
                 </div>
             </div>
         </div>
+         <div class="text-center mt-5">
+                {!! Form::submit('登録', ['class' => 'btn btn-primary w-50']) !!}
+            <p class="mt-5">
+                {!! link_to_route('signup', 'ログインはこちらから', [], ['class' => 'text-primary d-inline']) !!}
+            </p>
+        </div>
         {!! Form::close() !!}
-        <div class="text-center">
-            <p><a href="#" class="btn btn-primary mt-3">登録</a></p>
-        </div>
-        <div class="text-center">
-            <a href="#">ログインはこちらから</a>
-        </div>
     </div>
-
 @endsection
