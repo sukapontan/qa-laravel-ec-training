@@ -30,13 +30,12 @@
     </div>
 
     {{-- カテゴリの選択 --}}
-    {{-- 直前に選択したカテゴリーのままにできないか？oldとselected？ --}}
-    {{-- そもそもindexアクションに値を渡せていない？ --}}
+    {{-- 直前に選択したカテゴリーのままにできないか？old？selected？ --}}
     <div class="row">
         <div class="input-group mt-4 col-md-5 offset-2">
             <label>商品カテゴリ</label>
             <select type="number" name="selected_category_id" class="ml-2" style=" width:50%; text-align-last:center;">
-                <option value="0" selected>未選択</option>
+                <option value="0">未選択</option>
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                 @endforeach
@@ -75,6 +74,11 @@
                     @endforeach
                 </tbody>
             </table>
+            @if ($products->total() == 0)
+            <div class="py-5 text-center h4">
+                <p>検索結果がありませんでした…</p>
+            </div>
+            @endif
         </div>
     </div>
 
