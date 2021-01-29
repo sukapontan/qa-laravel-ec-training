@@ -27,7 +27,7 @@
                 郵便番号
                 <div class="row">
                     <div class="form-group col-sm-6 form-inline">
-                        {!! Form::text('zipcode', old('zipcode'), ['class' => 'form-control col-sm-12']) !!}
+                        {!! Form::text('zipcode', old('zipcode'), array('onkeyup'=>"AjaxZip3.zip2addr(this,'','prefecture','municipality','address')"), ['class' => 'form-control col-sm-12', "placeholder"=>"000-1111"]) !!}
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 メールアドレス
                 <div class="row">
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::text('email', old('email'), ['class' => 'form-control col-sm-10 offset-sm-1']) !!}
+                        {!! Form::text('email', old('email'), ['class' => 'form-control col-sm-10 offset-sm-1', "placeholder"=>"XXX@gmail.com"]) !!}
                     </div>
                 </div>
             </div>
@@ -81,9 +81,8 @@
                 パスワード
                 <div class="row">
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::password('password', old('password'), ["placeholder"=>"aaa",  'class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                        {!! Form::password('password', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
                     </div>
-
                 </div>
             </div>
         </div>
@@ -92,7 +91,7 @@
                 パスワード再入力
                 <div class="row">
                     <div class="form-group col-sm-12 form-inline">
-                        {!! Form::password('password_confirm', old('password'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
+                        {!! Form::password('password_confirmation', old('password_confirmation'), ['class' => 'form-control col-sm-7 offset-sm-1']) !!}
                     </div>
                 </div>
             </div>

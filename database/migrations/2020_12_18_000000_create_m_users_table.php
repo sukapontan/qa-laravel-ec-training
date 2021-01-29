@@ -19,15 +19,15 @@ class CreateMUsersTable extends Migration
             $table->string('password', 64);
             $table->string('last_name', 16);
             $table->string('first_name', 16);
-            $table->integer('zipcode');
+            $table->string('zipcode');
             $table->string('prefecture', 16);
             $table->string('municipality', 16);
             $table->string('address', 32);
-            $table->string('apartments', 32);
+            $table->string('apartments', 32)->nullable();
             $table->string('email', 128)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number', 16);
-            $table->integer('user_classification_id')->unsigned();
+            $table->integer('user_classification_id')->unsigned()->default(1);;
             $table->string('company_name', 128)->nullable();
             $table->rememberToken();
             $table->timestamps();
