@@ -22,7 +22,7 @@ class CreateMUsersTable extends Migration
             $table->string('zipcode', 8)->comment('郵便番号');
             $table->string('prefecture', 16)->comment('都道府県');
             $table->string('municipality', 16)->comment('市区町村');
-            $table->string('address', 16)->comment('番地');
+            $table->string('address', 32)->comment('番地');
             $table->string('apartments', 32)->nullable()->comment('マンション、部屋番号');
             $table->string('email', 128)->comment('メールアドレス')->unique()->safeEmail;
             $table->string('phone_number', 14)->comment('電話番号')->unique();

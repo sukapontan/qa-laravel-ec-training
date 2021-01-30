@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'zipcode' => ['required', 'string', 'max:8'],
             'prefecture' => ['required', 'string', 'max:16'],
             'municipality' => ['required', 'string', 'max:16'],
-            'address' => ['required', 'string', 'max:16'],
+            'address' => ['required', 'string', 'max:32'],
             'apartments' => ['max:32'],
             'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
             'phone_number' => ['required', 'string', 'max:14'],
@@ -40,7 +40,6 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '名前を入力して下さい。',
             'last_name.max' => '姓は16文字以下で入力して下さい。',
             'first_name.max' => '名は16文字以下で入力して下さい。',
             'zipcode.required' => '郵便番号を入力して下さい。',
@@ -50,7 +49,7 @@ class RegisterRequest extends FormRequest
             'municipality.required' => '市町村区を入力して下さい。',
             'municipality.max' => '市町村区は16文字以下で入力して下さい。',
             'address.required' => '住所を入力して下さい。',
-            'address.max' => '住所は16文字以下で入力して下さい。',
+            'address.max' => '住所は32文字以下で入力して下さい。',
             'apartments.max' => 'マンション・部屋番号は32文字以下で入力して下さい。',
             'email.required' => 'メールアドレスを入力して下さい。',
             'email.email' => '正しいメールアドレスを入力して下さい。',

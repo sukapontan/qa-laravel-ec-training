@@ -13,13 +13,13 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('signup.index');
+        return view('signup');
     }
 
     public function confirm(RegisterRequest $request)
     {
         $validated = $request->validated();
-        return view('signup.confirm')->with($validated);
+        return view('login')->with($validated);
     }
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ class RegisterController extends Controller
             'zipcode' => ['required', 'string', 'max:8'],
             'prefecture' => ['required', 'string', 'max:16'],
             'municipality' => ['required', 'string', 'max:16'],
-            'address' => ['required', 'string', 'max:16'],
+            'address' => ['required', 'string', 'max:32'],
             'apartments' => ['max:32'],
             'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
             'phone_number' => ['required', 'string', 'max:14'],
