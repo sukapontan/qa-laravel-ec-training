@@ -30,14 +30,14 @@
     </div>
 
     {{-- カテゴリの選択 --}}
-    {{-- 直前に選択したカテゴリーのままにできないか？old？selected？ --}}
     <div class="row">
         <div class="input-group mt-4 col-md-5 offset-2">
             <label>商品カテゴリ</label>
-            <select type="number" name="selected_category_id" class="ml-2" style=" width:50%; text-align-last:center;">
+            <select type="number" name="select_category_id" class="ml-2" style=" width:50%; text-align-last:center;">
+                {{-- 画面遷移前に選択したものを初期状態でselectedとする --}}
                 <option value="0">未選択</option>
                 @foreach($categories as $category)
-                @if($category->id == $selected_category_id)
+                @if($category->id == $select_category_id)
                 <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
                 @else
                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>

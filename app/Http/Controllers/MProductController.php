@@ -16,29 +16,36 @@ class MProductController extends Controller
     // 商品一覧ページを表示し、検索を行う
     public function index(Request $request)
     {
-        // 検索フォームより受け取った文字列を格納(要バリデーション)
+        // フォームから検索文字列と選択カテゴリーidを取得
         $search_text = $request->search_text;
-
-        // プルダウンで選択されたカテゴリーidを取得する
-        $selected_category_id = $request->selected_category_id;
-        // dd($selected_category_id); // 取得できた！！
+        $select_category_id = $request->select_category_id;
 
         // 部分一致で検索を行いページネイトする(平仮名カタカナは区別される？)
-        $products = MProduct::with('mCategory')
-            ->where('product_name', 'like', '%' . $search_text . '%')
-            ->orderBy('category_id', 'asc')
-            ->orderBy('product_name', 'asc')
-            ->paginate(2); // ひとまず動作確認用に2件としている
+        // カテゴリーが選択されていればカテゴリーidのwhere句を追加する
+        if ($select_category_id == 0) {
+            $products = MProduct::with('mCategory')
+                ->where('product_name', 'like', '%' . $search_text . '%')
+                ->orderBy('category_id', 'asc')
+                ->orderBy('product_name', 'asc')
+                ->paginate(3); // ひとまず動作確認用に3件としている
 
+        } else {
+            $products = MProduct::with('mCategory')
+                ->where('category_id', $select_category_id)
+                ->where('product_name', 'like', '%' . $search_text . '%')
+                ->orderBy('category_id', 'asc')
+                ->orderBy('product_name', 'asc')
+                ->paginate(3); // ひとまず動作確認用に3件としている
+        }
         // DBに登録されているカテゴリーを取得する(Viewのプルダウンリストで使用)
         $categories = MCategory::all();
         
-        // viewに渡すデータ(商品の一覧と取得件数を渡す)
+        // viewに渡すデータ
         $params = [
             'products' => $products,
             'categories' => $categories,
             'search_text' => $search_text,
-            'selected_category_id' => $selected_category_id,
+            'select_category_id' => $select_category_id,
         ];
         return view('products.index', $params);
     }
