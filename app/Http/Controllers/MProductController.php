@@ -21,6 +21,7 @@ class MProductController extends Controller
 
         // プルダウンで選択されたカテゴリーidを取得する
         $selected_category_id = $request->selected_category_id;
+        // dd($selected_category_id); // 取得できた！！
 
         // 部分一致で検索を行いページネイトする(平仮名カタカナは区別される？)
         $products = MProduct::with('mCategory')
@@ -37,6 +38,7 @@ class MProductController extends Controller
             'products' => $products,
             'categories' => $categories,
             'search_text' => $search_text,
+            'selected_category_id' => $selected_category_id,
         ];
         return view('products.index', $params);
     }

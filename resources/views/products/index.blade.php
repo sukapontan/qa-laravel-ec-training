@@ -37,7 +37,11 @@
             <select type="number" name="selected_category_id" class="ml-2" style=" width:50%; text-align-last:center;">
                 <option value="0">未選択</option>
                 @foreach($categories as $category)
+                @if($category->id == $selected_category_id)
+                <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
+                @else
                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                @endif
                 @endforeach
             </select>
         </div>
