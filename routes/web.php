@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// カート機能のルーティング(後でログイン制約も追加すること)
+Route::get('/cart', 'CartController@index');
+Route::get('/add', 'CartController@add');
