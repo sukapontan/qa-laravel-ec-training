@@ -1,4 +1,3 @@
-{{-- 商品検索画面を定義 --}}
 @extends('app')
 
 @section('title', '商品検索画面')
@@ -78,6 +77,8 @@
                     @endforeach
                 </tbody>
             </table>
+
+            {{-- 検索結果が0件の場合 --}}
             @if ($products->total() == 0)
             <div class="py-5 text-center h4">
                 <p>検索結果がありませんでした…</p>

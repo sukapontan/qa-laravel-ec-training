@@ -20,14 +20,14 @@ class MProductController extends Controller
         $search_text = $request->search_text;
         $select_category_id = $request->select_category_id;
 
-        // 部分一致で検索を行いページネイトする(平仮名カタカナは区別される？)
-        // カテゴリーが選択されていればカテゴリーidのwhere句を追加する
+        // 部分一致で検索を行いページネイトする
+        // カテゴリーが選択されていればカテゴリーidでの絞り込みを追加する
         if ($select_category_id == 0) {
             $products = MProduct::with('mCategory')
                 ->where('product_name', 'like', '%' . $search_text . '%')
                 ->orderBy('category_id', 'asc')
                 ->orderBy('product_name', 'asc')
-                ->paginate(3); // ひとまず動作確認用に3件としている
+                ->paginate(3); // 動作確認用に3件としています
 
         } else {
             $products = MProduct::with('mCategory')
@@ -35,8 +35,9 @@ class MProductController extends Controller
                 ->where('product_name', 'like', '%' . $search_text . '%')
                 ->orderBy('category_id', 'asc')
                 ->orderBy('product_name', 'asc')
-                ->paginate(3); // ひとまず動作確認用に3件としている
+                ->paginate(3); // 動作確認用に3件としています
         }
+        
         // DBに登録されているカテゴリーを取得する(Viewのプルダウンリストで使用)
         $categories = MCategory::all();
         

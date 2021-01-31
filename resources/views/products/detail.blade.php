@@ -1,4 +1,3 @@
-{{-- 商品詳細画面を定義 --}}
 @extends('app')
 
 @section('title', '商品情報')
@@ -37,7 +36,7 @@
     </div>
 </div>
 
-{{-- 購入個数とカートに入れるフォーム --}}
+{{-- 購入個数とカートに入れるフォーム(未実装) --}}
 <div class="row mt-5" style="justify-content:center">
     <form action="" method="post">
         @csrf
