@@ -7,19 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Http\Requests\RegisterRequest;
+//↓RegisterRequestを使用しない為、消しています
+//use App\Http\Requests\RegisterRequest;
+
 
 class RegisterController extends Controller
 {
-
-    public function register(RegisterRequest $request)
-    {
-        $validated = $request->validated();
-        return view('signup.confirm')->with($validated);
-    }
-
-
-
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -50,4 +43,41 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'last_name' => ['required', 'string', 'max:16'],
+            'first_name' => ['required', 'string', 'max:16'],
+            'zipcode' => ['required', 'string', 'max:8'],
+            'prefecture' => ['required', 'string', 'max:16'],
+            'municipality' => ['required', 'string', 'max:16'],
+            'address' => ['required', 'string', 'max:16'],
+            'apartments' => ['max:32'],
+            'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
+            'phone_number' => ['required', 'string', 'max:14'],
+            'password' => ['required', 'string', 'max:64', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
+        return MUser::create([
+            'last_name' => $data['last_name'],
+            'first_name' => $data['first_name'],
+            'zipcode' => $data['zipcode'],
+            'prefecture' => $data['prefecture'],
+            'municipality' => $data['municipality'],
+            'address' => $data['address'],
+            'apartments' => $data['apartments'],
+            'email' => $data['email'],
+            'phone_number' => $data['phone_number'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 }

@@ -63,4 +63,5 @@ class RegisterRequest extends FormRequest
             'password.confirmed' => 'パスワードと一致せさ入力して下さい。',
         ];
     }
+
 }

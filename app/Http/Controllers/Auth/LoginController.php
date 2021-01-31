@@ -4,16 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Requests\LoginRequest;
+//↓LoginRequestを使用しない為、消しています
+//use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
-    public function login(LoginRequest $request)
-    {
-        $validated = $request->validated();
-        return view('login.confirm')->with($validated);
-    }
-
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -43,4 +38,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
+            'password' => ['required', 'string', 'max:64', 'confirmed'],
+        ]);
+    }
+
+    protected function create(array $data)
+    {
+        return MUser::create([
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
 }
