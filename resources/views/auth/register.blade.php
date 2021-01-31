@@ -27,7 +27,7 @@
                 郵便番号
                 <div class="row">
                     <div class="form-group col-sm-6 form-inline">
-                        {!! Form::text('zipcode', old('zipcode'), array('onkeyup'=>"AjaxZip3.zip2addr(this,'','prefecture','municipality','address')"), ['class' => 'form-control col-sm-12', "placeholder"=>"000-1111"]) !!}
+                        {!! Form::text('zipcode', old('zipcode'), array('onkeyup'=>"AjaxZip3.zip2addr(this,'','prefecture','municipality')"), ['class' => 'form-control col-sm-12', "placeholder"=>"000-1111"]) !!}
                     </div>
                 </div>
             </div>

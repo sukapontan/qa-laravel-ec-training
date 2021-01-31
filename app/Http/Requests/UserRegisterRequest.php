@@ -53,7 +53,7 @@ class UserRegisterRequest extends FormRequest
             'apartments' => '建物名',
             'email' => 'メールアドレス',
             'phone_number' => '電話番号',
-            'password'
+            'password' => 'パスワード',
         ];
     }
 
