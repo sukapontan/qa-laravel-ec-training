@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
+    public function login(LoginRequest $request)
+    {
+        $validated = $request->validated();
+        return view('login.confirm')->with($validated);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller

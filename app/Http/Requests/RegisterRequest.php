@@ -40,7 +40,9 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
+            'last_name.required' => '姓を入力して下さい。',
             'last_name.max' => '姓は16文字以下で入力して下さい。',
+            'first_name.required' => '名を入力して下さい。',
             'first_name.max' => '名は16文字以下で入力して下さい。',
             'zipcode.required' => '郵便番号を入力して下さい。',
             'zipcode.max' => '郵便番号は16文字以下で入力して下さい。',
