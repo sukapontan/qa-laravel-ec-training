@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\MUser;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 //↓LoginRequestを使用しない為、消しています
 //use App\Http\Requests\LoginRequest;
