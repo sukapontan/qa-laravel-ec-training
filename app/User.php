@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
-{    
+{
     protected $table = 'm_users';
     use Notifiable;
 
@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'company_name',
+        'password',
     ];
 
     public function selectUserId($id)

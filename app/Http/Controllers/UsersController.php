@@ -18,7 +18,7 @@ class UsersController extends Controller
     }
 
     public function index()
-    {   
+    {
         return view('welcome');
     }
 
@@ -28,18 +28,19 @@ class UsersController extends Controller
         return view('users.users', ['user' => Auth::user()]);
     }
 
+
     public function edit($id)
     {
         if (\Auth::id() == $id) {
-            $user = $this->user->selectUserId($id);    
-            return view('users.edit', ['user' => $user]);   
+            $user = $this->user->selectUserId($id);
+            return view('users.edit', ['user' => $user]);
         }
 
         return redirect('/top')->with('flash_message', '不適切なURLです。');
     }
 
     public function update($id, Request $request)
-    {       
+    {
         $request->validate([
             'last_name' => 'required|max:10',
             'first_name' => 'required|max:10',
@@ -63,7 +64,7 @@ class UsersController extends Controller
     public function delete(Request $request)
     {
         $id = $request->input('id');
-        
+
         if (\Auth::id() == $id) {
             User::find($id)->delete();
         }
