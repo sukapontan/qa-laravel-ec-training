@@ -15,7 +15,7 @@ class CartController extends Controller
             $request->quantity,
         ];
 
-        $request->session()->put('session_data', $session_data);
+        $request->session()->push('session_data', $session_data);
 
         // ※あとでカート内商品一覧へのリダイレクトにしておくこと
         return redirect('/products');
