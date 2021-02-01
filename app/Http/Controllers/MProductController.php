@@ -28,7 +28,6 @@ class MProductController extends Controller
                 ->orderBy('category_id', 'asc')
                 ->orderBy('product_name', 'asc')
                 ->paginate(3); // 動作確認用に3件としています
-
         } else {
             $products = MProduct::with('mCategory')
                 ->where('category_id', $select_category_id)
