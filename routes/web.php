@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 // カート機能のルーティング(後でログイン制約も追加すること)
+Route::post('/:{id}', 'CartController@addCart');
 Route::get('/cart', 'CartController@index');
-Route::get('/add', 'CartController@add');
