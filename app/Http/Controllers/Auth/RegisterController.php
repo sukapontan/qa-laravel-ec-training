@@ -12,6 +12,11 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view("auth/login");
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -53,7 +58,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:16'],
             'apartments' => ['max:32'],
             'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
-            'phone_number' => ['required', 'string', 'max:14'],
+            'phone_number' => ['required', 'string', 'max:14', 'unique:m_users'],
             'password' => ['required', 'string', 'max:64', 'confirmed'],
         ]);
     }
