@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-//↓RegisterRequestを使用しない為、消しています
-//use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
