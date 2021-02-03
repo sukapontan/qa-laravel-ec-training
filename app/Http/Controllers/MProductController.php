@@ -22,20 +22,32 @@ class MProductController extends Controller
 
         // 部分一致で検索を行いページネイトする
         // カテゴリーが選択されていればカテゴリーidでの絞り込みを追加する
-        if ($select_category_id == 0) {
-            $products = MProduct::with('mCategory')
-                ->where('product_name', 'like', '%' . $search_text . '%')
-                ->orderBy('category_id', 'asc')
-                ->orderBy('product_name', 'asc')
-                ->paginate(3); // 動作確認用に3件としています
-        } else {
-            $products = MProduct::with('mCategory')
-                ->where('category_id', $select_category_id)
-                ->where('product_name', 'like', '%' . $search_text . '%')
-                ->orderBy('category_id', 'asc')
-                ->orderBy('product_name', 'asc')
-                ->paginate(3); // 動作確認用に3件としています
+        // if ($select_category_id == 0) {
+        //     $products = MProduct::with('mCategory')
+        //         ->where('product_name', 'like', '%' . $search_text . '%')
+        //         ->orderBy('category_id', 'asc')
+        //         ->orderBy('product_name', 'asc')
+        //         ->paginate(3); // 動作確認用に3件としています
+        // } else {
+        //     $products = MProduct::with('mCategory')
+        //         ->where('category_id', $select_category_id)
+        //         ->where('product_name', 'like', '%' . $search_text . '%')
+        //         ->orderBy('category_id', 'asc')
+        //         ->orderBy('product_name', 'asc')
+        //         ->paginate(3); // 動作確認用に3件としています
+        // }
+        
+        // クエリビルダで検索を行う(文字列検索,カテゴリーid検索)
+        $query = MProduct::query();
+        if (isset($search_text)) {
+            $query->where('product_name', 'like', '%'.$search_text.'%');
         }
+        if (isset($select_category_id)) {
+            $query->where('category_id', $select_category_id);
+        }
+
+        // 並べ替えてページネイトする(ダミーデータが少ないので動作確認用に3件とする)
+        $products = $query->orderByRaw('product_name asc, category_id asc')->pagenate(3);
         
         // DBに登録されているカテゴリーを取得する(Viewのプルダウンリストで使用)
         $categories = MCategory::all();

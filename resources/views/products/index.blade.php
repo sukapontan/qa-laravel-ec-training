@@ -34,7 +34,7 @@
             <label>商品カテゴリ</label>
             <select type="number" name="select_category_id" class="ml-2" style=" width:50%; text-align-last:center;">
                 {{-- 画面遷移前に選択したものを初期状態でselectedとする --}}
-                <option value="0">未選択</option>
+                <option value="">未選択</option>
                 @foreach($categories as $category)
                 @if($category->id == $select_category_id)
                 <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
