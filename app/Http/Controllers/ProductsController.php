@@ -32,4 +32,9 @@ class ProductsController extends Controller
             'categoryId' => $categoryId,
         ]);
     }
+
+    public function detail()
+    {
+        return view('products.detail_a_product');
+    }
 }
