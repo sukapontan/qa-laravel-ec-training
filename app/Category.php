@@ -13,7 +13,7 @@ class Category extends Model
         'category_name',
     ];
     
-    public static function joinName()
+    public static function pickUpColumn()
     {
         $categories = Category::pluck('category_name', 'id');
         return $categories;

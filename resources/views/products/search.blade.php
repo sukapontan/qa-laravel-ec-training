@@ -14,7 +14,7 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">商品名</h2>
-                <input type="text" class="form-control" name="商品名">
+                <input type="text" class="form-control" name="product_name">
                 <span class="input-group-btn">
                     <input type="submit" class="btn btn-primary ml-4" value="検索">
                 </span>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2>商品カテゴリ</h2>
-                <select class="ml-2" style="width:50%; text-align-last:center;" name="カテゴリID">
+                <select class="ml-2" style="width:50%; text-align-last:center;" name="category_id">
                     <option value="">未選択</option>
                     @foreach($categories as $id => $category_name)
                     <option value="{{ $id }}">{{ $category_name }}</option>

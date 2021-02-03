@@ -11,10 +11,10 @@ class ProductsController extends Controller
 {
     public function search(Request $request) {
         $query = Product::query();
-        $categories = Category::joinName();
+        $categories = Category::pickUpColumn();
 
-        $searchWord = $request->input('商品名');
-        $categoryId = $request->input('カテゴリID');
+        $searchWord = $request->input('product_name');
+        $categoryId = $request->input('category_id');
 
         if (isset($searchWord)) {
             $query->where('product_name', 'like', '%'.$searchWord.'%');
