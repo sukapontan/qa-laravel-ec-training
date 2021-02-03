@@ -47,7 +47,7 @@ class MProductController extends Controller
         }
 
         // 並べ替えてページネイトする(ダミーデータが少ないので動作確認用に3件とする)
-        $products = $query->orderByRaw('product_name asc, category_id asc')->pagenate(3);
+        $products = $query->orderByRaw('category_id asc, product_name asc')->paginate(3);
         
         // DBに登録されているカテゴリーを取得する(Viewのプルダウンリストで使用)
         $categories = MCategory::all();
