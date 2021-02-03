@@ -10,11 +10,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    public function showLoginForm()
-    {
-        return view("auth/login");
-    }
-
     /*
     |--------------------------------------------------------------------------
     | Register Controller

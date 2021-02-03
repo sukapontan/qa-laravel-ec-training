@@ -10,10 +10,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
-    {
-        return view("auth/login");
-    }
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -32,6 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+    protected $redirectTo = '/';
     /**
      * Create a new controller instance.
      *
@@ -57,5 +54,4 @@ class LoginController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
 }
