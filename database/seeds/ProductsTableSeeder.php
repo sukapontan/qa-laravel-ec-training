@@ -77,5 +77,115 @@ class ProductsTableSeeder extends Seeder
             'user_id' => '2',
             'delete_flag' => '0',
         ]);
+        DB::table('m_products')->insert([
+            'id' => '7',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '8',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '9',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '10',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '11',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '13',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '14',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '15',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '16',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
+        DB::table('m_products')->insert([
+            'id' => '17',
+            'product_name' => '資料',
+            'price' => '5',
+            'description' => '知識本',
+            'category_id' => '3',
+            'sale_status_id' => '2',
+            'product_status_id' => '2',
+            'user_id' => '2',
+            'delete_flag' => '0',
+        ]);
     }
 }
