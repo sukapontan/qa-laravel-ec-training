@@ -36,14 +36,15 @@
     </div>
 </div>
 
-{{-- 購入個数とカートに入れるフォーム(未実装) --}}
+{{-- 購入個数とカートに入れるフォーム --}}
 <div class="row mt-5" style="justify-content:center">
-    <form action="" method="post">
+    <form action="{{ action('CartController@addCart') }}" method="post">
         @csrf
         <div class="input-group">
-            <p>購入個数</p>
-            <input class="form-control col-2" type="text">
-            <p>個</p>
+            <p class="h4">購入個数</p>
+            <input class="form-control col-3 mx-2" name="quantity" type="number" min="0" max="99" value="1">
+            <p class="h4">個</p>
+            <input type="hidden" name="product_id" value="{{$product->id}}">
             <input type="submit" class="btn btn-primary ml-4" value="カートへ">
         </div>
     </form>

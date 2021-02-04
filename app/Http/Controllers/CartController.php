@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     // 商品データをカートに追加する(セッションを登録する)
-    // ※あとで商品詳細のViewからデータを受け取れるようにすること
     public function addCart(Request $request)
     {
         $session_data = [

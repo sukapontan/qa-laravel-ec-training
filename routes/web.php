@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 商品検索機能のルーティング(後でログイン制約も追加すること)
+// 商品検索と一覧表示のルーティング(後でログイン制約も追加すること)
 Route::get('/products', 'MProductController@index');
 Route::get('/products/:{id}', 'MProductController@show');
 
-// カート機能のルーティング(後でログイン制約も追加すること)
-Route::post('/:{id}', 'CartController@addCart');
+// カート追加と一覧表示のルーティング(後でログイン制約も追加すること)
+Route::post('/products', 'CartController@addCart');
 Route::get('/cart', 'CartController@index');
