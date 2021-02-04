@@ -20,5 +20,5 @@ Route::get('/products', 'MProductController@index');
 Route::get('/products/:{id}', 'MProductController@show');
 
 // カート追加と一覧表示のルーティング(後でログイン制約も追加すること)
-Route::post('/products', 'CartController@addCart');
+Route::post('/products', 'CartController@add');
 Route::get('/cart', 'CartController@index');
