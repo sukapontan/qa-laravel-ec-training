@@ -32,10 +32,10 @@
             @foreach($cart_items as $cart_item)
             <tr>
                 <td>{{ $loop->index +1 }}</td>
-                <td>商品〇〇</td>
+                <td>{{ $session_product_id }}</td>
                 <td>〇〇品</td>
                 <td>〇〇円</td>
-                <td><input type="number" min="0" max="99" value="{{ $cart_item }}"><span>個</span></td>
+                <td><input type="number" min="0" max="99" value="{{ $session_product_quantity }}"><span>個</span></td>
                 <td>〇〇円</td>
             </tr>
             @endforeach

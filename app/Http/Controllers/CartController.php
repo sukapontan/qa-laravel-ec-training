@@ -29,19 +29,24 @@ class CartController extends Controller
     {
         // 保存していたセッションデータを取り出す
         $session_data = $request->session()->get('session_data');
-
+        
         //カラム名を指定して$session_dataから各1次元配列に抽出する
         $session_product_id = array_column($session_data, 'session_product_id');
         $session_product_quantity = array_column($session_data, 'session_product_quantity');
-
-        // ここでセッションをキーにモデルから取り出す処理を行いたい！
-        dd($session_product_id);
         
         // カート一覧のViewに値を渡す
-        // 商品名、商品カテゴリー、値段..
-        // 小計と合計はViwe側で表示するときに処理する？
-        // $cart_items = MProduct::all();
-        $cart_items = $session_product_quantity;
-        return view('cart.index', ['cart_items' => $cart_items]);
+        // 「商品名」「商品カテゴリー」「値段」を取り出せるようにしたい..！
+        foreach ($session_product_id as $id) {
+            $cart_items = MProduct::find($id);
+        };
+        dd($cart_items->product_name);
+
+        $params = [
+            'session_product_id' => $session_product_id,
+            'session_product_quantity' => $session_product_quantity,
+            'cart_items' => $cart_items,
+        ];
+
+        return view('cart.index', $params);
     }
 }
