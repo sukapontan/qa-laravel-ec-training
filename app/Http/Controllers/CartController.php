@@ -31,7 +31,12 @@ class CartController extends Controller
         $session_product_id = array_column($session_data, 'session_product_id');
         $session_product_quantity = array_column($session_data, 'session_product_quantity');
 
-        // カート一覧にreturen view()で渡す
+        // カート一覧のViewに値を渡す
+        $params = [
+            'session_product_id' => $session_product_id,
+            'session_product_quantity' => $session_product_quantity,
+        ];
+        return view('cart.index', $params);
     }
 
 }
