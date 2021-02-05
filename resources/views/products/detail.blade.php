@@ -38,7 +38,7 @@
 
 {{-- 購入個数とカートに入れるフォーム --}}
 <div class="row mt-5" style="justify-content:center">
-    <form action="{{ action('CartController@add') }}" method="post">
+    <form action="{{ action('CartController@addCart') }}" method="post">
         @csrf
         <div class="input-group">
             <p class="h4">購入個数</p>
