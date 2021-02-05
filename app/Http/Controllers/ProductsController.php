@@ -33,8 +33,14 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function detail()
+    public function showDetail(Request $request, $id)
     {
-        return view('products.detail_a_product');
+        $product =Product::findOrFail($id);
+        $query = Product::query();
+        $categories = Category::pickUpColumn();
+
+        return view('products.detail_a_product', [
+            'product' => $product,
+        ]);
     }
 }

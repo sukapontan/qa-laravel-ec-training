@@ -10,12 +10,12 @@
     </div>
     <div class="row mt-4">
         <div class="col-lg-12 text-center">
-            <h2>商品1</h2>
+            <h2>{{ $product->product_name }}</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 text-right">
-            <h2>商品カテゴリ：食料品</h2>
+            <h2>商品カテゴリ：{{ $product->category->category_name }}</h2>
         </div>
     </div>
     <div class="row">
@@ -25,12 +25,12 @@
     </div>
     <div class="row">
         <div class="col-lg-12 text-left">
-            <h2>探求学園Laravel専攻限定商品！</h2>
+            <h2>{{ $product->description }}</h2>
         </div>
     </div>
     <div class="row mt-5">
         <div class="col-lg-12 text-left">
-            <h2>価格：500円</h2>
+            <h2>価格：{{ $product->price }}円</h2>
         </div>
     </div>
 

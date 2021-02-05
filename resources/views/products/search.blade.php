@@ -50,9 +50,8 @@
             <td>{{ $product->product_name }}</td>
             <td>{{ $product->category->category_name }}</td>
             <td>{{ $product->price }}</td>
-            <td type="submit" name="name"
-            value="商品詳細" class="btn btn-primary">
-            商品詳細
+            <td name="name" value="商品詳細">
+                <a href="{{ action('ProductsController@detail', $product->id) }}" class="btn btn-primary">商品詳細</a>
             </td>
         </tr>
     </tbody>
