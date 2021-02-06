@@ -51,7 +51,7 @@
             <td>{{ $product->category->category_name }}</td>
             <td>{{ $product->price }}</td>
             <td name="name" value="商品詳細">
-                <a href="{{ action('ProductsController@detail', $product->id) }}" class="btn btn-primary">商品詳細</a>
+                <a href="{{ action('ProductsController@showDetail', $product->id) }}" class="btn btn-primary">商品詳細</a>
             </td>
         </tr>
     </tbody>

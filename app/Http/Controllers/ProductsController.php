@@ -35,7 +35,7 @@ class ProductsController extends Controller
 
     public function showDetail(Request $request, $id)
     {
-        $product =Product::findOrFail($id);
+        $product =Product::find($id);
         $query = Product::query();
         $categories = Category::pickUpColumn();
 
