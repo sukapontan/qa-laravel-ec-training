@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//ユーザ情報照会
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('user', 'Auth\UserController@show')->name('user');
+
+
+
+});
