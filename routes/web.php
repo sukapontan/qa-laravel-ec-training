@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UserController@index');
 
 
 //ユーザ情報照会
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('user', 'Auth\UserController@show')->name('user');
+    Route::get('user', 'Auth\UserController@show')->name('user.snow');
 
 
 
