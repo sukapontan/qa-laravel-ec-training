@@ -16,8 +16,14 @@ class UserController extends Controller
     public function show()
     {
         $auth = Auth::user();
-        return view('user_detail',[ 'auth' => $auth ]);
+        return view('user.detail',[ 'auth' => $auth ]);
     }
 
+    //ユーザ情報修正
+    public function edit($id)
+    {
+        $auth = Auth::user();
+        return view('user.edit',[ 'auth' => $auth ]);
+    }
 
 }
