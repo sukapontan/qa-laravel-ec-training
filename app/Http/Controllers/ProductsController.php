@@ -35,9 +35,7 @@ class ProductsController extends Controller
 
     public function showDetail(Request $request, $id)
     {
-        $product =Product::find($id);
-        $query = Product::query();
-        $categories = Category::pickUpColumn();
+        $product = Product::find($id);
 
         return view('products.detail_a_product', [
             'product' => $product,
