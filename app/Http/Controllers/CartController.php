@@ -49,17 +49,17 @@ class CartController extends Controller
     public function showCart(Request $request)
     {
         // 保存していたセッションデータを取り出す
-        $cart_data = $request->session()->get('cart_data');
+        $cart_items = $request->session()->get('cart_data');
 
         // セッションデータがある場合は商品IDで検索して取得する
-        if (!empty($cart_data)) {
-            $products_id = (array_column($cart_data, 'session_product_id')); // 商品IDの1次元配列を取得
+        if (!empty($cart_items)) {
+            $products_id = (array_column($cart_items, 'session_product_id')); // 商品IDの1次元配列を取得
             $products = MProduct::with('mcategory')->find($products_id);
             // →検索対象が配列でもEloquentが自動で判定してCollectionを返す
             
             // 商品名・カテゴリー名・値段を取得、商品の小計も算出してforeachで格納
-            // "＆"で参照渡し 仮引数($data)の変更で実引数($cart_data)を更新する
-            foreach ($cart_data as $index => &$data) {
+            // "＆"で参照渡し 仮引数($data)の変更で実引数($cart_items)を更新する
+            foreach ($cart_items as $index => &$data) {
                 $data['product_name'] = $products[$index]->product_name;
                 $data['category_name'] = $products[$index]->mcategory->category_name;
                 $data['price'] = $products[$index]->price;
@@ -70,12 +70,12 @@ class CartController extends Controller
         }
 
         //カラム名を指定して$session_dataから各1次元配列に抽出する
-        $session_product_id = array_column($cart_data, 'session_product_id');
-        $session_product_quantity = array_column($cart_data, 'session_product_quantity');
+        $session_product_id = array_column($cart_items, 'session_product_id');
+        $session_product_quantity = array_column($cart_items, 'session_product_quantity');
         
         // Viewに渡すデータ
         $params = [
-            'cart_items' => $cart_data,
+            'cart_items' => $cart_items,
             'session_product_id' => $session_product_id,
             'session_product_quantity' => $session_product_quantity,
         ];
