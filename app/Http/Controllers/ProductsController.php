@@ -32,4 +32,13 @@ class ProductsController extends Controller
             'categoryId' => $categoryId,
         ]);
     }
+
+    public function showDetail($id)
+    {
+        $product = Product::find($id);
+
+        return view('products.detail_a_product', [
+            'product' => $product,
+        ]);
+    }
 }
