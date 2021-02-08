@@ -26,4 +26,23 @@ class UserController extends Controller
         return view('user.edit',[ 'auth' => $auth ]);
     }
 
+    //ユーザ情報更新
+    public function update(Request $request, $id)
+    {
+        //バリデーション
+        $this->validate($request, User::$editRules);
+
+        //対象レコード取得
+        $auth = User::find($id);
+
+        //リクエストデータ受取
+        $form = $request->all();
+
+        //フォームトークン削除
+        $auth->fill($form)->save();
+
+        return redirect('/user');
+
+    }
+
 }
