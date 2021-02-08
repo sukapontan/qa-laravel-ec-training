@@ -56,7 +56,7 @@
 
     <div class="row justify-content-center">
         {{-- 買い物を続けるボタンは個数だけセッションに上書きする？ --}}
-        <a href="#" class="btn btn-info">買い物を続ける</a>
+        <a href="{{ route('products.index') }}" class="btn btn-info">買い物を続ける</a>
         <div class="col-4 align-self-center">
         </div>
         {{-- 注文確定ボタンでセッションが消えるようにする？ --}}
