@@ -33,9 +33,9 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function showDetail(Request $request, $id)
+    public function showDetail(Request $request)
     {
-        $product = Product::find($id);
+        $product = Product::find($request->id);
 
         return view('products.detail_a_product', [
             'product' => $product,
