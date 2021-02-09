@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\MUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,18 +40,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'last_name' => ['required', 'string', 'max:16'],
+            'first_name' => ['required', 'string', 'max:16'],
+            'zipcode' => ['required', 'string', 'max:8'],
+            'prefecture' => ['required', 'string', 'max:16'],
+            'municipality' => ['required', 'string', 'max:16'],
+            'address' => ['required', 'string', 'max:16'],
+            'apartments' => ['max:32'],
+            'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
+            'phone_number' => ['required', 'string', 'max:14', 'unique:m_users'],
+            'password' => ['required', 'string', 'max:64', 'confirmed'],
         ]);
     }
 
@@ -63,9 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return MUser::create([
+            'last_name' => $data['last_name'],
+            'first_name' => $data['first_name'],
+            'zipcode' => $data['zipcode'],
+            'prefecture' => $data['prefecture'],
+            'municipality' => $data['municipality'],
+            'address' => $data['address'],
+            'apartments' => $data['apartments'],
             'email' => $data['email'],
+            'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
         ]);
     }

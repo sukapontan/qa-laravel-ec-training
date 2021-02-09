@@ -3,11 +3,15 @@
         {{-- サイトロゴ --}}
         <a class="navbar-brand text-dark" href="/">{{ config('app.name', 'サイトロゴ(仮)') }}</a>
         {{-- 右寄せメニュー --}}
-        <div class="collapse navbar-collapse" id="nav-bar">
+
+        <div class="collapse navbar-collapse flex-column" id="nav-bar">
+            {{-- ログインしている場合 --}}
+            @auth
+            <div class="site-description offset-10 pt-1">
+                {{Auth::user()->last_name}}{{Auth::user()->first_name}}さん
+            </div>
+            {{-- ここから動作確認未実施 --}}
             <ul class="navbar-nav ml-auto">
-                {{-- 下記箇所は動作確認未実施の為、ログイン機能実装時に要動作確認 --}}
-                {{-- ログインしている場合 （動作確認未実施）--}}
-                @auth
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">商品検索</a>
                 </li>
@@ -18,19 +22,21 @@
                     <a class="nav-link text-dark" href="#">注文履歴</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">ログアウト</a>
+                    {!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link text-dark']) !!}
                 </li>
-                @endauth
+            </ul>
+            @endauth
 
-                {{-- ログインしていない場合（動作確認済み） --}}
-                @guest
+            {{-- ログインしていない場合（動作確認済み） --}}
+            @guest
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">ログイン</a>
+                    {!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link text-dark']) !!}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">新規登録</a>
+                    {!! link_to_route('signup', '新規登録', [], ['class' => 'nav-link text-dark']) !!}
                 </li>
-                @endguest
+            @endguest
             </ul>
         </div>
     </nav>
