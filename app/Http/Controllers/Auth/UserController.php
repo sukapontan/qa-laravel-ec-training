@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class UserController extends Controller
 {
@@ -30,7 +31,19 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //バリデーション
-        $this->validate($request, User::$editRules);
+        $request->validate([
+            'last_name' => ['required', 'string', 'max:16'],
+            'first_name' => ['required', 'string', 'max:16'],
+            'zipcode' => ['required', 'string', 'max:8'],
+            'prefecture' => ['required', 'string', 'max:16'],
+            'municipality' => ['required', 'string', 'max:16'],
+            'address' => ['required', 'string', 'max:16'],
+            'apartments' => ['max:32'],
+            'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
+            'phone_number' => ['required', 'string', 'max:14', 'unique:m_users'],
+        ]);
+
+
 
         //対象レコード取得
         $auth = User::find($id);
@@ -41,7 +54,7 @@ class UserController extends Controller
         //フォームトークン削除
         $auth->fill($form)->save();
 
-        return redirect('/user');
+        return redirect('/');
 
     }
 
