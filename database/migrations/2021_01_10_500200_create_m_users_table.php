@@ -22,11 +22,11 @@ class CreateMUsersTable extends Migration
             $table->string('zipcode', 8)->comment('郵便番号');
             $table->string('prefecture', 16)->comment('都道府県');
             $table->string('municipality', 16)->comment('市区町村');
-            $table->string('address', 16)->comment('番地');
+            $table->string('address', 32)->comment('番地');
             $table->string('apartments', 32)->nullable()->comment('マンション、部屋番号');
             $table->string('email', 128)->comment('メールアドレス')->unique()->safeEmail;
             $table->string('phone_number', 14)->comment('電話番号')->unique();
-            $table->integer('user_classification_id')->unsigned()->comment('ユーザ種別ID');
+            $table->integer('user_classification_id')->unsigned()->default(1)->comment('ユーザ種別ID');
             $table->string('company_name', 128)->nullable()->comment('会社名');
             $table->char('delete_flag', 1)->default(0)->comment('deleteフラグ');
 

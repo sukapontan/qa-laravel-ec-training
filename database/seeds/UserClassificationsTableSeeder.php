@@ -13,10 +13,10 @@ class UserClassificationsTableSeeder extends Seeder
     public function run()
     {
         // 「ユーザ種別」テーブルのダミーデータのセット
-        $userClassications = ['出品者', '購入者', '管理者'];
-        foreach ($userClassications as $userClassication) {
+        $userClassifications = ['出品者', '購入者', '管理者'];
+        foreach ($userClassifications as $userClassification) {
             DB::table('m_user_classifications')->insert([
-            'user_classification_name' => $userClassication,
+            'user_classification_name' => $userClassification,
             ]);
         };
     }
