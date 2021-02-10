@@ -35,7 +35,9 @@
                 <td>{{ $cart_item['product_name'] }}</td>
                 <td>{{ $cart_item['category_name'] }}</td>
                 <td>{{ $cart_item['price'] }}円</td>
-                <td><input type="number" min="0" max="99" value="{{ "0" }}"><span>個</span></td>
+                <td><input type="number" min="0" max="99"
+                        value="{{ $cart_item['session_product_quantity'] }}"><span>個</span>
+                </td>
                 <td>〇〇円</td>
             </tr>
             @endforeach

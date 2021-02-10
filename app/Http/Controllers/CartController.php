@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MProduct;
-use App\MCategory;
 
 class CartController extends Controller
 {
@@ -33,13 +32,11 @@ class CartController extends Controller
             } else {
                 $request->session()->push('cart_data', $session_data); // pushで追加
             }
-            
+
         } else {
             // 'cart_data'セッションが存在しない場合は新たに登録
             $request->session()->put('cart_data', [$session_data]);
         }
-
-        // dd($request->session()->all());
 
         // カート内表示にリダイレクト
         return redirect('/cart');
@@ -54,30 +51,34 @@ class CartController extends Controller
         // セッションデータがある場合は商品IDで検索して取得する
         if (!empty($cart_items)) {
             $products_id = (array_column($cart_items, 'session_product_id')); // 商品IDの1次元配列を取得
+
+            // 商品情報を取得(メモ：検索対象が配列でもEloquentが自動で判定してCollectionを返す)
             $products = MProduct::with('mcategory')->find($products_id);
-            // →検索対象が配列でもEloquentが自動で判定してCollectionを返す
             
             // 商品名・カテゴリー名・値段を取得、商品の小計も算出してforeachで格納
-            // "＆"で参照渡し 仮引数($data)の変更で実引数($cart_items)を更新する
-            foreach ($cart_items as $index => &$data) {
-                $data['product_name'] = $products[$index]->product_name;
-                $data['category_name'] = $products[$index]->mcategory->category_name;
-                $data['price'] = $products[$index]->price;
+            // "＆"で参照渡し 仮引数($cart_item)の変更で実引数($cart_items)を更新する
+            foreach ($cart_items as &$cart_item) {
+                foreach ($products as $product) {
+                    if ($product->id == $cart_item['session_product_id']) {
+                        $cart_item['product_name'] = $product->product_name;
+                        $cart_item['category_name'] = $product->mcategory->category_name;
+                        $cart_item['price'] = $product->price;
+                    }
+                }
             }
         } else {
             // 空の時の処理
             echo('カートの商品がありません');
         }
-
-        //カラム名を指定して$session_dataから各1次元配列に抽出する
-        $session_product_id = array_column($cart_items, 'session_product_id');
-        $session_product_quantity = array_column($cart_items, 'session_product_quantity');
+        // dd($cart_items);
+        
+        // セッションから商品個数の1次元配列を取得
+        $products_quantity = array_column($cart_items, 'session_product_quantity');
         
         // Viewに渡すデータ
         $params = [
             'cart_items' => $cart_items,
-            'session_product_id' => $session_product_id,
-            'session_product_quantity' => $session_product_quantity,
+            'products_quantity' => $products_quantity,
         ];
 
         return view('cart.index', $params);
