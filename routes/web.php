@@ -15,10 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 商品検索と一覧表示のルーティング(後でログイン制約も追加すること)
+//ユーザ登録
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+//ユーザログイン
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// 商品検索と一覧表示(後でログイン制約も追加すること)
 Route::get('/products', 'MProductController@index')->name('products.index');
+Route::get('/products', 'MProductController@index');
 Route::get('/products/:{id}', 'MProductController@show');
 
-// カート追加と一覧表示のルーティング(後でログイン制約も追加すること)
+// カート追加と一覧表示(後でログイン制約も追加すること)
 Route::post('/products', 'CartController@addCart');
 Route::get('/cart', 'CartController@showCart');
