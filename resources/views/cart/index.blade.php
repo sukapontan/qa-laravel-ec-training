@@ -35,10 +35,12 @@
                 <td>{{ $cart_item['product_name'] }}</td>
                 <td>{{ $cart_item['category_name'] }}</td>
                 <td>{{ $cart_item['price'] }}円</td>
-                <td><input type="number" min="0" max="99"
+                <td>{{ $cart_item['session_product_quantity'] }}個</td>
+                {{-- フォームでの実装は余力があれば(再計算ボタンなど必要？) --}}
+                {{-- <td><input type="number" min="0" max="99"
                         value="{{ $cart_item['session_product_quantity'] }}"><span>個</span>
-                </td>
-                <td>〇〇円</td>
+                </td> --}}
+                <td>{{ $cart_item['subtotal'] }}円</td>
             </tr>
             @endforeach
 
@@ -49,7 +51,7 @@
                 <td></td>
                 <td></td>
                 <td>合計</td>
-                <td>〇〇円</td>
+                <td>{{ $total_price }}円</td>
             </tr>
             {{-- あとで削除ボタンも必要！セッションからその商品だけ削除する？ --}}
             {{-- 削除機能や金額の再計算機能は今後余力があったら実装する--}}

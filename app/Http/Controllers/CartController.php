@@ -57,12 +57,15 @@ class CartController extends Controller
             
             // 商品名・カテゴリー名・値段を取得、商品の小計も算出してforeachで格納
             // "＆"で参照渡し 仮引数($cart_item)の変更で実引数($cart_items)を更新する
+            $total_price = 0;
             foreach ($cart_items as &$cart_item) {
                 foreach ($products as $product) {
                     if ($product->id == $cart_item['session_product_id']) {
                         $cart_item['product_name'] = $product->product_name;
                         $cart_item['category_name'] = $product->mcategory->category_name;
                         $cart_item['price'] = $product->price;
+                        $cart_item['subtotal'] = $product->price * $cart_item['session_product_quantity'];
+                        $total_price += $cart_item['subtotal'];
                     }
                 }
             }
@@ -70,8 +73,8 @@ class CartController extends Controller
             // 空の時の処理
             echo('カートの商品がありません');
         }
-        // dd($cart_items);
         
+        // FIXME:セッションが切れた時に再読み込みするとエラーになる(!empty($cart_items)がうまく機能していない？)
         // セッションから商品個数の1次元配列を取得
         $products_quantity = array_column($cart_items, 'session_product_quantity');
         
@@ -79,6 +82,7 @@ class CartController extends Controller
         $params = [
             'cart_items' => $cart_items,
             'products_quantity' => $products_quantity,
+            'total_price' => $total_price,
         ];
 
         return view('cart.index', $params);
