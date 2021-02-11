@@ -25,7 +25,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // 商品検索と一覧表示(後でログイン制約も追加すること)
 Route::get('/products', 'MProductController@index')->name('products.index');
-Route::get('/products', 'MProductController@index');
 Route::get('/products/:{id}', 'MProductController@show');
 
 // カート追加と一覧表示(後でログイン制約も追加すること)
