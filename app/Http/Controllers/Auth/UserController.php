@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\support\Facades\DB;
-
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Auth\RegisterController;
 use Auth;
 use Illuminate\Validation\Rule;
-
 
 class UserController extends Controller
 {
