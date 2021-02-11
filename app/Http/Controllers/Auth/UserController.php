@@ -13,24 +13,27 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function index($id)
+    public function index()
     {
         return view('welcome');
     }
 
     //ユーザ情報照会
-    public function show()
+    public function show($id)
     {
-        $auth = Auth::user();
-        return view('user.detail',[ 'auth' => $auth ]);
+        if($id == Auth::id()){
+        return view('user.detail',[ 'id' => $id ]);
+        }
+        return redirect('/')->with('flash_message', '不適切なURLです。');
     }
 
     //ユーザ情報修正
-    public function edit()
+    public function edit($id)
     {
-        $auth = Auth::user();
-        return view('user.edit',[ 'auth' => $auth ]);
-
+        if($id == Auth::id()){
+        return view('user.edit',[ 'id' => $id ]);
+        }
+        return redirect('/')->with('flash_message', '不適切なURLです。');
     }
 
     //ユーザ情報更新
@@ -59,10 +62,9 @@ class UserController extends Controller
     }
 
     //ユーザ情報削除
-    public function destroy(Request $request)
+    public function destroy()
     {
         $auth = Auth::user();
-
 
         $auth->delete();
 

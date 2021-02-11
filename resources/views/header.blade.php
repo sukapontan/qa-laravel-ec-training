@@ -22,7 +22,7 @@
                     <a class="nav-link text-dark" href="#">注文履歴</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/user/{id}">ユーザ情報</a>
+                    <a class="nav-link text-dark" href="/user/{{Auth::id()}}">ユーザ情報</a>
                 </li>
                 <li class="nav-item">
                     {!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link text-dark']) !!}
