@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     //ユーザ情報修正
     Route::get('/user/{id}/edit', 'Auth\UserController@edit')->name('user.edit');
     //ユーザ情報更新
-    Route::put('/user/{id}', 'Auth\UserController@update')->name('user.update');
+    Route::post('/user/{id}', 'Auth\UserController@update')->name('user.update');
     //ユーザ情報削除
     Route::delete('/user/{id}', 'Auth\UserController@destroy')->name('user.destroy');
 
