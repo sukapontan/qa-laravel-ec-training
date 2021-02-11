@@ -10,17 +10,18 @@
             <div class="site-description offset-10 pt-1">
                 {{Auth::user()->last_name}}{{Auth::user()->first_name}}さん
             </div>
-            {{-- ここから動作確認未実施 --}}
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">商品検索</a>
+                    <a class="nav-link text-dark" href="/products">商品検索</a>
                 </li>
+                {{-- ここから動作確認未実施 --}}
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">カート</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">注文履歴</a>
                 </li>
+                {{-- ここまで動作確認未実施 --}}
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="/user/{{Auth::id()}}">ユーザ情報</a>
                 </li>
