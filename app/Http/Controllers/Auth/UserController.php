@@ -20,7 +20,7 @@ class UserController extends Controller
         if($id == Auth::id()){
         return view('user.detail',[ 'id' => $id ]);
         }
-        return redirect('/products')->with('flash_message', '不適切なURLです。');
+        return redirect('/')->with('flash_message', '不適切なURLです。');
     }
 
     //ユーザ情報修正
@@ -29,7 +29,7 @@ class UserController extends Controller
         if($id == Auth::id()){
         return view('user.edit',[ 'id' => $id ]);
         }
-        return redirect('/products')->with('flash_message', '不適切なURLです。');
+        return redirect('/')->with('flash_message', '不適切なURLです。');
     }
 
     //ユーザ情報更新

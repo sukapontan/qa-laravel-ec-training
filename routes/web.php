@@ -24,11 +24,6 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-//商品検索
-Route::get('/products', 'MProductController@index');
-//商品詳細
-Route::get('/products/:{id}', 'MProductController@show');
-
 //ログイン中
 Route::group(['middleware' => 'auth'], function () {
     //ユーザ情報表示
@@ -39,4 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}', 'Auth\UserController@update')->name('user.update');
     //ユーザ情報削除
     Route::delete('/user/{id}/delete', 'Auth\UserController@destroy')->name('user.destroy');
+    //商品検索
+    Route::get('/products', 'MProductController@index');
+    //商品詳細
+    Route::get('/products/:{id}', 'MProductController@show');
 });
