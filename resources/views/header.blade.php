@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse flex-column" id="nav-bar">
             {{-- ログインしている場合 --}}
             @auth
-            <div class="site-description offset-10 pt-1">
+            <div class="site-description ml-auto">
                 {{Auth::user()->last_name}}{{Auth::user()->first_name}}さん
             </div>
             {{-- ここから動作確認未実施 --}}
@@ -36,7 +36,7 @@
                 <li class="nav-item">
                     {!! link_to_route('signup', '新規登録', [], ['class' => 'nav-link text-dark']) !!}
                 </li>
-            @endguest
+                @endguest
             </ul>
         </div>
     </nav>

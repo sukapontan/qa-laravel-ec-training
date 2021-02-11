@@ -5,20 +5,27 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <div class="border border-dark mt-3">
+        <div class="col-sm-11">
+            <div class="border border-dark pt-2 pl-4">
                 <p class="ml-1">お届け先</p>
-                {{-- ログインユーザから住所と名前を取り出す --}}
-                <p class="ml-3">〒○○○−○○○○&nbsp;富山県南砺市○○&nbsp;○−○−○</p>
+                {{-- ログインユーザから住所と名前を取り出して表示 --}}
+                <p class="ml-3">
+                    〒{{ Auth::user()->zipcode }}
+                    &nbsp;{{ Auth::user()->prefecture.Auth::user()->municipality }}
+                    &nbsp;{{ Auth::user()->address }}
+                </p>
                 <div>
-                    <p class="offset-sm-4">〇〇&nbsp;××様</p>
+                    <p class="offset-sm-2">
+                        &nbsp;{{ Auth::user()->last_name }}
+                        &nbsp;{{ Auth::user()->first_name }}
+                        &nbsp;様</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-sm-11">
-        <table class="table">
+        <table class="table my-4">
             {{-- タイトル行 --}}
             <tr>
                 <th>No</th>
@@ -28,7 +35,7 @@
                 <th>個数</th>
                 <th>小計</th>
             </tr>
-            {{-- ここをforeachで表示させる --}}
+            {{-- セッションのカート情報をforeachで表示させる --}}
             @foreach($cart_items as $cart_item)
             <tr>
                 <td>{{ $loop->index +1 }}</td>
@@ -36,7 +43,7 @@
                 <td>{{ $cart_item['category_name'] }}</td>
                 <td>{{ $cart_item['price'] }}円</td>
                 <td>{{ $cart_item['session_product_quantity'] }}個</td>
-                {{-- フォームでの実装は余力があれば(再計算ボタンなど必要？) --}}
+                {{-- Memo:フォーム形式とする場合(その場合再計算ボタンや反映させる処理などが必要か？) --}}
                 {{-- <td><input type="number" min="0" max="99"
                         value="{{ $cart_item['session_product_quantity'] }}"><span>個</span>
                 </td> --}}
@@ -53,8 +60,7 @@
                 <td>合計</td>
                 <td>{{ $total_price }}円</td>
             </tr>
-            {{-- あとで削除ボタンも必要！セッションからその商品だけ削除する？ --}}
-            {{-- 削除機能や金額の再計算機能は今後余力があったら実装する--}}
+            {{-- 本来は商品削除ボタンも必要だが実装未定 --}}
         </table>
     </div>
 
