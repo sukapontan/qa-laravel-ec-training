@@ -63,11 +63,10 @@ class UserController extends Controller
     {
         $auth = Auth::user();
 
-        if (\Auth::id() == $auth->user_id) {
-            $auth->delete();
-        }
 
-        return view('/');
+        $auth->delete();
+
+        return redirect('/');
     }
 
 }

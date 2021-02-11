@@ -48,8 +48,9 @@
         <input class="btn btn-primary" type="submit" value="修正">
     </form>
 
-    <form action="{{ route('user.destroy', [Auth::user()->id]) }}" method="delete">
+    <form action="{{ route('user.destroy', [Auth::user()->id]) }}" method="post">
     @csrf
+    @method('DELETE')
         <input class="btn btn-danger" type="submit" value="退会">
     </form>
     </div>

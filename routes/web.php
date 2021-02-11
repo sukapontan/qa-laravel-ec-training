@@ -38,6 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     //ユーザ情報更新
     Route::post('/user/{id}', 'Auth\UserController@update')->name('user.update');
     //ユーザ情報削除
-    Route::delete('/user/{id}', 'Auth\UserController@destroy')->name('user.destroy');
+    Route::delete('/user/{id}/delete', 'Auth\UserController@destroy')->name('user.destroy');
 
 });
