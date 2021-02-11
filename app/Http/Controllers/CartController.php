@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MProduct;
+use Hash;
 
 class CartController extends Controller
 {
@@ -86,5 +87,15 @@ class CartController extends Controller
         ];
 
         return view('cart.index', $params);
+    }
+
+    // 購入を確定するアクション
+    public function purchase(Request $request)
+    {
+        // セッションを削除して購入完了画面にリダイレクトさせる
+        $request->session()->forget('cart_data');
+        return redirect('/completed');
+
+        // ※注文テーブルへの反映は実装未定
     }
 }

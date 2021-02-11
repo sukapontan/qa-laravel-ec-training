@@ -13,10 +13,10 @@
             {{-- ここから動作確認未実施 --}}
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">商品検索</a>
+                    <a class="nav-link text-dark" href="/products">商品検索</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">カート</a>
+                    <a class="nav-link text-dark" href="/cart">カート</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="#">注文履歴</a>

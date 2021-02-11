@@ -27,6 +27,10 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/products', 'MProductController@index')->name('products.index');
 Route::get('/products/:{id}', 'MProductController@show');
 
-// カート追加と一覧表示(後でログイン制約も追加すること)
+// カート追加と一覧表示と購入(後でログイン制約も追加すること)
 Route::post('/products', 'CartController@addCart');
 Route::get('/cart', 'CartController@showCart');
+Route::post('/cart', 'CartController@purchase');
+Route::get('/completed', function () {
+    return view('cart.completed');
+});

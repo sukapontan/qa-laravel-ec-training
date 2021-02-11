@@ -43,7 +43,7 @@
                 <td>{{ $cart_item['category_name'] }}</td>
                 <td>{{ $cart_item['price'] }}円</td>
                 <td>{{ $cart_item['session_product_quantity'] }}個</td>
-                {{-- Memo:フォーム形式とする場合(その場合再計算ボタンや反映させる処理などが必要か？) --}}
+                {{-- フォーム形式での個数更新は実装未定 --}}
                 {{-- <td><input type="number" min="0" max="99"
                         value="{{ $cart_item['session_product_quantity'] }}"><span>個</span>
                 </td> --}}
@@ -60,17 +60,20 @@
                 <td>合計</td>
                 <td>{{ $total_price }}円</td>
             </tr>
-            {{-- 本来は商品削除ボタンも必要だが実装未定 --}}
+            {{-- 商品削除ボタンは実装未定 --}}
         </table>
     </div>
 
     <div class="row justify-content-center">
-        {{-- 買い物を続けるボタンは個数だけセッションに上書きする？ --}}
         <a href="{{ route('products.index') }}" class="btn btn-info">買い物を続ける</a>
         <div class="col-4 align-self-center">
         </div>
-        {{-- 注文確定ボタンでセッションが消えるようにする？ --}}
-        <a href="#" class="btn btn-primary">注文を確定する</a>
+        {{-- 注文アクション(仮) --}}
+        <form action="{{ action('CartController@purchase') }}" method="post">
+            @csrf
+            <input type="hidden" name="cart-items" value="">
+            <input type="submit" class="btn btn-primary" value="注文を確定する">
+        </form>
     </div>
 </div>
 @endsection
