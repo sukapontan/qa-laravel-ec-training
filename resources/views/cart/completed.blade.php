@@ -13,7 +13,7 @@
     </div>
 
     <div class="text-center">
-        <a href="/products" class="btn btn-primary mt-2">商品一覧に戻る</a>
+        <a href="/products" class="btn btn-info mt-2">商品一覧に戻る</a>
     </div>
 </div>
 @endsection

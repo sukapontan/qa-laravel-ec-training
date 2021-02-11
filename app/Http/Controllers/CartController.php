@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MProduct;
-use Hash;
 
 class CartController extends Controller
 {
@@ -70,21 +69,22 @@ class CartController extends Controller
                     }
                 }
             }
+
+            // セッションから商品個数の1次元配列を取得
+            $products_quantity = array_column($cart_items, 'session_product_quantity');
+            
+            // Viewに渡すデータ
+            $params = [
+                'cart_items' => $cart_items,
+                'products_quantity' => $products_quantity,
+                'total_price' => $total_price,
+            ];
         } else {
             // 空の時の処理
-            echo('カートの商品がありません');
+            $params = [
+                'cart_items' => $cart_items,
+            ];
         }
-        
-        // FIXME:セッションが切れた時に再読み込みするとエラーになる(!empty($cart_items)がうまく機能していない？)
-        // セッションから商品個数の1次元配列を取得
-        $products_quantity = array_column($cart_items, 'session_product_quantity');
-        
-        // Viewに渡すデータ
-        $params = [
-            'cart_items' => $cart_items,
-            'products_quantity' => $products_quantity,
-            'total_price' => $total_price,
-        ];
 
         return view('cart.index', $params);
     }
@@ -92,7 +92,7 @@ class CartController extends Controller
     // 購入を確定するアクション
     public function purchase(Request $request)
     {
-        // セッションを削除して購入完了画面にリダイレクトさせる
+        // セッションを削除して購入完了画面に単純にリダイレクトさせる
         $request->session()->forget('cart_data');
         return redirect('/completed');
 

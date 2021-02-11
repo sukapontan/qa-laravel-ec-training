@@ -25,6 +25,7 @@
     </div>
 
     <div class="col-sm-11">
+        @if (isset($cart_items))
         <table class="table my-4">
             {{-- タイトル行 --}}
             <tr>
@@ -35,6 +36,8 @@
                 <th>個数</th>
                 <th>小計</th>
             </tr>
+
+
             {{-- セッションのカート情報をforeachで表示させる --}}
             @foreach($cart_items as $cart_item)
             <tr>
@@ -45,7 +48,7 @@
                 <td>{{ $cart_item['session_product_quantity'] }}個</td>
                 {{-- フォーム形式での個数更新は実装未定 --}}
                 {{-- <td><input type="number" min="0" max="99"
-                        value="{{ $cart_item['session_product_quantity'] }}"><span>個</span>
+                    value="{{ $cart_item['session_product_quantity'] }}"><span>個</span>
                 </td> --}}
                 <td>{{ $cart_item['subtotal'] }}円</td>
             </tr>
@@ -75,5 +78,11 @@
             <input type="submit" class="btn btn-primary" value="注文を確定する">
         </form>
     </div>
+    @else
+    <div class="mx-auto my-5 text-center">
+        <p class="h4">カートに商品はありません</p>
+        <a href="{{ route('products.index') }}" class="btn btn-info my-4">商品一覧へ</a>
+    </div>
+    @endif
 </div>
 @endsection
