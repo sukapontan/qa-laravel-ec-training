@@ -21,7 +21,6 @@ class CartController extends Controller
             'session_product_id' => $request->product_id,
             'session_product_quantity' => $request->product_quantity,
         ];
-
         // 'cart_data'セッションがすでに存在する場合はデータを取り出して追加処理を行う
         if ( $request->session()->has('cart_data') ) {
             // 既存のセッションデータを取り出す
@@ -38,7 +37,6 @@ class CartController extends Controller
             } else {
                 $request->session()->push('cart_data', $session_data); // pushで追加
             }
-
         } else {
             // 'cart_data'セッションが存在しない場合は新たに登録
             $request->session()->put('cart_data', [$session_data]);

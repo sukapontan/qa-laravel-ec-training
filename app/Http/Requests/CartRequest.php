@@ -28,7 +28,7 @@ class CartRequest extends FormRequest
             'product_quantity' => [
                 'required',
                 'integer',
-                'between:1,99',
+                'between:1,9',
                 ]
         ];
     }
@@ -38,8 +38,8 @@ class CartRequest extends FormRequest
     {
         return [
             'product_quantity.required' => '購入個数を入力して下さい。',
-            'product_quantity.integer' => '購入個数は半角の整数で入力して下さい。',
-            'product_quantity.between' => '購入個数は1〜99の半角の整数で入力して下さい。',
+            'product_quantity.integer' => '購入個数は整数(半角)で入力して下さい。',
+            'product_quantity.between' => '購入個数は1〜9の整数(半角)で入力して下さい。',
         ];
     }
 }
