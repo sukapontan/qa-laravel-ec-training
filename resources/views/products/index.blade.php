@@ -55,7 +55,7 @@
         <div class="panel-body">
             <table border="1" class="table" style="border-collapse: collapse">
                 {{-- 表の見出し --}}
-                <thead class="bg-warning">
+                <thead style="background-color: rgb(220, 200, 160)">
                     <tr>
                         <th>商品名</th>
                         <th>商品カテゴリ</th>

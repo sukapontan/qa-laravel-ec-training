@@ -23,13 +23,13 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-// 商品検索と一覧表示(後でログイン制約も追加すること)
+// 商品検索と一覧表示
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/products', 'MProductController@index')->name('products.index');
     Route::get('/products/:{id}', 'MProductController@show');
 });
 
-// カート追加と一覧表示と購入(後でログイン制約も追加すること)
+// カート追加と一覧表示と購入
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/products', 'CartController@addCart');
     Route::get('/cart', 'CartController@showCart');

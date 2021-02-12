@@ -8,7 +8,12 @@ use App\MProduct;
 
 class CartController extends Controller
 {
-    // 商品をカートに追加するアクション(セッションを追加登録する)
+    /*
+    |---------------------------------------------------------------
+    | 商品をカートに追加するアクション
+    | (セッションを追加登録する)
+    |---------------------------------------------------------------
+    */
     public function addCart(CartRequest $request)
     {
         // フォームから受け取った商品idと個数を変数$session_dataに連想配列で格納
@@ -43,7 +48,12 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    // カート一覧を表示するアクション(セッションを取り出して利用する)
+    /*
+    |---------------------------------------------------------------
+    | カート一覧を表示するアクション
+    | (セッションを取り出して利用する)
+    |---------------------------------------------------------------
+    */
     public function showCart(Request $request)
     {
         // 保存していたセッションデータを取り出す
@@ -81,7 +91,7 @@ class CartController extends Controller
                 'total_price' => $total_price,
             ];
         } else {
-            // 空の時の処理
+            // 空の時の処理(Viewに空のカートを渡して分岐処理させる)
             $params = [
                 'cart_items' => $cart_items,
             ];
@@ -90,7 +100,12 @@ class CartController extends Controller
         return view('cart.index', $params);
     }
 
-    // 購入を確定するアクション
+    /*
+    |---------------------------------------------------------------
+    | 購入を確定するアクション
+    | (ひとまずカート内のセッション情報削除のみ)
+    |---------------------------------------------------------------
+    */
     public function purchase(Request $request)
     {
         // セッションを削除して購入完了画面に単純にリダイレクトさせる

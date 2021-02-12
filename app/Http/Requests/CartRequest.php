@@ -24,8 +24,12 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-            // 購入個数の制約
-            'product_quantity' => ['required', 'integer', 'between:1,99',]
+            // 商品の購入個数の制約(1〜99の整数)
+            'product_quantity' => [
+                'required',
+                'integer',
+                'between:1,99',
+                ]
         ];
     }
 

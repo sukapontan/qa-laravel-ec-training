@@ -1,6 +1,6 @@
 <footer class="mt-5">
-    <nav class="navbar navbar-dark bg-warning">
-        <div class="navbar-brand text-dark" style="font-size:x-large;">
+    <nav class="navbar navbar-dark" style="background-color: rgb(210, 155, 60)">
+        <div class="navbar-brand text-dark">
             {{ config('app.name', 'サイトロゴ(仮)') }}
         </div>
         <div class="navbar-brand text-dark" style="font-size: medium;">
