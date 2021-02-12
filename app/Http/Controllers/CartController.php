@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CartRequest;
 use App\MProduct;
 
 class CartController extends Controller
 {
     // 商品をカートに追加するアクション(セッションを追加登録する)
-    public function addCart(Request $request)
+    public function addCart(CartRequest $request)
     {
         // フォームから受け取った商品idと個数を変数$session_dataに連想配列で格納
         $session_data = [
