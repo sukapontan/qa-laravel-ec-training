@@ -36,9 +36,13 @@ class ProductsController extends Controller
     public function showDetail($id)
     {
         $product = Product::find($id);
+        $categoryId = Category::find($product->category_id);
+        $userId = Auth::user()->id;
 
         return view('products.detail_a_product', [
             'product' => $product,
+            'categoryId' => $categoryId,
+            'userId' => $userId,
         ]);
     }
 }

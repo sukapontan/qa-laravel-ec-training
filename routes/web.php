@@ -31,4 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/', 'UsersController@delete')->name('users.destroy');
     Route::get('products', 'ProductsController@search')->name('products.search');
     Route::get('products/{id}', 'ProductsController@showDetail')->name('detail.product');
+    Route::get('cart', 'CartController@indexCart')->name('index.cart');
+    // Route::post('cart', 'CartController@addToCart')->name('add.cart');
 });
