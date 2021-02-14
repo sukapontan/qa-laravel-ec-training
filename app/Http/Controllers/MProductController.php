@@ -19,23 +19,6 @@ class MProductController extends Controller
         // フォームから検索文字列と選択カテゴリーidを取得
         $search_text = $request->search_text;
         $select_category_id = $request->select_category_id;
-
-        // 部分一致で検索を行いページネイトする
-        // カテゴリーが選択されていればカテゴリーidでの絞り込みを追加する
-        // if ($select_category_id == 0) {
-        //     $products = MProduct::with('mCategory')
-        //         ->where('product_name', 'like', '%' . $search_text . '%')
-        //         ->orderBy('category_id', 'asc')
-        //         ->orderBy('product_name', 'asc')
-        //         ->paginate(3); // 動作確認用に3件としています
-        // } else {
-        //     $products = MProduct::with('mCategory')
-        //         ->where('category_id', $select_category_id)
-        //         ->where('product_name', 'like', '%' . $search_text . '%')
-        //         ->orderBy('category_id', 'asc')
-        //         ->orderBy('product_name', 'asc')
-        //         ->paginate(3); // 動作確認用に3件としています
-        // }
         
         // クエリビルダで検索を行う(文字列検索,カテゴリーid検索)
         $query = MProduct::query();
