@@ -49,6 +49,7 @@ class UserController extends Controller
 
         //リクエストデータ受取
         $form = $request->all();
+        unset($form['_token']);
 
         //フォームトークン削除、更新
         $auth = Auth::user();
