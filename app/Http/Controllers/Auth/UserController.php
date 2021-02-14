@@ -18,7 +18,7 @@ class UserController extends Controller
     public function show($id)
     {
         if($id == Auth::id()){
-        return view('user.detail',[ 'id' => $id ]);
+            return view('user.detail',[ 'id' => $id ]);
         }
         return redirect('/products')->with('flash_message', '不適切なURLです。');
     }
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function edit($id)
     {
         if($id == Auth::id()){
-        return view('user.edit',[ 'id' => $id ]);
+            return view('user.edit',[ 'id' => $id ]);
         }
         return redirect('/products')->with('flash_message', '不適切なURLです。');
     }
@@ -53,17 +53,13 @@ class UserController extends Controller
         //フォームトークン削除、更新
         $auth = Auth::user();
         $auth->fill($form)->save();
-
         return view('user.detail',[ 'auth' => $auth ]);
     }
 
     //ユーザ情報削除
     public function destroy()
     {
-        $auth = Auth::user();
-
-        $auth->delete();
-
+        Auth::user()->delete();
         return redirect('/');
     }
 
