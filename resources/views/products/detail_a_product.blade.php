@@ -38,13 +38,17 @@
             </div>
         </div>
 
+
         <!-- ラベルを使用すると文字が小さくなる... -->
         <div class="row mt-5 justify-content-center">
-            <form action="" method="">
+            <form action="{{route('add.product')}}" method="post">
+            @csrf
                 <div class="input-group justify-content-center">
+                    <input type="hidden" name="users_id" value="{{ $user->id }}">
+                    <input type="hidden" name="products_id" value="{{ $product->id }}">
                     <h2>購入個数</h2>
                     <!-- <label class="control-label">購入個数</label> -->
-                    <input class="form-control col-2" type="text" required>
+                    <input class="form-control col-2" min="1" max="5" type="number" name="product_quantity" required>
                     <h2>個</h2>
                     <!-- ↓こちらの部分はカート機能を作る際に実装いたします -->
                     <button type="submit" class="btn btn-primary ml-4">カートへ</button>

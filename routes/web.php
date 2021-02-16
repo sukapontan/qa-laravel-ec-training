@@ -32,5 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('products', 'ProductsController@search')->name('products.search');
     Route::get('products/{id}', 'ProductsController@showDetail')->name('detail.product');
     Route::get('cart', 'CartController@indexCart')->name('index.cart');
-    // Route::post('cart', 'CartController@addToCart')->name('add.cart');
+    Route::post('cart/add', 'CartController@addToCart')->name('add.product');
+    Route::post('cart/remove', 'CartController@remove')->name('remove.product');
 });
