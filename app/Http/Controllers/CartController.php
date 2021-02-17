@@ -22,7 +22,7 @@ class CartController extends Controller
             $sessionCartData = $request->session()->get('cartData');
 
             $sameProductId = false;
-            foreach ($sessionCartData as $sessionData) {
+            foreach ($sessionCartData as $index => $sessionData) {
                 if ($sessionData['session_products_id'] === $cartData['session_products_id'] ) {
                     $sameProductId = true;
                     $quantity = $sessionData['session_quantity'] + $cartData['session_quantity'];
