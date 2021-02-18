@@ -15,7 +15,7 @@ class CreateMProductsTable extends Migration
     {
         Schema::create('m_products', function (Blueprint $table) {
             $table->increments('id')->comment('商品ID');
-            $table->string('product_name', 64)->collation('utf8_unicode_ci')->comment('商品名');
+            $table->string('product_name', 64)->comment('商品名');
             $table->unsignedInteger('category_id')->comment('カテゴリー');
             $table->integer('price')->unsigned()->comment('販売単価');
             $table->string('description', 256)->nullable()->comment('商品説明');
