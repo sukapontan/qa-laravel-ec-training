@@ -21,6 +21,7 @@ class UserController extends Controller
             return view('user.detail',[ 'id' => $id ]);
         }
         return redirect('/products')->with('flash_message', '不適切なURLです。');
+
     }
 
     //ユーザ情報修正
