@@ -26,6 +26,7 @@
         </div>
     </div>
 
+@if ($cartData)
     <div class="col-sm-11">
         <table class="table">
             <thead>
@@ -75,6 +76,9 @@
                     <td></td>
                     <td></td>
                     <td>合計</td>
+                    @php
+                        $totalPrice = number_format(array_sum(array_column($cartData, 'itemPrice')))
+                    @endphp
                     <td>
                         {{ $totalPrice }}円
                     </td>
@@ -89,6 +93,11 @@
         <div class="col-4 align-self-center"></div>
         <a href="#" class="btn btn-primary">注文を確定する</a>
     </div>
+@else
+    <div>
+        <h2 class="text-center mt-5">カート内に商品はありません</h2>
+    </div>
+@endif
 </div>
 
 @endsection
