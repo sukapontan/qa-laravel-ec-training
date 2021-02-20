@@ -62,19 +62,12 @@ class CartController extends Controller
                     }
                 }
             }
+        } 
 
-            $totalPrice = number_format(array_sum(array_column($cartData, 'itemPrice')));
-        
-            return view('info.cart',  [
-                'sessionUser' => $sessionUser,
-                'cartData' => $cartData,
-                'totalPrice' => $totalPrice
-            ]);
-
-        } else {
-            return view('info.empty_cart',  ['user' => Auth::user()]);
-        }
-
+        return view('info.cart',  [
+            'sessionUser' => $sessionUser,
+            'cartData' => $cartData,
+        ]);
     }
 
     public function remove(Request $request)
