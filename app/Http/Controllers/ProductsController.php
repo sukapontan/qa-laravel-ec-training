@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Product;
 use App\Category;
@@ -36,9 +37,11 @@ class ProductsController extends Controller
     public function showDetail($id)
     {
         $product = Product::find($id);
+        $user = Auth::user();
 
         return view('products.detail_a_product', [
             'product' => $product,
+            'user' => $user,
         ]);
     }
 }
