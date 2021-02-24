@@ -24,6 +24,18 @@ class OrdersTableSeeder extends Seeder
                 'user_id' => 3,
                 'order_date' => date('Y-m-d H:i:s'),
             ],
+            [
+                'user_id' => 1,
+                'order_date' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'user_id' => 1,
+                'order_date' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'user_id' => 1,
+                'order_date' => date('Y-m-d H:i:s'),
+            ],
         ]);
     }
 }

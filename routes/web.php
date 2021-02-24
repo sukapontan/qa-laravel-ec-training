@@ -30,4 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('users/edit/{id}', 'UsersController@update')->name('users.update');
     Route::post('/', 'UsersController@delete')->name('users.destroy');
     Route::get('products', 'ProductsController@search')->name('products.search');
+    Route::get('products/{id}', 'ProductsController@showDetail')->name('detail.product');
+    Route::get('order_history', 'OrdersController@index')->name('order.date');
+    Route::get('orderDetails/{id}', 'OrderDtailsController@show')->name('order.show');
+    Route::post('/top', 'OrdersController@delete')->name('order.destroy');
 });
+
+Route::post('productInfo/addCart','ProductController@addCart')->name('addcart.post');

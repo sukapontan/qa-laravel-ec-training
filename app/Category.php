@@ -12,7 +12,7 @@ class Category extends Model
     protected $fillable = [
         'category_name',
     ];
-    
+
     public static function pickUpColumn()
     {
         $categories = Category::pluck('category_name', 'id');
