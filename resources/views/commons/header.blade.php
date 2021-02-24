@@ -6,7 +6,7 @@
         @if (Auth::check())
             <p class="text-center offset-9 pt-1">{{ Auth::user()->last_name}}さん</p>
             <li class="nav-item list-inline-item"><a href="{{ action('ProductsController@search') }}" class="nav-link">商品検索</a></li>
-            <li class="nav-item list-inline-item"><a href="" class="nav-link">カート</a></li>
+            <li class="nav-item list-inline-item"><a href="{{ action('CartController@indexCart') }}" class="nav-link">カート</a></li>
             <li class="nav-item list-inline-item"><a href="{{ route('order.date') }}" class="nav-link">注文履歴</a></li>
             <li class="nav-item list-inline-item"><a href="{{ action('UsersController@show') }}" class="nav-link">ユーザー情報</a></li>
             <li class="nav-item list-inline-item">

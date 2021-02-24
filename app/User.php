@@ -104,4 +104,9 @@ class User extends Authenticatable
     //     -> leftjoin('Order_Details', 'Order_Details.order_id', '=', 'Orders.id')
     //     -> leftjoin('shipments_sratuses', 'Order_Details.order_id', '=', 'shipments_sratuses.id')
     // }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

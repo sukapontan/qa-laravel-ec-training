@@ -16,7 +16,7 @@
                 <h2 class="mr-4">商品名</h2>
                 <input type="text" class="form-control" name="product_name">
                 <span class="input-group-btn">
-                    <input type="submit" class="btn btn-primary ml-4" value="検索">
+                    <button type="submit" class="btn btn-primary ml-4">検索</button>
                 </span>
             </div>
         </div>
@@ -50,9 +50,8 @@
             <td>{{ $product->product_name }}</td>
             <td>{{ $product->category->category_name }}</td>
             <td>{{ $product->price }}</td>
-            <td type="submit" name="name"
-            value="商品詳細" class="btn btn-primary">
-            商品詳細
+            <td name="name" value="detailAProduct">
+                <a href="{{ action('ProductsController@showDetail', $product->id) }}" class="btn btn-primary">商品詳細</a>
             </td>
         </tr>
     </tbody>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Product;
 use App\Category;
@@ -89,5 +90,11 @@ class ProductsController extends Controller
         //POST送信された情報をsessionに保存 'users_id'(key)に$request内の'users_id'をセット
         $request->session()->put('users_id', ($request->users_id));
         return redirect()->route('cartlist.index');
+        $user = Auth::user();
+
+        return view('products.detail_a_product', [
+            'product' => $product,
+            'user' => $user,
+        ]);
     }
 }
