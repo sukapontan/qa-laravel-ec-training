@@ -54,9 +54,9 @@ class CartController extends Controller
 
             foreach ($cartData as &$data) {
                 foreach ($products as $product) {
-                    if($product->id == $data['session_products_id']) {
+                    if($product->id === $data['session_products_id']) {
                         $data['product_name'] = $product->product_name;
-                        $data['category_name'] = $product['category']->category_name;
+                        $data['category_name'] = $product->category->category_name;
                         $data['price'] = $product->price;
                         $data['itemPrice'] = $data['price'] * $data['session_quantity'];
                     }
