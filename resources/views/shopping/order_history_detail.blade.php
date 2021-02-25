@@ -138,10 +138,10 @@
       </div>
   @endif
   <script>
-    var btn = document.getElementById('add_delete');
+    let btn = document.getElementById('add_delete');
 
     btn.addEventListener('click', function() {
-        var result = window.confirm('本当に削除しますか？');
+        let result = window.confirm('本当に削除しますか？');
 
         if( result ) {
             console.log('削除しました。');
@@ -153,7 +153,7 @@
     })
 
     function checkText() {
-      var text = document.myform.mytext.value;
+      let text = document.myform.mytext.value;
 
       if(text.false) {
           alert('文字が入力されていません！');
@@ -162,13 +162,3 @@
     }
   </script>
 @endsection
-
-
-<style>
-  .table td {
-    border: 0;
-  }
-  .table td {
-    border: none;
-  }
-</style>

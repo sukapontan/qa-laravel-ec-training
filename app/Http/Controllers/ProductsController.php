@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
-
-use App\Http\Controllers\Controller;
 use App\Order;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class ProductsController extends Controller

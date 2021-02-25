@@ -28,8 +28,12 @@ class OrdersController extends Controller
         $order = Order::find($id);
         $user = User::find($order->user_id);
         $before_date = today()->subMonth(3);
-        $recentlyOrders = $user->orders()->where('order_date', '>', $before_date)->orderBy('order_date', 'desc')->paginate(15);
-        return view('shopping.search_order_history', compact('user', 'recentlyOrders'));
+        $recentlyOrders = $user->orders()
+            ->where('order_date', '>', $before_date)
+            ->orderBy('order_date', 'desc')
+            ->paginate(15);
+        return view('shopping.search_order_history'
+            , compact('user', 'recentlyOrders'));
     }
 
     public function delete(Request $request)

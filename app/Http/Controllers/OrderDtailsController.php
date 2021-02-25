@@ -24,7 +24,8 @@ class OrderDtailsController extends Controller
         $logInUser = $request->user();
         $orderDetails = OrderDetail::all();
         $productStatus = ProductStatus::all();
-        return view('shopping.order_history_detail', compact('user', 'logInUser', 'order', 'orderDetails', 'productStatus'));
+        return view('shopping.order_history_detail'
+        , compact('user', 'logInUser', 'order', 'orderDetails', 'productStatus'));
     }
 
     /**
@@ -37,7 +38,7 @@ class OrderDtailsController extends Controller
     {
         $order = Order::find($id);
         $order->delete();
-        redirect ('/top');
+        redirect('/top');
     }
 
     /**

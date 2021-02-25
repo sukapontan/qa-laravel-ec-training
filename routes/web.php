@@ -39,4 +39,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/top', 'OrdersController@delete')->name('order.destroy');
 });
 
-Route::post('productInfo/addCart','ProductController@addCart')->name('addcart.post');
+Route::post('productInfo/addCart', 'ProductController@addCart')->name('addcart.post');

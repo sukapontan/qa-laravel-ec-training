@@ -97,14 +97,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Order');
     }
 
-    // public function get_shipment()
-    // {
-    //     $shipment_id =  DB::table('User')
-    //     -> leftjoin('Orders', 'orders.user_id', '=', 'User.id')
-    //     -> leftjoin('Order_Details', 'Order_Details.order_id', '=', 'Orders.id')
-    //     -> leftjoin('shipments_sratuses', 'Order_Details.order_id', '=', 'shipments_sratuses.id')
-    // }
-
     public function products()
     {
         return $this->hasMany('App\Product');
