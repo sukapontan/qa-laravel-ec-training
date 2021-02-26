@@ -12,8 +12,8 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $cartData = [
-            'session_products_id' => $request->products_id,
-            'session_quantity' => $request->product_quantity,
+            'session_products_id' => (int)$request->products_id,
+            'session_quantity' => (int)$request->product_quantity,
         ];
 
         if(!$request->session()->has('cartData')) {
@@ -51,10 +51,10 @@ class CartController extends Controller
         if (!empty($cartData)) {
             $sessionProductsId = array_column($cartData, 'session_products_id');
             $products = Product::with('category')->find($sessionProductsId);
-
+            
             foreach ($cartData as &$data) {
                 foreach ($products as $product) {
-                    if($product->id === $data['session_products_id']) {
+                    if($product->id == $data['session_products_id']) {
                         $data['product_name'] = $product->product_name;
                         $data['category_name'] = $product->category->category_name;
                         $data['price'] = $product->price;
