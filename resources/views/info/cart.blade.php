@@ -9,24 +9,24 @@
                 <p class="ml-1">お届け先</p>
                 <p class="ml-3">
                     <span>〒</span>
-                    {{ $zip = substr($sessionUser->zipcode,0,3) . "-" . substr($sessionUser->zipcode,3) }}
+                    {{ $zip = substr($user->zipcode,0,3) . "-" . substr($user->zipcode,3) }}
                     &nbsp;
-                    {{ $sessionUser->prefecture }}{{ $sessionUser->municipality }}
+                    {{ $user->prefecture }}{{ $user->municipality }}
                     &nbsp;
-                    {{ $sessionUser->address }}
+                    {{ $user->address }}
                 </p>
                 <div>
                     <p class="offset-sm-4">
-                        {{ $sessionUser->last_name }}
+                        {{ $user->last_name }}
                         &nbsp;
-                        {{ $sessionUser->first_name }}<span>様</span>
+                        {{ $user->first_name }}<span>様</span>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-@if ($cartData)
+@if (!empty($cartData))
     <div class="col-sm-11">
         <table class="table">
             <thead>
@@ -76,9 +76,6 @@
                     <td></td>
                     <td></td>
                     <td>合計</td>
-                    @php
-                        $totalPrice = number_format(array_sum(array_column($cartData, 'itemPrice')))
-                    @endphp
                     <td>
                         {{ $totalPrice }}円
                     </td>
