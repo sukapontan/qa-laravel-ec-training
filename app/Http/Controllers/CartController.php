@@ -42,8 +42,6 @@ class CartController extends Controller
 
     public function indexCart(Request $request)
     {
-        $sessionUser = User::find($request->session()->get('users_id'));
-
         if ($request->session()->has('cartData')) {
             $cartData = array_values($request->session()->get('cartData'));
         }
@@ -62,11 +60,18 @@ class CartController extends Controller
                     }
                 }
             }
-        } 
+
+            $totalPrice = number_format(array_sum(array_column($cartData, 'itemPrice')));
+
+        } else {
+            $cartData = [];
+            $totalPrice = [];
+        }
 
         return view('info.cart',  [
-            'sessionUser' => $sessionUser,
+            'user' => Auth::user(),
             'cartData' => $cartData,
+            'totalPrice' => $totalPrice,
         ]);
     }
 
