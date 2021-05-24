@@ -5,10 +5,16 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\UserClassification;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    /**
+     * 関連テーブル設定
+     */
+    protected $table = 'm_users';
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +22,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'password',
+        'last_name',
+        'first_name',
+        'zipcode',
+        'prefecture',
+        'municipality',
+        'address',
+        'apartments',
+        'email',
+        'phone_number',
+        'user_classification_id',
+        'company_name',
     ];
 
     /**
@@ -25,15 +42,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function userClassification()
+    {
+        $this->belongsTo(UserClassification::class);
+    }
 }
