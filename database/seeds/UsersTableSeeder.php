@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\UserClassification;
 use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
@@ -13,6 +14,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $purchaser = UserClassification::where('user_classification_name', '購入者')->first();
+        $exhibitor = UserClassification::where('user_classification_name', '出品者')->first();
+        $admin = UserClassification::where('user_classification_name', '管理者')->first();
+
         for ($i=0; $i < 3; $i++) {
             User::create(
                 [
@@ -26,7 +31,7 @@ class UsersTableSeeder extends Seeder
                     'apartments' => 'マンションテスト1-'.(string)$i,
                     'email' => 'test1-'.(string)$i.'@example.com',
                     'phone_number' => '0801111222'.(string)$i,
-                    'user_classification_id' => config('consts.users.purchaser'),
+                    'user_classification_id' => $purchaser->id,
                     'company_name' => null,
                 ]
             );
@@ -42,7 +47,7 @@ class UsersTableSeeder extends Seeder
                     'apartments' => 'マンション2-'.(string)$i,
                     'email' => 'test2-'.(string)$i.'@example.com',
                     'phone_number' => '0802222333'.(string)$i,
-                    'user_classification_id' => config('consts.users.exhibitor'),
+                    'user_classification_id' => $exhibitor->id,
                     'company_name' => '株式会社山本'.(string)$i,
                 ]
             );
@@ -58,7 +63,7 @@ class UsersTableSeeder extends Seeder
                     'apartments' => '日鉄日本橋ビル'.(string)$i,
                     'email' => 'test3-'.(string)$i.'@example.com',
                     'phone_number' => '0803333444'.(string)$i,
-                    'user_classification_id' => config('consts.users.admin'),
+                    'user_classification_id' => $admin->id,
                     'company_name' => '株式会社山田'.(string)$i,
                 ]
             );
