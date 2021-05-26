@@ -32,7 +32,6 @@ class UsersTableSeeder extends Seeder
                     'email' => 'test1-'.(string)$i.'@example.com',
                     'phone_number' => '0801111222'.(string)$i,
                     'user_classification_id' => $purchaser->id,
-                    'company_name' => null,
                 ]
             );
             User::create(
