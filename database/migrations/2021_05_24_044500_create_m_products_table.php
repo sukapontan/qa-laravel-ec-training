@@ -14,24 +14,21 @@ class CreateMProductsTable extends Migration
     public function up()
     {
         Schema::create('m_products', function (Blueprint $table) {
-            Schema::create('m_products', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('product_name', 64);
-                $table->integer('category_id')->unsigned()->index();
-                $table->integer('price');
-                $table->string('description', 256);
-                $table->integer('sale_status_id')->unsigned()->index();
-                $table->integer('product_status_id')->unsigned()->index();
-                $table->timestamp('regist_date')->useCurrent();
-                $table->integer('user_id')->unsigned()->index();
-                $table->char('delete_flag', 1);
+            $table->increments('id');
+            $table->string('product_name', 64);
+            $table->integer('category_id')->unsigned()->index();
+            $table->integer('price');
+            $table->string('description', 256);
+            $table->integer('sale_status_id')->unsigned()->index();
+            $table->integer('product_status_id')->unsigned()->index();
+            $table->timestamp('regist_date')->useCurrent();
+            $table->integer('user_id')->unsigned()->index();
+            $table->char('delete_flag', 1);
 
-
-                $table->foreign('category_id')->references('id')->on('m_categories');
-                $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses');
-                $table->foreign('product_status_id')->references('id')->on('m_product_statuses');
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            });
+            $table->foreign('category_id')->references('id')->on('m_categories');
+            $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses');
+            $table->foreign('product_status_id')->references('id')->on('m_product_statuses');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
