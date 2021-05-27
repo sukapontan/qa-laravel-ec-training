@@ -17,6 +17,7 @@ class CreateMUserClassificationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('user_classification_name', 32);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
