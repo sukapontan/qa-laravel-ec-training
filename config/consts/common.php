@@ -5,7 +5,7 @@ return [
     /**
      *  ユーザ種別
      */
-    'user_classifications' => [
+    'USER_CLASSIFICATIONS' => [
         'purchaser' => [
             'label' => '購入者',
             'value' => 1,

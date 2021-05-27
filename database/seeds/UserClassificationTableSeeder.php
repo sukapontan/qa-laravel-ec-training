@@ -12,7 +12,7 @@ class UserClassificationTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (config('consts.common.user_classifications') as $userClassification) {
+        foreach (config('consts.common.USER_CLASSIFICATIONS') as $userClassification) {
             UserClassification::create([
                 'user_classification_name' => $userClassification['label']
             ]);
