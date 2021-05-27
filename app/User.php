@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\UserClassification;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * 関連テーブル設定
@@ -47,6 +49,6 @@ class User extends Authenticatable
 
     public function userClassification()
     {
-        $this->belongsTo(UserClassification::class);
+        return $this->belongsTo(UserClassification::class);
     }
 }

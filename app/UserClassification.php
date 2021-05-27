@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
 
 class UserClassification extends Model
 {
+    use SoftDeletes;
+
     /**
      * 関連テーブル設定
      */
@@ -21,8 +24,18 @@ class UserClassification extends Model
         'user_classification_name',
     ];
 
-    public function user()
+    public static function boot()
     {
-        $this->hasMany(User::class);
+        parent::boot();
+
+        // 論理削除されたユーザ種別に紐づいているユーザを論理削除
+        static::deleted(function ($userClassification) {
+            $userClassification->users()->delete();
+        });
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }
