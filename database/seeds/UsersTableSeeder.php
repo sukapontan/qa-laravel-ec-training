@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                     'apartments' => 'マンションテスト1-'.(string)$i,
                     'email' => 'test1-'.(string)$i.'@example.com',
                     'phone_number' => '0801111222'.(string)$i,
-                    'user_classification_id' => config('consts.userclassification.purchaser'),
+                    'user_classification_id' => config('consts.common.user_classifications.purchaser.value'),
                 ]
             );
             User::create(
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
                     'apartments' => 'マンション2-'.(string)$i,
                     'email' => 'test2-'.(string)$i.'@example.com',
                     'phone_number' => '0802222333'.(string)$i,
-                    'user_classification_id' => config('consts.userclassification.exhibitor'),
+                    'user_classification_id' => config('consts.common.user_classifications.exhibitor.value'),
                     'company_name' => '株式会社山本'.(string)$i,
                 ]
             );
@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
                     'apartments' => '日鉄日本橋ビル'.(string)$i,
                     'email' => 'test3-'.(string)$i.'@example.com',
                     'phone_number' => '0803333444'.(string)$i,
-                    'user_classification_id' => config('consts.userclassification.admin'),
+                    'user_classification_id' => config('consts.common.user_classifications.admin.value'),
                 ]
             );
         }
