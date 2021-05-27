@@ -12,15 +12,9 @@ class UserClassificationTableSeeder extends Seeder
      */
     public function run()
     {
-        $userClassficationNames = [
-            '購入者',
-            '出品者',
-            '管理者',
-        ];
-
-        foreach ($userClassficationNames as $userClassficationName) {
+        foreach (config('consts.userclassification.names') as $name) {
             UserClassification::create([
-                'user_classification_name' => $userClassficationName
+                'user_classification_name' => $name
             ]);
         }
     }
