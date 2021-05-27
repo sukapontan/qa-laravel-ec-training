@@ -20,7 +20,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_status_id' => rand(1, 2),
                 'product_status_id' => rand(1, 3),
                 'regist_date' => date('Y-m-d H:i:s'),
-                'user_id' => rand(1, 10),
+                'user_id' => rand(1, 9),
                 'delete_flag' => 1,
             ]);
         }
