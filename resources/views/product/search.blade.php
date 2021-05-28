@@ -89,10 +89,10 @@
                         @endforeach
                     </tbody>
                     @endif
+                </table>
                     @if($datas->isEmpty())
                     検索結果がありませんでした。
                     @endif
-                </table>
                 {{ $datas->fragment('foo')->links() }}
             </div>
         </div> 　
