@@ -12,11 +12,9 @@ class ShipmentStatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        $shipmentStatuses = ['発送前', '発送中', '発送済み'];
-
-        foreach ($shipmentStatuses as $shipmentStatus) {
+        foreach (config('consts.common.SHIPMENT_STATUSES') as $shipmentStatus) {
             ShipmentStatus::create([
-                'shipment_status_name' => $shipmentStatus,
+                'shipment_status_name' => $shipmentStatus['value'],
             ]);
         }
     }

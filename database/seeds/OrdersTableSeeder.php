@@ -13,15 +13,13 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::select('m_users.id')
-            ->join('m_user_classifications', 'm_users.user_classification_id', 'm_user_classifications.id')
-            ->where('m_user_classifications.user_classification_name', '購入者')
-            ->get();
+        // 購入者種別のみ取得
+        $purchasers = User::where('user_classification_id', config('consts.common.USER_CLASSIFICATIONS.purchaser.value'))->get();
 
-        foreach ($users as $user) {
+        foreach ($purchasers as $purchaser) {
             Order::create(
                 [
-                    'user_id' => $user->id,
+                    'user_id' => $purchaser->id,
                     'order_date' => date('Y-m-d H:i:s'),
                 ]
             );
