@@ -11,10 +11,28 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
-            DB::table('m_categories')->insert([
-                'category_name' => 'カテゴリー' . ((string)$i + 1),
-            ]);
-        }
+        DB::table('m_categories')->insert([
+            [
+                'category_name' => '肉類',
+            ],
+            [
+                'category_name' => '魚介類',
+            ],
+            [
+                'category_name' => '果物類',
+            ],
+            [
+                'category_name' => '野菜類',
+            ],
+            [
+                'category_name' => '飲み物類',
+            ],
+            [
+                'category_name' => '漬物類',
+            ],
+            [
+                'category_name' => '菓子類',
+            ],
+        ]);
     }
 }
