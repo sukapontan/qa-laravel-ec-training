@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\OrderDetail;
 
 class ShipmentStatus extends Model
 {
@@ -19,4 +20,9 @@ class ShipmentStatus extends Model
     protected $fillable = [
         'shipment_status_name',
     ];
+
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 }
