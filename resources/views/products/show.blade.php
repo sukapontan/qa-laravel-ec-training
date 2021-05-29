@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 text-left">
+        <div class="col-lg-12 text-left my-3">
             <h2>{{ $product->description }}</h2>
         </div>
     </div>
@@ -37,7 +37,7 @@
         <form action="" method="post">
             <div class="input-group">
             <h2>購入個数</h2>
-            <input class="form-control col-2" type="text" required>
+            <input class="form-control col-2" type="number" min="1" required>
             <h2>個</h2>
             <input type="submit" class="btn btn-primary ml-4" value="カートへ">
             </div>
