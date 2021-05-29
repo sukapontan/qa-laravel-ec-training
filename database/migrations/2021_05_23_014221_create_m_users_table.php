@@ -14,7 +14,7 @@ class CreateMUsersTable extends Migration
     public function up()
     {
         Schema::create('m_users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('password', 64)->comment('パスワード');
             $table->string('last_name', 16)->comment('性');
             $table->string('first_name', 16)->comment('名');
@@ -25,7 +25,7 @@ class CreateMUsersTable extends Migration
             $table->string('apartments', 32)->nullable()->comment('マンション、部屋番号');
             $table->string('email', 128)->unique()->comment('メールアドレス');
             $table->string('phone_number', 14)->comment('電話番号');
-            $table->bigInteger('user_classification_id')->unsigned()->default('1')->comment('ユーザ種別プライマリー');
+            $table->integer('user_classification_id')->unsigned()->default('1')->comment('ユーザ種別プライマリー');
             $table->string('company_name', 128)->nullable()->comment('会社名');
             $table->timestamps();
             $table->softDeletes();

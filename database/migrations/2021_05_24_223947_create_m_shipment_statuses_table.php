@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMUserClassificationsTable extends Migration
+class CreateMShipmentStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateMUserClassificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_user_classifications', function (Blueprint $table) {
+        Schema::create('m_shipment_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_classification_name', 32);
+            $table->string('shipment_status_name', 32)->comment('発送状態名');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateMUserClassificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_user_classifications');
+        Schema::dropIfExists('m_shipment_statuses');
     }
 }
