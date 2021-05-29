@@ -20,7 +20,6 @@ class OrdersTableSeeder extends Seeder
             Order::create(
                 [
                     'user_id' => $purchaser->id,
-                    'order_date' => date('Y-m-d H:i:s'),
                 ]
             );
         }

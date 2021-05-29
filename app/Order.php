@@ -20,7 +20,6 @@ class Order extends Model
      */
     protected $fillable = [
         'user_id',
-        'order_date',
     ];
 
     public function user()
