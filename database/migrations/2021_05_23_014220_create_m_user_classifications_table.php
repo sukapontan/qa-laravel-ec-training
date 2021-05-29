@@ -14,7 +14,7 @@ class CreateMUserClassificationsTable extends Migration
     public function up()
     {
         Schema::create('m_user_classifications', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('user_classification_name', 32);
             $table->timestamps();
             $table->softDeletes();

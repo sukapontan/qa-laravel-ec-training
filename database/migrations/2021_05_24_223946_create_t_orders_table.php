@@ -14,12 +14,12 @@ class CreateTOrdersTable extends Migration
     public function up()
     {
         Schema::create('t_orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned()->comment('ユーザプライマリー');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->comment('ユーザプライマリー');
             $table->timestamp('order_date')->comment('注文日');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('m_users');
+            $table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
         });
     }
 
