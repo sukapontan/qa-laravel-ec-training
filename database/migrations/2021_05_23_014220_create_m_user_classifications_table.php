@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTPurchasesTable extends Migration
+class CreateMUserClassificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddTPurchasesTable extends Migration
      */
     public function up()
     {
-        Schema::table('t_purchases', function (Blueprint $table) {
-            $table->integer('product_id')->unsigned()->index();
-
-            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
+        Schema::create('m_user_classifications', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_classification_name', 32);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,7 +28,6 @@ class AddTPurchasesTable extends Migration
      */
     public function down()
     {
-        Schema::table('t_purchases', function (Blueprint $table) {
-        });
+        Schema::dropIfExists('m_user_classifications');
     }
 }
