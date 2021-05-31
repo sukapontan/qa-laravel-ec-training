@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('/', function () {
+    return view('cart.error');
+});
+
 Route::prefix('products')->group(function () {
     Route::get('{id}', 'ProductsController@show')->name('products.show');
 });
+
+// TODO auth認証ミドルウェアを適用する必要がある。
+Route::get('cart', 'CartController@index')->name('cart.index');

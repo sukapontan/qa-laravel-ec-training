@@ -4,7 +4,7 @@
         <ul class="list-inline navbar-brand text-dark">
             <li class="navbar bg-faded text-right" style="flex-direction: row-reverse;">Test</li>
             <li class="list-inline-item"><a class="nav-link" href="#">商品検索</a></li>
-            <li class="list-inline-item"><a class="nav-link" href="#">カート</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="{{ route('cart.index') }}">カート</a></li>
             <li class="list-inline-item"><a class="nav-link" href="#">注文履歴</a></li>
             <li class="list-inline-item"><a class="nav-link" href="#">ユーザー情報</a></li>
             <li class="list-inline-item"><a class="nav-link" href="#">ログアウト</a></li>
