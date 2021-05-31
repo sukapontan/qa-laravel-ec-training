@@ -18,29 +18,23 @@
                 <th>個数</th>
                 <th>小計</th>
             </tr>
+            @foreach ($cartProducts as $index => $cartProduct)
             <tr>
-                <td>1</td>
-                <td>商品名1</td>
-                <td>食料品</td>
-                <td>1000円</td>
-                <td><input type="number" min="0" max="5"><span>個</span></td>
-                <td>5000円</td>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $cartProduct['product_name'] }}</td>
+                <td>{{ $cartProduct['category'] }}</td>
+                <td>{{ number_format($cartProduct['price']) }}円</td>
+                <td><input type="number" min="0" max="5" value="{{ $cartProduct['session_quantity'] }}"><span>個</span></td>
+                <td>{{ number_format($cartProduct['subTotal']) }}円</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>商品名2</td>
-                <td>食料品</td>
-                <td>2000円</td>
-                <td><input type="number" min="0" max="5"><span>個</span></td>
-                <td>4000円</td>
-            </tr>
+            @endforeach
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>合計</td>
-                <td>9000円</td>
+                <td>{{ number_format($total) }}円</td>
             </tr>
         </table>
     </div>
