@@ -34,12 +34,13 @@
     </div>
 
     <div class="row mt-5" style="justify-content:center">
-        <form action="" method="post">
+        <form action="{{ route('cart.add', ['product' => $product]) }}" method="post">
+            @csrf
             <div class="input-group">
-            <h2>購入個数</h2>
-            <input class="form-control col-2" type="number" min="1" required>
-            <h2>個</h2>
-            <input type="submit" class="btn btn-primary ml-4" value="カートへ">
+                <h2>購入個数</h2>
+                <input lass="form-control col-2" type="number" min="1" name="quantity" required>
+                <h2>個</h2>
+                <input type="submit" class="btn btn-primary ml-4" value="カートへ">
             </div>
         </form>
     </div>

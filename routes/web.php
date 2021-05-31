@@ -20,4 +20,7 @@ Route::prefix('products')->group(function () {
 });
 
 // TODO auth認証ミドルウェアを適用する必要がある。
-Route::get('cart', 'CartController@index')->name('cart.index');
+Route::prefix('cart')->group(function () {
+    Route::get('/', 'CartController@index')->name('cart.index');
+    Route::post('add/{product}', 'CartController@add')->name('cart.add');
+});
