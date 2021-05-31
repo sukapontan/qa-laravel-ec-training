@@ -8,6 +8,10 @@ use App\Product;
 
 class ProductsController extends Controller
 {
+    /**
+     * 商品検索
+     * @return $datas
+     */
     public function index(Request $request)
     {
         $query = Product::query();
@@ -26,7 +30,22 @@ class ProductsController extends Controller
         }
 
         $datas = $query->paginate(15);
- 
+
         return view('product.search', ['datas' => $datas]);
+    }
+    /**
+     * 商品詳細画面
+     * @param Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        if (!$product) {
+            return view('products.error');
+        }
+
+        return view('products.show', ['product' => $product]);
     }
 }
