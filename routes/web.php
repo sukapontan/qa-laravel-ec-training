@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('products')->group(function () {
+    Route::get('{id}', 'ProductsController@show')->name('products.show');
 });
