@@ -13,10 +13,13 @@ class SaleStatusesTableSeeder extends Seeder
     {
         DB::table('m_sale_statuses')->insert([
             [
-                'sale_status_name' => '準備中',
+                'sale_status_name' => '販売中',
             ],
             [
-                'sale_status_name' => '発送済',
+                'sale_status_name' => '販売終了',
+            ],
+            [
+                'sale_status_name' => '入荷待ち',
             ],
         ]);
     }

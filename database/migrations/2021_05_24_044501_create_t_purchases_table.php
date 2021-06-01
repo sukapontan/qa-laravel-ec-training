@@ -20,9 +20,6 @@ class CreateTPurchasesTable extends Migration
             $table->string('purchase_company', 128);
             $table->timestamp('order_date')->useCurrent();
             $table->timestamp('purchase_date')->useCurrent();
-            $table->integer('product_id')->unsigned()->index();
-
-            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 

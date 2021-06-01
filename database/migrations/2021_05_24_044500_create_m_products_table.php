@@ -23,7 +23,7 @@ class CreateMProductsTable extends Migration
             $table->integer('product_status_id')->unsigned()->index();
             $table->timestamp('regist_date')->useCurrent();
             $table->integer('user_id')->unsigned()->index();
-            $table->char('delete_flag', 1);
+            $table->softDeletes();
 
             $table->foreign('category_id')->references('id')->on('m_categories');
             $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses');

@@ -3,10 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Category;
 
 class Product extends Model
 {
+    use SoftDeletes;
+
+    const CREATED_AT = 'regist_date';
+    const UPDATED_AT = null;
+
     /**
      * 関連テーブル設定
      */
@@ -17,15 +23,9 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'product_name',
-        'category_id',
-        'price',
-        'description',
-        'sale_status_id',
-        'product_status_id',
-        'regist_date',
-        'user_id',
+    protected $guarded = [
+        'id',
+        'regist_date'
     ];
 
     public function category()
