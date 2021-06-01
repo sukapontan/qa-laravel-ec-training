@@ -38,7 +38,7 @@
             @csrf
             <div class="input-group">
                 <h2>購入個数</h2>
-                <input lass="form-control col-2" type="number" min="1" name="quantity" required>
+                <input class="form-control col-2" type="number" min="1" name="quantity" required>
                 <h2>個</h2>
                 <input type="submit" class="btn btn-primary ml-4" value="カートへ">
             </div>
