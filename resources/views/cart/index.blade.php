@@ -26,6 +26,14 @@
                 <td>{{ number_format($cartProduct['price']) }}円</td>
                 <td><input type="number" min="0" max="5" value="{{ $cartProduct['session_quantity'] }}"><span>個</span></td>
                 <td>{{ number_format($cartProduct['subTotal']) }}円</td>
+                <td>
+                    <form action="{{ route('cart.destroy') }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="product_id" value="{{ $cartProduct['session_product_id'] }}">
+                        <button type="submit" class="btn btn-danger">削除</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
             <tr>
@@ -35,6 +43,7 @@
                 <td></td>
                 <td>合計</td>
                 <td>{{ number_format($total) }}円</td>
+                <td></td>
             </tr>
         </table>
     </div>

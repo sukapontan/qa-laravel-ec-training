@@ -83,4 +83,25 @@ class CartController extends Controller
 
         return redirect()->route('cart.index');
     }
+
+    public function delete(Request $request)
+    {
+        // カート内商品情報を取得
+        $cartProducts = $request->session()->get('cartProducts');
+
+        $deleteProducts = [
+            [
+                'session_product_id' => $request->product_id,
+            ],
+        ];
+
+        $deletedCartProducts = array_udiff($cartProducts, $deleteProducts, function ($cartProduct, $deleteProduct) {
+            // セッション商品idで比較し、重複する場合は削除
+            return $cartProduct['session_product_id'] - $deleteProduct['session_product_id'];
+        });
+
+        $request->session()->put('cartProducts', $deletedCartProducts);
+
+        return redirect()->route('cart.index');
+    }
 }
