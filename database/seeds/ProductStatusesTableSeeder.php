@@ -13,13 +13,13 @@ class ProductStatusesTableSeeder extends Seeder
     {
         DB::table('m_product_statuses')->insert([
             [
-                'product_status_name' => '未使用',
+                'product_status_name' => '冷蔵',
             ],
             [
-                'product_status_name' => '中古',
+                'product_status_name' => '常温',
             ],
             [
-                'product_status_name' => 'その他',
+                'product_status_name' => '冷凍',
             ],
         ]);
     }

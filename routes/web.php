@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('products')->group(function () {
+    Route::get('/', 'ProductsController@index')->name('product.index');
     Route::get('{id}', 'ProductsController@show')->name('products.show');
 });
 
