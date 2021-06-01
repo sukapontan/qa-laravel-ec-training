@@ -24,7 +24,7 @@
                 <td>{{ $cartProduct['product_name'] }}</td>
                 <td>{{ $cartProduct['category'] }}</td>
                 <td>{{ number_format($cartProduct['price']) }}円</td>
-                <td><input type="number" min="0" max="5" value="{{ $cartProduct['session_quantity'] }}"><span>個</span></td>
+                <td>{{ $cartProduct['session_quantity'] }}<span>個</span></td>
                 <td>{{ number_format($cartProduct['subTotal']) }}円</td>
                 <td>
                     <form action="{{ route('cart.destroy') }}" method="post">
