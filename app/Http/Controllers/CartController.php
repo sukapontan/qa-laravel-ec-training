@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CartAddRequest;
 use App\User;
 use App\Product;
 
@@ -46,7 +47,7 @@ class CartController extends Controller
         return view('cart.index', compact('user', 'cartProducts', 'total'));
     }
 
-    public function add(Product $product, Request $request)
+    public function add(Product $product, CartAddRequest $request)
     {
         $cartProduct = [
             'session_product_id' => $product->id,
