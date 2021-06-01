@@ -25,7 +25,7 @@ class ProductsController extends Controller
         }
 
         //カテゴリーの値が存在&カテゴリーの値が0ではなかった場合
-        if ($request->has('category_id') && $category_id !== ('0')) {
+        if ($request->has('category_id') && $category_id !== '0') {
             $query->where('category_id', $category_id)->get();
         }
 
