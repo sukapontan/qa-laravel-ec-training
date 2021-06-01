@@ -49,7 +49,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <a href="#" class="btn btn-info">買い物を続ける</a>
+        <a href="{{ route('product.index') }}" class="btn btn-info">買い物を続ける</a>
         <div class="col-4 align-self-center">
         </div>
         <a href="#" class="btn btn-primary">注文を確定する</a>

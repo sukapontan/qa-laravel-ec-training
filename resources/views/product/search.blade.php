@@ -82,9 +82,7 @@
                             <td>{{ $data->product_name}}</td>
                             <td>{{ $data->category->category_name}}</td>
                             <td>{{ $data->price}}</td>
-                            <td type="submit" name="name" value="商品詳細" class="btn btn-primary">
-                                商品詳細
-                            </td>
+                            <td><a href="{{ route('product.show', ['id' => $data->id]) }}" class="btn btn-primary">商品詳細</a></td>
                         </tr>
                         @endforeach
                     </tbody>
