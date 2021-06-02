@@ -54,18 +54,16 @@ class CartController extends Controller
             'session_quantity' => (int)$request->quantity,
         ];
 
-        if (!$request->session()->has('cartProducts')) {
-            // カート内に商品が存在しない場合
-            // セッションに商品を追加
-            $request->session()->push('cartProducts', $cartProduct);
-        } else {
+        // カート内に商品が存在する場合
+        if ($request->session()->has('cartProducts')) {
             // カート内商品情報を取得
             $sessionCartProducts = $request->session()->get('cartProducts');
 
             // 同一商品存在判定フラグ
             $isSameProduct = false;
+
             foreach ($sessionCartProducts as $index => $sessionCartProduct) {
-                // カート内に商品が存在する場合
+                // 同一商品が存在する場合
                 if ($product->id == $sessionCartProduct['session_product_id']) {
                     // 個数を合算して、セッションに保存
                     $sessionQuantity = (int)$sessionCartProduct['session_quantity'] + (int)$request->quantity;
@@ -80,6 +78,12 @@ class CartController extends Controller
                 // セッションに商品を追加
                 $request->session()->push('cartProducts', $cartProduct);
             }
+        }
+
+        // カート内に商品が存在しない場合
+        if (!$request->session()->has('cartProducts')) {
+            // セッションに商品を追加
+            $request->session()->push('cartProducts', $cartProduct);
         }
 
         return redirect()->route('cart.index');
