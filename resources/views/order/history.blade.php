@@ -42,15 +42,15 @@
                     <td>
                         <p>注文日時: {{$order->updated_at->format('Y/m/d')}}</p>
                         <p>注文状態:
-                            @foreach($order->orderDetails as $orderDetail)
-                            @if($orderDetail->shipmentStatus->shipment_status_name="1")
+                        @foreach($order->orderDetails as $key =>$orderDetail)
+                            @if($orderDetail->shipmentStatus->shipment_status_name==='1')
                             発送前
-                            @elseif($orderDetail->shipmentStatus->shipment_status_name="2")
+                            @elseif($orderDetail->shipmentStatus->shipment_status_name==='2')
                             発送中
                             @else
                             発送済み
                             @endif
-                            @endforeach
+                        @endforeach
                         </p>
                     </td>
                     <td type="submit" name="name" value="詳細" class="btn btn-primary">
