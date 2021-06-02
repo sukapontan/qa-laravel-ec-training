@@ -23,5 +23,12 @@ class OrdersTableSeeder extends Seeder
                 ]
             );
         }
+        for ($i = 0; $i < 30; $i++) {
+            Order::create(
+                [
+                    'user_id' => 1,
+                ]
+            );
+        }
     }
 }

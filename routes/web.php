@@ -15,3 +15,6 @@ Route::prefix('products')->group(function () {
     Route::get('/', 'ProductsController@index')->name('product.index');
     Route::get('{id}', 'ProductsController@show')->name('products.show');
 });
+
+Route::get('orderHistory', 'OrdersController@index')->name('order.index');
+Route::get('orderHistory/three', 'OrdersController@threeSeach')->name('order.threeSeach');
