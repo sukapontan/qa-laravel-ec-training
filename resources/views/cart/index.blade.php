@@ -5,6 +5,15 @@
 @section('content')
 <div class="container">
 
+    <div class="col-md-8 col-md-2 mx-auto m-3">
+        @if (session('message'))
+            <div class="alert alert-danger error">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
+
+
     {{-- お届け先情報 --}}
     @include('cart.address')
 
