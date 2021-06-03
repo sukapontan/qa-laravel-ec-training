@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\OrderDetail;
+use App\Product;
 
 class Order extends Model
 {
@@ -27,8 +27,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orderDetails()
+    public function products()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->belongsToMany(Product::class, 't_order_details', 'order_id', 'products_id')->withTimestamps();
     }
 }
