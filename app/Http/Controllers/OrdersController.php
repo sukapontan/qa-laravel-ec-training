@@ -22,12 +22,17 @@ class OrdersController extends Controller
             // TODO 認証ユーザを返す必要がある。
             $user = User::find(1);
 
+            // カート情報が存在しない場合
+            if (!$request->session()->has('cartProducts')) {
+                $request->session()->forget('cartProducts');
+                return redirect()->route('cart.index');
+            }
+
             // カート内商品情報を取得
             $cartProducts = $request->session()->get('cartProducts');
 
-            // カートが空の場合、空画面へ遷移
-            if (!$request->session()->has('cartProducts') || empty($cartProducts)) {
-                // カート内商品情報を削除
+            // カート内商品情報が存在しない場合
+            if (empty($cartProducts)) {
                 $request->session()->forget('cartProducts');
                 return redirect()->route('cart.index');
             }
