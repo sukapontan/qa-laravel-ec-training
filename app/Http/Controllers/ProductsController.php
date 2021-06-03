@@ -43,9 +43,9 @@ class ProductsController extends Controller
         $product = Product::find($request->id);
 
         if (!$product) {
-            return view('products.error');
+            return view('product.error');
         }
 
-        return view('products.show', ['product' => $product]);
+        return view('product.show', ['product' => $product]);
     }
 }

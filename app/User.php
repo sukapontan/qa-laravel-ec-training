@@ -57,4 +57,39 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function getZipcodeAttribute($value) :string
+    {
+        $zipHigh = substr($value, 0, 3);
+        $zipLow = substr($value, 3, 4);
+        return $zipHigh.'-'.$zipLow;
+    }
+
+    public function getPhoneNumberAttribute($value) :string
+    {
+        $telHigh = substr($value, 0, 3);
+        $telMiddle = substr($value, 3, 4);
+        $telLow = substr($value, 4, 4);
+        return $telHigh.'-'.$telMiddle.'-'.$telLow;
+    }
+
+    /**
+     * フル住所を取得
+     *
+     * @return string
+     */
+    public function getFullAddress() :string
+    {
+        return $this->prefecture.$this->municipality." ".$this->address.$this->apartments;
+    }
+
+    /**
+     * フル氏名を取得
+     *
+     * @return string
+     */
+    public function getFullName() :string
+    {
+        return $this->last_name." ".$this->first_name;
+    }
 }
