@@ -5,6 +5,15 @@
 @section('content')
 <div class="container">
 
+    <div class="col-md-8 col-md-2 mx-auto m-3">
+        @if (session('message'))
+            <div class="alert alert-danger error">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
+
+
     {{-- お届け先情報 --}}
     @include('cart.address')
 
@@ -52,7 +61,10 @@
         <a href="{{ route('product.index') }}" class="btn btn-info">買い物を続ける</a>
         <div class="col-4 align-self-center">
         </div>
-        <a href="#" class="btn btn-primary">注文を確定する</a>
+        <form action="{{ route('order.store') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-primary">注文を確定する</button>
+        </form>
     </div>
 
 </div>

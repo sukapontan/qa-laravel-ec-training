@@ -19,7 +19,7 @@ class OrderDetailsTableSeeder extends Seeder
         foreach ($orders as $order) {
             OrderDetail::create(
                 [
-                    'products_id' => rand(1, 10),
+                    'product_id' => rand(1, 10),
                     'order_id' => $order->id,
                     'shipment_status_id' => rand(1, 3),
                     'order_detail_number' => Str::random(64),

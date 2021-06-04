@@ -26,3 +26,7 @@ Route::prefix('cart')->group(function () {
     Route::post('add/{product}', 'CartController@add')->name('cart.add');
     Route::delete('/', 'CartController@delete')->name('cart.destroy');
 });
+
+Route::prefix('order')->group(function () {
+    Route::post('/', 'OrdersController@store')->name('order.store');
+});
