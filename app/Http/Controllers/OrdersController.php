@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Order;
+use App\OrderDetail;
 use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
@@ -16,46 +17,44 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO 認証ユーザを返す必要がある。
+        $user = User::find(1);
+
+        // カート情報が存在しない場合
+        if (!$request->session()->has('cartProducts')) {
+            return redirect()->route('cart.index');
+        }
+
+        // カート内商品情報を取得
+        $cartProducts = $request->session()->get('cartProducts');
+
+        // カート内商品情報が存在しない場合
+        if (empty($cartProducts)) {
+            $request->session()->forget('cartProducts');
+            return redirect()->route('cart.index');
+        }
+
         DB::beginTransaction();
 
         try {
-            // TODO 認証ユーザを返す必要がある。
-            $user = User::find(1);
-
-            // カート情報が存在しない場合
-            if (!$request->session()->has('cartProducts')) {
-                $request->session()->forget('cartProducts');
-                return redirect()->route('cart.index');
-            }
-
-            // カート内商品情報を取得
-            $cartProducts = $request->session()->get('cartProducts');
-
-            // カート内商品情報が存在しない場合
-            if (empty($cartProducts)) {
-                $request->session()->forget('cartProducts');
-                return redirect()->route('cart.index');
-            }
-
             // 注文情報をDBに保存
             $order = Order::create([
                 'user_id' => $user->id,
             ]);
 
             // 注文番号取得
-            $orderDetailNumber = $this->getOrderDetailNumber();
+            $orderDetailNumber = $this->getOrderDetailNumber($user->id);
 
             // 注文詳細情報をDBに保存
+            $orderDetail = new OrderDetail();
             foreach ($cartProducts as $cartProduct) {
-                $order->products()->attach(
-                    $order->id,
-                    [
-                        'products_id' => $cartProduct['session_product_id'],
-                        'shipment_status_id' => config('consts.common.SHIPMENT_STATUSES.before_shipping.value'),
-                        'order_detail_number' => $orderDetailNumber,
-                        'order_quantity' => $cartProduct['session_quantity'],
-                    ]
-                );
+                $orderDetail->create([
+                    'order_id' => $order->id,
+                    'products_id' => $cartProduct['session_product_id'],
+                    'shipment_status_id' => config('consts.common.SHIPMENT_STATUSES.before_shipping.value'),
+                    'order_detail_number' => $orderDetailNumber,
+                    'order_quantity' => $cartProduct['session_quantity'],
+                ]);
             }
 
             DB::commit();
@@ -75,8 +74,8 @@ class OrdersController extends Controller
      *
      * @return string
      */
-    private function getOrderDetailNumber() :string
+    private function getOrderDetailNumber($user_id) :string
     {
-        return str_pad(rand(0, 9999999999), 10, '0');
+        return str_pad($user_id, 10, '0', STR_PAD_LEFT)."-".date('YmdHis');
     }
 }
