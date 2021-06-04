@@ -50,7 +50,7 @@ class OrdersController extends Controller
             foreach ($cartProducts as $cartProduct) {
                 $orderDetail->create([
                     'order_id' => $order->id,
-                    'products_id' => $cartProduct['session_product_id'],
+                    'product_id' => $cartProduct['session_product_id'],
                     'shipment_status_id' => config('consts.common.SHIPMENT_STATUSES.before_shipping.value'),
                     'order_detail_number' => $orderDetailNumber,
                     'order_quantity' => $cartProduct['session_quantity'],

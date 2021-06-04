@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
+use App\Product;
 
 class OrderDetail extends Model
 {
@@ -17,11 +19,21 @@ class OrderDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'products_id',
+        'product_id',
         'order_id',
         'shipment_status_id',
         'order_detail_number',
         'order_quantity',
         'shipment_date',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
