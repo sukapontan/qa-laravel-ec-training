@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('cart.error');
+    return view('top');
 });
 
 Route::prefix('products')->group(function () {
