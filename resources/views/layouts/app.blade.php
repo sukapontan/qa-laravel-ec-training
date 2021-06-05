@@ -18,11 +18,7 @@
 </head>
 
 <body>
-    @unless(Request::is(['/','login','signup']))
-        @include('common.header')
-    @endunless
-
-    @include('common.top-header')
+    @include('common.header')
 
     @yield('content')
 
