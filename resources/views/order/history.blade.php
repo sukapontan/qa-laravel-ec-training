@@ -3,7 +3,12 @@
 @section('content')
 <div class="container">
     <div class="panel panel-default">
-        <h2><span class="panel-heading badge badge-secondary mt-3 mb-2"><a href="{{route('order.threeSeach')}}">直近3か月の注文を表示</a></span></h2>
+        <h2><span class="panel-heading badge badge-secondary mt-3 mb-2">
+                <a href="{{route('order.index',['id'=>1])}}">全ての注文を表示</a>
+                
+                <a href="{{route('order.threeSeach',['id'=>3])}}">直近3か月の注文を表示</a>
+            </span>
+        </h2>
         <div class="panel-body">
         </div>
         <table class="table">
@@ -42,7 +47,7 @@
                     <td>
                         <p>注文日時: {{$order->updated_at->format('Y/m/d')}}</p>
                         <p>注文状態:
-                        @foreach($order->orderDetails as $key =>$orderDetail)
+                            @foreach($order->orderDetails as $key =>$orderDetail)
                             @if($orderDetail->shipmentStatus->shipment_status_name==='1')
                             発送前
                             @elseif($orderDetail->shipmentStatus->shipment_status_name==='2')
@@ -50,7 +55,7 @@
                             @else
                             発送済み
                             @endif
-                        @endforeach
+                            @endforeach
                         </p>
                     </td>
                     <td type="submit" name="name" value="詳細" class="btn btn-primary">
