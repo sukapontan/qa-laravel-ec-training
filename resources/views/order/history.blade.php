@@ -4,21 +4,15 @@
 <div class="container">
     <div class="panel panel-default">
         <h2><span class="panel-heading badge badge-secondary mt-3 mb-2">
-                <!-- <a href="{{route('order.index',['id'=>1])}}">全ての注文を表示</a>
-                <a href="{{route('order.threeSeach',['id'=>3])}}">直近3か月の注文を表示</a> -->
                 @foreach($idArray as $id)
-                @if($id=='3')
-                <a href="{{route('order.index',['id'=>1])}}">全ての注文を表示</a>
+                @if($id === 'three')
+                <a href="{{route('order.all',['id'=>'all'])}}">全ての注文を表示</a>
                 @endif
 
-                @if($id=='1')
-                <a href="{{route('order.threeSeach',['id'=>3])}}">直近3か月の注文を表示</a>
+                @if($id === 'all')
+                <a href="{{route('order.threeSeach',['id'=>'three'])}}">直近3か月の注文を表示</a>
                 @endif
                 @endforeach
-
-               
-
-
             </span>
         </h2>
         <div class="panel-body">
