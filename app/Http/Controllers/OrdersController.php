@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Order;
 use App\OrderDetail;
+use App\Product;
 use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
@@ -102,8 +103,40 @@ class OrdersController extends Controller
      *
      * @return string
      */
-    private function getOrderDetailNumber($user_id) :string
+    private function getOrderDetailNumber($user_id): string
     {
-        return str_pad($user_id, 10, '0', STR_PAD_LEFT)."-".date('YmdHis');
+        return str_pad($user_id, 10, '0', STR_PAD_LEFT) . "-" . date('YmdHis');
+    }
+
+    /**
+     * 商品詳細
+     *
+     */
+    public function details($id)
+    {
+        $order = Order::findOrFail($id);
+        
+        //注文詳細
+        $details = $order->orderDetails;
+        foreach ($details as $detail) {
+            $product_id = $detail->product_id;
+            $order_quantity = $detail->order_quantity;
+            $order_detail_number = $detail->order_detail_number;
+        }
+        
+        //ユーザーIDと注文番号で一致
+        // $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')->get();
+        
+        
+        // 商品
+        $product = Product::findOrFail($product_id);
+        //ユーザー
+        $user = $order->user;
+
+        //合計
+        $price = $product->price;
+        $total = $price * $order_quantity;
+
+        return view('order.details', ['user' => $user, 'details' => $details, 'product' => $product, 'total' => $total]);
     }
 }
