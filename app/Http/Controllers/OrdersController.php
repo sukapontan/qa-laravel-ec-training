@@ -10,8 +10,8 @@ class OrdersController extends Controller
 {
     public function index($id)
     {
+        $idArray = array('id' => $id);
         if ($id === '3') {
-            $idArray = array('id' => $id);
             $carbon = new Carbon();
             $now = $carbon->now();
             $threeMonth = $carbon->subMonth(3);
@@ -21,17 +21,14 @@ class OrdersController extends Controller
                 ->with(['user', 'orderDetails.shipmentStatus'])
                 ->orderBy('id', 'desc')
                 ->paginate(15);
-
             return view('order.history', ['orders' => $orders, 'idArray' => $idArray]);
         } else {
-            $array = array('id' => $id);
-
             //仮でユーザー１の注文履歴表示(threeSeach()も同様)
             $orders = Order::where('user_id', 1)
                 ->with(['user', 'orderDetails.shipmentStatus'])
                 ->orderBy('id', 'desc') //順番が分かりづらいためid1でソート(threeSeach()も同様)
                 ->paginate(15);
-            return view('order.history', ['orders' => $orders,'array' => $array]);
+            return view('order.history', ['orders' => $orders,'idArray' => $idArray]);
         }
     }
 
