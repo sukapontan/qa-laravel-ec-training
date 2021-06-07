@@ -30,3 +30,6 @@ Route::prefix('cart')->group(function () {
 Route::prefix('order')->group(function () {
     Route::post('/', 'OrdersController@store')->name('order.store');
 });
+
+Route::get('orderHistory{all}', 'OrdersController@index')->name('order.all');
+Route::get('orderHistory{three}', 'OrdersController@index')->name('order.threeSeach');
