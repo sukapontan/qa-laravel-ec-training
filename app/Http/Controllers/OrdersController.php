@@ -115,7 +115,7 @@ class OrdersController extends Controller
     public function details($id)
     {
         $order = Order::findOrFail($id);
-        
+
         //注文詳細
         $details = $order->orderDetails;
         foreach ($details as $detail) {
@@ -123,11 +123,12 @@ class OrdersController extends Controller
             $order_quantity = $detail->order_quantity;
             $order_detail_number = $detail->order_detail_number;
         }
-        
+
         //ユーザーIDと注文番号で一致
-        // $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')->get();
-        
-        
+        $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
+            ->with('product')
+            ->get();
+
         // 商品
         $product = Product::findOrFail($product_id);
         //ユーザー
