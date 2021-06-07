@@ -129,15 +129,9 @@ class OrdersController extends Controller
             ->with('product')
             ->get();
 
-        // 商品
-        $product = Product::findOrFail($product_id);
         //ユーザー
         $user = $order->user;
 
-        //合計
-        $price = $product->price;
-        $total = $price * $order_quantity;
-
-        return view('order.details', ['user' => $user, 'details' => $details, 'product' => $product, 'total' => $total]);
+        return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails]);
     }
 }

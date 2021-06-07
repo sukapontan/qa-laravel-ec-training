@@ -19,9 +19,6 @@
         <p>注文番号：
             {{$detail->order_detail_number}}
         </p>
-        <p>注文状態：
-            {{$detail->shipment_status_id}}
-        </p>
         @endforeach
     </div>
     <div class="text-right px-3 my-3">
@@ -40,17 +37,24 @@
             </tr>
         </thead>
         <tbody class="text-center border-bottom">
-
+        @foreach($userDetails as $userDetail)
+            @php
+            $total=$userDetail->product->price * $userDetail->order_quantity;
+            @endphp
             <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->product_name}}</td>
-                <td>{{$product->category->category_name}}</td>
-                <td>{{$product->price}}</td>
-                @foreach($details as $detail)
-                <td>{{$detail->order_quantity}}</td>
-                @endforeach
+                @if($userDetail->shipment_status_id === 2)
+                <td>{{$userDetail->product->id}}</td>
+                <td>{{$userDetail->product->product_name}}</td>
+                <td>{{$userDetail->product->category->category_name}}</td>
+                <td>{{$userDetail->product->price}}</td>
+                <td>{{$userDetail->order_quantity}}</td>
                 <td>{{$total}}</td>
+                <td>
+                注文状態:発送中
+                </td>
+                @endif
             </tr>
+        @endforeach
 
         </tbody>
         <tbody class="text-center">
