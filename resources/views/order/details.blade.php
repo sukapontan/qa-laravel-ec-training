@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody class="text-center border-bottom">
-        @foreach($userDetails as $userDetail)
+            @foreach($userDetails as $userDetail)
             @php
             $total=$userDetail->product->price * $userDetail->order_quantity;
             @endphp
@@ -50,15 +50,19 @@
                 <td>{{$userDetail->order_quantity}}</td>
                 <td>{{$total}}</td>
                 <td>
-                注文状態:発送中
+                    注文状態:発送中
                 </td>
+                @else
+                発送中の注文は見つかりません。<br>
+                注文履歴に戻り、やり直してください。
                 @endif
             </tr>
-        @endforeach
+            @endforeach
 
         </tbody>
         <tbody class="text-center">
             <tr>
+                @if($userDetail->shipment_status_id === 2)
                 <td></td>
                 <td></td>
                 <td></td>
@@ -67,11 +71,13 @@
                 <td>{{$totalprice}}円</td>
                 <td></td>
                 <td></td>
+                @endif
             </tr>
+
         </tbody>
     </table>
     <div class="text-right px-3 my-3">
-        <a href="" class="btn btn-primary">注文履歴に戻る</a>
+        <a href="{{route('order.all',['id'=>'all'])}}" class="btn btn-primary">注文履歴に戻る</a>
     </div>
 </div>
 
