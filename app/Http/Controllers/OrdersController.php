@@ -123,15 +123,22 @@ class OrdersController extends Controller
             $order_quantity = $detail->order_quantity;
             $order_detail_number = $detail->order_detail_number;
         }
-
         //ユーザーIDと注文番号で一致
         $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
             ->with('product')
             ->get();
 
+            $totalprice = 0;
+        foreach ($userDetails as $userDetail) {
+            $price = $userDetail->product['price'];
+            $order_quantity = $userDetail['order_quantity'];
+            $total = $price * $order_quantity;
+            $totalprice += $total;
+        }
+
         //ユーザー
         $user = $order->user;
 
-        return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails]);
+        return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails,'totalprice'=>$totalprice]);
     }
 }

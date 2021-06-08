@@ -64,7 +64,7 @@
                 <td></td>
                 <td></td>
                 <td>合計 </td>
-                <td>円</td>
+                <td>{{$totalprice}}円</td>
                 <td></td>
                 <td></td>
             </tr>
