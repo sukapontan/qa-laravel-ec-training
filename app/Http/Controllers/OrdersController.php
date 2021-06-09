@@ -115,7 +115,6 @@ class OrdersController extends Controller
     public function details($id)
     {
         $order = Order::findOrFail($id);
-
         //注文詳細
         $details = $order->orderDetails;
         foreach ($details as $detail) {
@@ -128,7 +127,8 @@ class OrdersController extends Controller
             ->with('product')
             ->get();
 
-            $totalprice = 0;
+
+        $totalprice = 0;
         foreach ($userDetails as $userDetail) {
             $price = $userDetail->product['price'];
             $order_quantity = $userDetail['order_quantity'];
@@ -138,7 +138,39 @@ class OrdersController extends Controller
 
         //ユーザー
         $user = $order->user;
+        return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails, 'totalprice' => $totalprice]);
+    }
 
-        return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails,'totalprice'=>$totalprice]);
+    /**
+     * 注文キャンセル
+     *
+     */
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+        //注文詳細
+        $details = $order->orderDetails;
+        foreach ($details as $detail) {
+            $product_id = $detail->product_id;
+            $order_quantity = $detail->order_quantity;
+            $order_detail_number = $detail->order_detail_number;
+        }
+        //ユーザーIDと注文番号で一致
+        $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
+            ->with('order')
+            ->get();
+
+        foreach ($userDetails as $userDetail) {
+            $id = $userDetail->order['id'];
+
+            $as = Order::find([$id]);
+            foreach ($as as $a) {
+                $b = $a->delete();
+                echo $b;
+            }
+        }
+
+
+        return view('order.details');
     }
 }
