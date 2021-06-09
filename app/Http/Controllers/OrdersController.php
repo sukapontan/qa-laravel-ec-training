@@ -115,6 +115,7 @@ class OrdersController extends Controller
     public function details($id)
     {
         $order = Order::findOrFail($id);
+
         //注文詳細
         $details = $order->orderDetails;
         foreach ($details as $detail) {
@@ -122,12 +123,13 @@ class OrdersController extends Controller
             $order_quantity = $detail->order_quantity;
             $order_detail_number = $detail->order_detail_number;
         }
+
         //ユーザーIDと注文番号で一致
         $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
             ->with('product')
             ->get();
 
-
+        // 合計
         $totalprice = 0;
         foreach ($userDetails as $userDetail) {
             $price = $userDetail->product['price'];
@@ -138,6 +140,7 @@ class OrdersController extends Controller
 
         //ユーザー
         $user = $order->user;
+
         return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails, 'totalprice' => $totalprice]);
     }
 
@@ -148,6 +151,7 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         $order = Order::findOrFail($id);
+
         //注文詳細
         $details = $order->orderDetails;
         foreach ($details as $detail) {
@@ -155,22 +159,21 @@ class OrdersController extends Controller
             $order_quantity = $detail->order_quantity;
             $order_detail_number = $detail->order_detail_number;
         }
+
         //ユーザーIDと注文番号で一致
         $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
-            ->with('order')
+            ->with('product')
             ->get();
 
+        // 削除
         foreach ($userDetails as $userDetail) {
             $id = $userDetail->order['id'];
+            $orders = Order::findOrFail([$id]);
 
-            $as = Order::find([$id]);
-            foreach ($as as $a) {
-                $b = $a->delete();
-                echo $b;
+            foreach ($orders as $order) {
+                $order->delete();
             }
         }
-
-
         return view('order.details');
     }
 }
