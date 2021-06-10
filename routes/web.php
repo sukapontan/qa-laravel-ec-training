@@ -34,4 +34,4 @@ Route::prefix('order')->group(function () {
 Route::get('orderHistory{all}', 'OrdersController@index')->name('order.all');
 Route::get('orderHistory{three}', 'OrdersController@index')->name('order.threeSeach');
 
-Route::get('user/{id}','UserController@show')->name('user.show');
+Route::get('users/{id}','UsersController@show')->name('user.show');

@@ -10,13 +10,13 @@
     </div>
     <div class="row mb-5 h4">
       <div class="col-sm-4 col-5 text-center">氏名</div>
-      <div class="col-sm-4 col-5">{{ $user->last_name }} {{ $user->first_name }}</div>
+      <div class="col-sm-4 col-5">{{ $user->fullName }}</div>
     </div>
     <div class="row mb-5 h4">
       <div class="col-sm-4 col-5 text-center">住所</div>
       <div class="col-sm-4 col-5">
         <p>〒{{ $user->zipcode }}</p>
-        <p>{{ $user->prefecture }} {{ $user->municipality }} {{ $user->address }} {{ $user->apartments }}</p>
+        <p>{{ $user->fullAddress }}</p>
       </div>
     </div>
     <div class="row mb-5 h4">
