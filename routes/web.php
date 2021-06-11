@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('top');
 });
 
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::prefix('products')->group(function () {
     Route::get('/', 'ProductsController@index')->name('product.index');
     Route::get('{id}', 'ProductsController@show')->name('product.show');

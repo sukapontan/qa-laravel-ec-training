@@ -22,7 +22,7 @@
         </a>
         <ul class="list-inline navbar-brand text-dark">
             <li class="list-inline-item">
-                <a class="nav-link" href="#">ログイン</a>
+                <a class="nav-link" href="login">ログイン</a>
             </li>
             <li class="list-inline-item">
                 <a class="nav-link" href="#">新規登録</a>
