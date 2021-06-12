@@ -34,4 +34,8 @@ Route::prefix('order')->group(function () {
 Route::get('orderHistory{all}', 'OrdersController@index')->name('order.all');
 Route::get('orderHistory{three}', 'OrdersController@index')->name('order.threeSeach');
 
-Route::get('users/{id}','UsersController@show')->name('user.show');
+
+    Route::get('users/{id}','UsersController@show')->name('user.show');
+    Route::get('edit/{id}','UsersController@getEdit')->name('user.edit');
+    Route::put('update/{id}','UsersController@postEdit')->name('user.postEdit');
+    Route::delete('destroy/{id}','UsersController@destroy')->name('user.destroy');

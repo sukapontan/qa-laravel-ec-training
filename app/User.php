@@ -47,6 +47,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+    
+    
+    protected $dates = [
+        'deleted_at'
+    ];
+
 
     public function userClassification()
     {

@@ -28,7 +28,7 @@
       <div class="col-sm-4 col-5">{{$user->email  }}</div>
     </div>
     <div class="text-center col-auto px-3 my-3">
-      <a href="" class="btn btn-primary col-auto">修正/退会する</a>
+      <a href="{{ route('user.edit',$user->id) }}" class="btn btn-primary col-auto">修正/退会する</a>
     </div>
   </div>
 
