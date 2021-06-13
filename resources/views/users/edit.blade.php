@@ -14,11 +14,11 @@
         <label class="col-sm-2 text-sm-center offset-sm-1">氏名</label>
         <label class="col-sm-1 text-sm-right col-2 col-form-label">姓</label>
         <div class="col-sm-2">
-          <input type="text" class="form-control" name="last_name" value="{{ old('last_name',$user->last_name) }}" placeholder="探求">
+          <input type="text" class="form-control" name="last_name" value="{{ old('last_name',$user->last_name) }}" placeholder="◯◯">
         </div>
         <label class="col-sm-1 text-sm-right col-2 col-form-label">名</label>
         <div class="col-sm-2">
-          <input type="text" class="form-control"  name="first_name" value="{{ old('first_name',$user->first_name) }}" placeholder="学">
+          <input type="text" class="form-control"  name="first_name" value="{{ old('first_name',$user->first_name) }}" placeholder="XX">
         </div>
       </div>
 

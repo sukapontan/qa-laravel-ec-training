@@ -20,18 +20,14 @@ class UsersController extends Controller
         //ログインしているアカウント出ない場合検索画面にリダイレクト
         //if($user->id != Auth::id()){
             //return redirect()->route('product.index')->with('message','不適切なURLです');
-        //}else{
             return view('users.show',['user'=> $user]);   
-        //}
     }
     public function getEdit($id){
         
         $user = User::findOrFail($id);
         // if($user->id != Auth::id()){
         //     return redirect()->route('product.index')->with('message','不適切なURLです');
-        // }else{
             return view('users.edit',['user'=>$user]);
-        // }
     } 
     
     public function postEdit(UserRequest $request, $id){
@@ -40,8 +36,6 @@ class UsersController extends Controller
         
         // if($user->id != Auth::id()){
         //     return redirect()->route('product.index')->with('message','不適切なURLです');
-        // }else{
-        
         
         $user->last_name = $request->last_name;
         $user->first_name = $request->first_name;
@@ -55,7 +49,6 @@ class UsersController extends Controller
         $user->save();
         
         return redirect()->route('user.show',$user->id);
-        // }
     } 
     
     public function destroy($id){

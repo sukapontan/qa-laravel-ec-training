@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
         'prefecture'=>['required','string','max:5'],
         'municipality' =>['required','string','max:10'],
         'address' =>['required','string','max:15'],
-        'email' =>['email','string',Rule::unique('m_users')->ignore($this->id)],
+        'email' =>['email',Rule::unique('m_users')->ignore($this->id)],
         'phone_number'=>['required','string','alpha_dash','max:15'],
         ];
     }
