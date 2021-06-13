@@ -73,7 +73,7 @@
 
         </tbody>
         <tbody class="text-center">
-            @if(isset($userDetail))
+            @if(isset($userDetails))
             <tr>
                 @if($userDetail->shipment_status_id === 1)
                 <td></td>

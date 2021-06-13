@@ -124,18 +124,20 @@ class OrdersController extends Controller
             $order_detail_number = $detail->order_detail_number;
         }
 
-        //ユーザーIDと注文番号で一致
-        $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
+        //ユーザーIDと注文番号で一致している注文詳細表示
+        $userDetails = OrderDetail::where('order_detail_number', $order_detail_number)
             ->with('product')
             ->get();
 
         // 合計
         $totalprice = 0;
         foreach ($userDetails as $userDetail) {
-            $price = $userDetail->product['price'];
-            $order_quantity = $userDetail['order_quantity'];
-            $total = $price * $order_quantity;
-            $totalprice += $total;
+            if ($userDetail->shipment_status_id === 1) {
+                $price = $userDetail->product['price'];
+                $order_quantity = $userDetail['order_quantity'];
+                $total = $price * $order_quantity;
+                $totalprice += $total;
+            }
         }
 
         //ユーザー
@@ -161,7 +163,7 @@ class OrdersController extends Controller
         }
 
         //ユーザーIDと注文番号で一致
-        $userDetails = OrderDetail::where('order_detail_number', 'like', '%' . $order_detail_number . '%')
+        $userDetails = OrderDetail::where('order_detail_number', $order_detail_number)
             ->with('product')
             ->get();
 
