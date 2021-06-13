@@ -50,18 +50,18 @@
             </tr>
         </thead>
         <tbody class="text-center border-bottom">
-            @if(isset($userDetails))
-            @foreach($userDetails as $userDetail)
+            @if(isset($orderquantityMatchs))
+            @foreach($orderquantityMatchs as $orderquantityMatch)
             @php
-            $total=$userDetail->product->price * $userDetail->order_quantity;
+            $total=$orderquantityMatch->product->price * $orderquantityMatch->order_quantity;
             @endphp
             <tr>
-                @if($userDetail->shipment_status_id === 1)
-                <td>{{$userDetail->product->id}}</td>
-                <td>{{$userDetail->product->product_name}}</td>
-                <td>{{$userDetail->product->category->category_name}}</td>
-                <td>{{$userDetail->product->price}}</td>
-                <td>{{$userDetail->order_quantity}}</td>
+                @if($orderquantityMatch->shipment_status_id === 1)
+                <td>{{$orderquantityMatch->product->id}}</td>
+                <td>{{$orderquantityMatch->product->product_name}}</td>
+                <td>{{$orderquantityMatch->product->category->category_name}}</td>
+                <td>{{$orderquantityMatch->product->price}}</td>
+                <td>{{$orderquantityMatch->order_quantity}}</td>
                 <td>{{$total}}</td>
                 <td>
                     注文状態:発送前
@@ -73,15 +73,15 @@
 
         </tbody>
         <tbody class="text-center">
-            @if(isset($userDetails))
+            @if(isset($orderquantityMatchs))
             <tr>
-                @if($userDetail->shipment_status_id === 1)
+                @if($orderquantityMatch->shipment_status_id === 1)
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>合計 </td>
-                <td>{{$totalprice}}円</td>
+                <td>{{$totalPrice}}円</td>
                 <td></td>
                 <td></td>
                 @else

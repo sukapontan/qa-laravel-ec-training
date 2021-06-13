@@ -103,9 +103,9 @@ class OrdersController extends Controller
      *
      * @return string
      */
-    private function getOrderDetailNumber($user_id): string
+    private function getOrderDetailNumber($user_id) :string
     {
-        return str_pad($user_id, 10, '0', STR_PAD_LEFT) . "-" . date('YmdHis');
+        return str_pad($user_id, 10, '0', STR_PAD_LEFT)."-".date('YmdHis');
     }
 
     /**
@@ -125,25 +125,25 @@ class OrdersController extends Controller
         }
 
         //ユーザーIDと注文番号で一致している注文詳細表示
-        $userDetails = OrderDetail::where('order_detail_number', $order_detail_number)
+        $orderquantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
             ->with('product')
             ->get();
 
         // 合計
-        $totalprice = 0;
-        foreach ($userDetails as $userDetail) {
-            if ($userDetail->shipment_status_id === 1) {
-                $price = $userDetail->product['price'];
-                $order_quantity = $userDetail['order_quantity'];
+        $totalPrice = 0;
+        foreach ($orderquantityMatchs as $orderquantityMatch) {
+            if ($orderquantityMatch->shipment_status_id === 1) {
+                $price = $orderquantityMatch->product['price'];
+                $order_quantity = $orderquantityMatch['order_quantity'];
                 $total = $price * $order_quantity;
-                $totalprice += $total;
+                $totalPrice += $total;
             }
         }
 
         //ユーザー
         $user = $order->user;
 
-        return view('order.details', ['user' => $user, 'details' => $details, 'userDetails' => $userDetails, 'totalprice' => $totalprice]);
+        return view('order.details', ['user' => $user, 'details' => $details, 'orderquantityMatchs' => $orderquantityMatchs, 'totalPrice' => $totalPrice]);
     }
 
     /**
@@ -163,13 +163,13 @@ class OrdersController extends Controller
         }
 
         //ユーザーIDと注文番号で一致
-        $userDetails = OrderDetail::where('order_detail_number', $order_detail_number)
+        $orderquantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
             ->with('product')
             ->get();
 
         // 削除
-        foreach ($userDetails as $userDetail) {
-            $id = $userDetail->order['id'];
+        foreach ($orderquantityMatchs as $orderquantityMatch) {
+            $id = $orderquantityMatch->order['id'];
             $orders = Order::findOrFail([$id]);
 
             foreach ($orders as $order) {
