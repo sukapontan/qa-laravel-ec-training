@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('message'))
+    <div class="alert alert-danger text-center">
+        {{ session('message') }}
+    </div>
+@endif
+　
 <div class="product">
     <div class="row mt-4">
         <div class="col-lg-12 text-center">
             <h1>商品検索画面</h1>
         </div>
     </div>
-
+    
     <form class="search" enctype="multipart/form-data" action="{{route('product.index')}}" accept-charset="UTF-8" method="get">
         @csrf
         <div class="row">
