@@ -38,3 +38,8 @@ Route::get('orderHistory/{id}', 'OrdersController@details')->name('order.details
 Route::delete('orderHistory/{id}', 'OrdersController@destroy')->name('order.destroy');
 
 Route::get('users/{id}','UsersController@show')->name('user.show');
+
+    Route::get('users/{id}','UsersController@show')->name('user.show');
+    Route::get('edit/{id}','UsersController@getEdit')->name('user.edit');
+    Route::put('update/{id}','UsersController@postEdit')->name('user.postEdit');
+    Route::delete('destroy/{id}','UsersController@destroy')->name('user.destroy');
