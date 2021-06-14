@@ -125,16 +125,16 @@ class OrdersController extends Controller
         }
 
         //ユーザーIDと注文番号で一致している注文詳細表示
-        $orderquantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
+        $orderQuantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
             ->with('product')
             ->get();
 
         // 合計
         $totalPrice = 0;
-        foreach ($orderquantityMatchs as $orderquantityMatch) {
-            if ($orderquantityMatch->shipment_status_id === 1) {
-                $price = $orderquantityMatch->product['price'];
-                $order_quantity = $orderquantityMatch['order_quantity'];
+        foreach ($orderQuantityMatchs as $orderQuantityMatch) {
+            if ($orderQuantityMatch->shipment_status_id === 1) {
+                $price = $orderQuantityMatch->product['price'];
+                $order_quantity = $orderQuantityMatch['order_quantity'];
                 $total = $price * $order_quantity;
                 $totalPrice += $total;
             }
@@ -143,7 +143,7 @@ class OrdersController extends Controller
         //ユーザー
         $user = $order->user;
 
-        return view('order.details', ['user' => $user, 'details' => $details, 'orderquantityMatchs' => $orderquantityMatchs, 'totalPrice' => $totalPrice]);
+        return view('order.details', ['user' => $user, 'details' => $details, 'orderQuantityMatchs' => $orderQuantityMatchs, 'totalPrice' => $totalPrice]);
     }
 
     /**
@@ -163,13 +163,13 @@ class OrdersController extends Controller
         }
 
         //ユーザーIDと注文番号で一致
-        $orderquantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
+        $orderQuantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
             ->with('product')
             ->get();
 
         // 削除
-        foreach ($orderquantityMatchs as $orderquantityMatch) {
-            $id = $orderquantityMatch->order['id'];
+        foreach ($orderQuantityMatchs as $orderQuantityMatch) {
+            $id = $orderQuantityMatch->order['id'];
             $orders = Order::findOrFail([$id]);
 
             foreach ($orders as $order) {

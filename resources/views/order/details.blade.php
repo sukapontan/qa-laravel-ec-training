@@ -50,18 +50,18 @@
             </tr>
         </thead>
         <tbody class="text-center border-bottom">
-            @if(isset($orderquantityMatchs))
-            @foreach($orderquantityMatchs as $orderquantityMatch)
+            @if(isset($orderQuantityMatchs))
+            @foreach($orderQuantityMatchs as $orderQuantityMatch)
             @php
-            $total=$orderquantityMatch->product->price * $orderquantityMatch->order_quantity;
+            $total=$orderQuantityMatch->product->price * $orderQuantityMatch->order_quantity;
             @endphp
             <tr>
-                @if($orderquantityMatch->shipment_status_id === 1)
-                <td>{{$orderquantityMatch->product->id}}</td>
-                <td>{{$orderquantityMatch->product->product_name}}</td>
-                <td>{{$orderquantityMatch->product->category->category_name}}</td>
-                <td>{{$orderquantityMatch->product->price}}</td>
-                <td>{{$orderquantityMatch->order_quantity}}</td>
+                @if($orderQuantityMatch->shipment_status_id === 1)
+                <td>{{$orderQuantityMatch->product->id}}</td>
+                <td>{{$orderQuantityMatch->product->product_name}}</td>
+                <td>{{$orderQuantityMatch->product->category->category_name}}</td>
+                <td>{{$orderQuantityMatch->product->price}}</td>
+                <td>{{$orderQuantityMatch->order_quantity}}</td>
                 <td>{{$total}}</td>
                 <td>
                     注文状態:発送前
@@ -69,13 +69,10 @@
                 @endif
             </tr>
             @endforeach
-            @endif
-
         </tbody>
         <tbody class="text-center">
-            @if(isset($orderquantityMatchs))
             <tr>
-                @if($orderquantityMatch->shipment_status_id === 1)
+                @if($orderQuantityMatch->shipment_status_id === 1)
                 <td></td>
                 <td></td>
                 <td></td>
