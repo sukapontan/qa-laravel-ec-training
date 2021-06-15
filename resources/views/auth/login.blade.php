@@ -9,6 +9,7 @@
                 <h3>ログイン画面</h3>
             </div>
             {!! Form::open(['route' => 'login.post']) !!}
+            @csrf
             <div class="row justify-content-center">
                 <div class="col-sm-7">
                     メールアドレス
