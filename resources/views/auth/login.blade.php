@@ -34,7 +34,7 @@
             </div>
             {!! Form::close() !!}
             <div class="text-center">
-                <a href=""></a>
+                <a href="">まだ登録がお済みでないかたはこちら</a>
             </div>
         </div>
 
