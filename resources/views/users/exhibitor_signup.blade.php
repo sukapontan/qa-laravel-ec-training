@@ -10,6 +10,7 @@
     @include('users.user_error')
     <form method="POST" action="{{ route('exhibitor.post') }}">
     {{ csrf_field() }}
+    <input type="hidden" name="auth_code" value="{{ $auth_code }}">
     <div class="row justify-content-center">
         <div class="col-sm-7">
             会社名

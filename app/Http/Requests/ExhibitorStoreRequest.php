@@ -31,9 +31,10 @@ class ExhibitorStoreRequest extends FormRequest
             'prefecture'=>['required','string','max:5'],
             'municipality' =>['required','string','max:10'],
             'address' =>['required','string','max:15'],
-            'email' =>['required','email','string','max:255','unique:users'],
+            'email' =>['required','email','string','max:255','unique:m_users'],
             'phone_number'=>['required','string','alpha_dash','max:15'],
-            'password'=>['string','confirmed','min:6','max:15']
+            'password'=>['string','confirmed','min:6','max:15'],
+            'auth_code'=>['required','max:16','min:16','string']
         ];
     }
 }

@@ -69,7 +69,7 @@ class UsersController extends Controller
             return redirect('/');
         }
 
-        return view('users.exhibitor_signup');
+        return view('users.exhibitor_signup', ['auth_code'=>$auth_code]);
     }
 
     /**
@@ -78,7 +78,7 @@ class UsersController extends Controller
 
     public function postExhibitor(User $user ,ExhibitorStoreRequest $request )
     {
-
+        
         User::create([
             'company_name'=>$request['company_name'],
             'last_name'=>$request['last_name'],

@@ -13,7 +13,7 @@ class AuthCodesTableSeeder extends Seeder
     public function run()
     {
         AuthCode::create([
-            'auth_code' => 'aaa',
+            'auth_code' => 'aaaaaaaaaaaaaaaa',
         ]);
     }
 }
