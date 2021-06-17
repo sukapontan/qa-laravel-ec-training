@@ -8,17 +8,17 @@
 				<h3>お客様登録情報</h3>
 		</div>
 
-				
+		{!! Form::open(['route' => 'signup.post']) !!}
 		<div class="row justify-content-center">
 				<div class="col-sm-7">
 						氏名
 						<div class="row justify-content-center">
 								<div class="form-group col-sm-12 form-inline">
-										<label class="col-sm-1">姓</label>
-										<input type="text" class="form-control col-sm-5" name="lastname">
+										<label class="col-sm-1">{!! Form::label('last_name','氏') !!}</label>
+										{!! Form::text('last_name', old('last_name'), ['class' => 'form-control col-sm-5']) !!}
 
-										<label class="col-sm-1">名</label>
-										<input type="text" class="form-control col-sm-5" name="firstname">
+										<label class="col-sm-1">{!! Form::label('first_name','名') !!}</label>
+										{!! Form::text('first_name', old('first_name'), ['class' => 'form-control col-sm-5']) !!}
 								</div>
 						</div>
 				</div>
@@ -26,10 +26,10 @@
 
 		<div class="row justify-content-center">
 				<div class="col-sm-7">
-						郵便番号
+						{!! Form::label('zipcode','郵便番号') !!}
 						<div class="row">
 								<div class="form-group col-sm-6 form-inline">
-										<input type="text" class="form-control offset-sm-1 col-sm-12" name="lastname">
+										{!! Form::text('zipcode', old('zipcode'), ['class' => 'form-control offset-sm-1 col-sm-12']) !!}
 								</div>
 						</div>
 				</div>
@@ -40,23 +40,23 @@
 						住所
 						<div class="row justify-content-center">
 								<div class="form-group col-sm-12 form-inline">
-										<label class="col-sm-3">都道府県</label>
-										<input type="text" class="form-control col-sm-9">
+										{!! Form::label('prefecture','都道府県',['class' => 'col-sm-3']) !!}
+										{!! Form::text('prefecture', old('prefecture'), ['class' => 'form-control col-sm-9']) !!}
 								</div>
 								
 								<div class="form-group col-sm-12 form-inline">
-										<label class="col-sm-3">市町村区</label>
-										<input type="text" class="form-control col-sm-9">
+								{!! Form::label('municipality','市区町村',['class' => 'col-sm-3']) !!}
+										{!! Form::text('municipality', old('municipality'), ['class' => 'form-control col-sm-9']) !!}
 								</div>
 
 								<div class="form-group col-sm-12 form-inline">
-										<label class="col-sm-3">番地</label>
-										<input type="text" class="form-control col-sm-9">
+										{!! Form::label('address','番地',['class' => 'col-sm-3']) !!}
+										{!! Form::text('address', old('address'), ['class' => 'form-control col-sm-9']) !!}
 								</div>
 
 								<div class="form-group col-sm-12">
-										<label class="ml-4">マンション名・部屋番号</label>
-										<input type="text" class="form-control offset-sm-3 col-sm-9">
+										{!! Form::label('apartments','マンション名・部屋番号',['class' => 'ml-4']) !!}
+										{!! Form::text('apartments', old('apartments'), ['class' => 'form-control offset-sm-3 col-sm-9']) !!}
 								</div>
 						</div>
 				</div>
@@ -68,7 +68,7 @@
 						メールアドレス
 						<div class="row">
 								<div class="form-group col-sm-12 form-inline">
-										<input type="text" class="form-control offset-sm-1 col-sm-11" name="lastname">
+										{!! Form::email('email', old('email'), ['class' => 'form-control offset-sm-1 col-sm-11']) !!}
 								</div>
 						</div>
 				</div>
@@ -79,7 +79,7 @@
 						電話番号
 						<div class="row">
 								<div class="form-group col-sm-12 form-inline">
-										<input type="text" class="form-control offset-sm-1 col-sm-11" name="lastname">
+										{!! Form::text('phone_number',old('phone_number'), ['class' => 'form-control offset-sm-1 col-sm-11']) !!}
 								</div>
 						</div>
 				</div>
@@ -87,10 +87,10 @@
 
 		<div class="row justify-content-center">
 				<div class="col-sm-7">
-						パスワード
+						{!! Form::label('password','パスワード') !!}
 						<div class="row">
 								<div class="form-group col-sm-12 form-inline">
-										<input type="text" class="form-control offset-sm-1 col-sm-9" name="lastname">
+										{!! Form::password('password',['class' => 'form-control offset-sm-1 col-sm-9']) !!}
 								</div>
 						</div>
 				</div>
@@ -98,17 +98,18 @@
 
 		<div class="row justify-content-center">
 				<div class="col-sm-7">
-						パスワード再入力
+				{!! Form::label('password_confirmation','パスワード確認') !!}
 						<div class="row">
 								<div class="form-group col-sm-12 form-inline">
-										<input type="text" class="form-control offset-sm-1 col-sm-9" name="lastname">
+										{!! Form::password('password_confirmation',['class' => 'form-control offset-sm-1 col-sm-9']) !!}
 								</div>
 						</div>
 				</div>
 		</div>
 
 		<div class="text-center">
-				<p><a href="#" class="btn btn-primary mt-3">登録</a></p>
+				{!! Form::submit('登録',['class' => 'btn btn-primary mt-3']) !!}
+				{!! Form::close() !!}
 		</div>
 
 		<div class="text-center">
