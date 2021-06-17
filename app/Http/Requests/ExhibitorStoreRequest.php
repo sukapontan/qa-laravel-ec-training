@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UserRequest extends FormRequest
+class ExhibitorStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,14 +24,16 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+        'company_name'=>['required','string','max:30'],
         'last_name' =>['required','string','max:10'],
         'first_name' =>['required','string','max:10'],
         'zipcode' =>['required','string','alpha_dash','max:8'],
         'prefecture'=>['required','string','max:5'],
         'municipality' =>['required','string','max:10'],
         'address' =>['required','string','max:15'],
-        'email' =>['email',Rule::unique('m_users')->ignore($this->id)],
+        'email' =>['required','email','string','max:255','unique:users'],
         'phone_number'=>['required','string','alpha_dash','max:15'],
+        'password'=>['string','confirmed','min:6','max:15']
         ];
     }
 }

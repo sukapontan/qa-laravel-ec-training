@@ -6,9 +6,9 @@ use App\User;
 use App\AuthCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\UserRequest;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\ExhibitorStoreRequest;
+use Illuminate\Support\Facades\Hash;
 
 
 class UsersController extends Controller
@@ -31,7 +31,7 @@ class UsersController extends Controller
             return view('users.edit',['user'=>$user]);
     }
 
-    public function postEdit(UserRequest $request, $id){
+    public function postEdit(UserEditRequest $request, $id){
 
         $user = User::find($request->id);
 
@@ -66,9 +66,9 @@ class UsersController extends Controller
     {
         // TODO 認証コードチェックが必要
         $authRecord = AuthCode::where('auth_code', $auth_code)->first();
-        if (!$authRecord) {
-            return redirect('/');
-        }
+        // if (!$authRecord) {
+        //     return redirect('/');
+        // }
 
         return view('users.exhibitor_signup');
     }
@@ -76,4 +76,29 @@ class UsersController extends Controller
     /**
      * 出品者登録処理
      */
+
+    public function postExhibitor(User $user ,ExhibitorStoreRequest $request )
+    {
+        
+        User::create([
+            'company_name'=>$request['company_name'],
+            'last_name'=>$request['last_name'],
+            'first_name'=>$request['first_name'],
+            'zipcode'=>$request['zipcode'],
+            'prefecture'=>$request['prefecture'],
+            'municipality'=>$request['municipality'],
+            'address'=>$request['address'],
+            'apartments'=>$request['apartments'],
+            'email' => $request['email'],
+            'phone_number'=>$request['phone_number'],
+            'password' => Hash::make($request['password']),
+            'user_classification_id'=>config('consts.common.USER_CLASSIFICATIONS.exhibitor.value'),
+        ]);
+        
+        // ログイン画面へリダイレクト
+        return redirect('/');
+     }
+     
+    
+
 }
