@@ -166,7 +166,6 @@ return [
         'phone_number'=>'電話番号',
         'company_name'=>'会社名',
         'password'=>'パスワード',
-    
-    ],
 
+    ],
 ];

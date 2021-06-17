@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -46,43 +46,27 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //     'company_name'=>['required','string','max:30'],
-    //     'last_name' =>['required','string','max:10'],
-    //     'first_name' =>['required','string','max:10'],
-    //     'zipcode' =>['required','string','alpha_dash','max:8'],
-    //     'prefecture'=>['required','string','max:5'],
-    //     'municipality' =>['required','string','max:10'],
-    //     'address' =>['required','string','max:15'],
-    //     'email' =>['required','email'],
-    //     'phone_number'=>['required','string','alpha_dash','max:15'],
-    //     'password'=>['required','string','confirmed','min:6','max:15']
-    //     ]);
-    // }
-    
-    
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'company_name'=>$data['company_name'],
-    //         'last_name'=>$data['last_name'],
-    //         'first_name'=>$data['first_name'],
-    //         'zipcode'=>$data['zipcode'],
-    //         'prefecture'=>$data['prefecture'],
-    //         'municipality'=>$data['municipality'],
-    //         'address'=>$data['address'],
-    //         'apartments'=>$data['apartments'],
-    //         'email' => $data['email'],
-    //         'phone_number'=>$data['phone_number'],
-    //         'password' => bcrypt($data['password']),
-    //     ]);
-    // }
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 }

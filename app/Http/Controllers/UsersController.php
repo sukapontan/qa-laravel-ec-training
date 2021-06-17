@@ -10,7 +10,6 @@ use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\ExhibitorStoreRequest;
 use Illuminate\Support\Facades\Hash;
 
-
 class UsersController extends Controller
 {
     public function show($id){
@@ -66,9 +65,9 @@ class UsersController extends Controller
     {
         // TODO 認証コードチェックが必要
         $authRecord = AuthCode::where('auth_code', $auth_code)->first();
-        // if (!$authRecord) {
-        //     return redirect('/');
-        // }
+        if (!$authRecord) {
+            return redirect('/');
+        }
 
         return view('users.exhibitor_signup');
     }
@@ -79,7 +78,7 @@ class UsersController extends Controller
 
     public function postExhibitor(User $user ,ExhibitorStoreRequest $request )
     {
-        
+
         User::create([
             'company_name'=>$request['company_name'],
             'last_name'=>$request['last_name'],
@@ -94,11 +93,11 @@ class UsersController extends Controller
             'password' => Hash::make($request['password']),
             'user_classification_id'=>config('consts.common.USER_CLASSIFICATIONS.exhibitor.value'),
         ]);
-        
+
         // ログイン画面へリダイレクト
         return redirect('/');
      }
-     
-    
+
+
 
 }

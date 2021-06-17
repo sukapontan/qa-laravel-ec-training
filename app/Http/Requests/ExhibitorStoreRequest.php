@@ -24,16 +24,16 @@ class ExhibitorStoreRequest extends FormRequest
     public function rules()
     {
         return [
-        'company_name'=>['required','string','max:30'],
-        'last_name' =>['required','string','max:10'],
-        'first_name' =>['required','string','max:10'],
-        'zipcode' =>['required','string','alpha_dash','max:8'],
-        'prefecture'=>['required','string','max:5'],
-        'municipality' =>['required','string','max:10'],
-        'address' =>['required','string','max:15'],
-        'email' =>['required','email','string','max:255','unique:users'],
-        'phone_number'=>['required','string','alpha_dash','max:15'],
-        'password'=>['string','confirmed','min:6','max:15']
+            'company_name'=>['required','string','max:30'],
+            'last_name' =>['required','string','max:10'],
+            'first_name' =>['required','string','max:10'],
+            'zipcode' =>['required','string','alpha_dash','max:8'],
+            'prefecture'=>['required','string','max:5'],
+            'municipality' =>['required','string','max:10'],
+            'address' =>['required','string','max:15'],
+            'email' =>['required','email','string','max:255','unique:users'],
+            'phone_number'=>['required','string','alpha_dash','max:15'],
+            'password'=>['string','confirmed','min:6','max:15']
         ];
     }
 }
