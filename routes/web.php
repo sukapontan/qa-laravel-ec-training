@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::prefix('products')->group(function () {
     Route::get('/', 'ProductsController@index')->name('product.index');
     Route::get('{id}', 'ProductsController@show')->name('product.show');
+    Route::get('/product/new', 'ProductsController@create')->name('product.create');
+    
 });
 
 // TODO auth認証ミドルウェアを適用する必要がある。

@@ -48,4 +48,13 @@ class ProductsController extends Controller
 
         return view('product.show', ['product' => $product]);
     }
+
+    /**
+     * 商品登録
+     *
+     */
+    public function create()
+    {
+        return view('product.create');
+    }
 }
