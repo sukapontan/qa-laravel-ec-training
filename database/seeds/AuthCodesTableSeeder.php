@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\AuthCode;
+use Illuminate\Support\Str;
 
 class AuthCodesTableSeeder extends Seeder
 {
@@ -12,8 +13,10 @@ class AuthCodesTableSeeder extends Seeder
      */
     public function run()
     {
-        AuthCode::create([
-            'auth_code' => 'aaaaaaaaaaaaaaaa',
-        ]);
+        for ($i = 0; $i < 10; $i++) {
+            AuthCode::create([
+                'auth_code' => Str::random(15).$i,
+            ]);
+        }
     }
 }

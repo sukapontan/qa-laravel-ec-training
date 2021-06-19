@@ -15,7 +15,7 @@ class CreateMAuthCodes extends Migration
     {
         Schema::create('m_auth_codes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('auth_code', 16)->index()->comment('認証コード');
+            $table->string('auth_code', 16)->unique()->comment('認証コード');
             $table->timestamps();
         });
     }
