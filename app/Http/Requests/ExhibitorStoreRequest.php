@@ -34,7 +34,7 @@ class ExhibitorStoreRequest extends FormRequest
             'municipality' =>['required','string','max:10'],
             'address' =>['required','string','max:15'],
             'email' =>['required','email','string','max:255','unique:m_users'],
-            'phone_number'=>['required','string','max:15', new PhoneRule()],
+            'phone_number'=>['required','string','min:8','max:14', new PhoneRule()],
             'password'=>['string','confirmed','min:6','max:15'],
             'auth_code'=>['required','max:16','min:16','string','exists:m_auth_codes,auth_code']
         ];
