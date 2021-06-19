@@ -63,9 +63,7 @@ class UsersController extends Controller
      */
     public function signupExhibitor($auth_code)
     {
-        // TODO 認証コードチェックが必要
-        $authRecord = AuthCode::where('auth_code', $auth_code)->first();
-        if (!$authRecord) {
+        if (!AuthCode::where('auth_code', $auth_code)->exists()) {
             return redirect('/');
         }
 
@@ -76,9 +74,8 @@ class UsersController extends Controller
      * 出品者登録処理
      */
 
-    public function postExhibitor(User $user ,ExhibitorStoreRequest $request )
+    public function postExhibitor(ExhibitorStoreRequest $request)
     {
-        
         User::create([
             'company_name'=>$request['company_name'],
             'last_name'=>$request['last_name'],
@@ -94,10 +91,9 @@ class UsersController extends Controller
             'user_classification_id'=>config('consts.common.USER_CLASSIFICATIONS.exhibitor.value'),
         ]);
 
-        // ログイン画面へリダイレクト
+        AuthCode::where('auth_code', $request['auth_code'])->delete();
+
+        // TODO ログイン画面へリダイレクト
         return redirect('/');
-     }
-
-
-
+    }
 }
