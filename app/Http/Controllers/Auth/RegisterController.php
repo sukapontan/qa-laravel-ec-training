@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'municipality' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'apartments' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:m_users'],
             'phone_number' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -81,8 +81,6 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'apartments' => $data['apartments'],
             'phone_number' => $data['phone_number'],
-            'user_classification_id' => $data['user_classification_id'],
-            'company_name' => $data['company_name'],
         ]);
     }
 }
