@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AuthCode extends Model
+class Applicant extends Model
 {
     /**
      * 関連テーブル設定
      */
-    protected $table = 'm_auth_codes';
+    protected $table = 'm_applicants';
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +17,7 @@ class AuthCode extends Model
      * @var array
      */
     protected $fillable = [
+        'email',
         'auth_code',
     ];
 }

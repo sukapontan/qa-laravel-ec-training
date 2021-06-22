@@ -46,3 +46,8 @@ Route::get('users/{id}', 'UsersController@show')->name('user.show');
 Route::get('edit/{id}', 'UsersController@getEdit')->name('user.edit');
 Route::put('update/{id}', 'UsersController@postEdit')->name('user.postEdit');
 Route::delete('destroy/{id}', 'UsersController@destroy')->name('user.destroy');
+
+Route::prefix('applicant')->group(function () {
+    Route::get('/', 'UsersController@signupApplicant')->name('applicant.signup');
+    Route::post('/', 'UsersController@applyExhibitor')->name('applicant.apply');
+});

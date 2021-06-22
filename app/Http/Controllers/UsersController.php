@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Applicant;
 use App\User;
 use App\AuthCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\ExhibitorStoreRequest;
+use App\Http\Requests\ApplyExhibitorRequest;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -59,11 +63,50 @@ class UsersController extends Controller
     }
 
     /**
+     * 出品者登録申請画面
+     */
+    public function signupApplicant()
+    {
+        return view('users.applicant');
+    }
+
+    /**
+     * 出品者登録申請処理
+     */
+    public function applyExhibitor(ApplyExhibitorRequest $request)
+    {
+        while (true) {
+            $auth_code = Str::random(16);
+            if (!Applicant::where('auth_code', $auth_code)->exists()) {
+                break;
+            }
+        }
+
+        Applicant::create([
+            'auth_code' => $auth_code,
+            'email' => $request->email,
+        ]);
+
+        $url = url('exhibitor/signup')."/".$auth_code;
+
+        $data = [
+            'url' => $url,
+        ];
+
+        Mail::send('emails.applicant', $data, function ($message) {
+            $message->to('hikkappi@yahoo.co.jp')
+            ->subject('出品者登録のご案内');
+        });
+
+        return redirect('/');
+    }
+
+    /**
      * 出品者登録画面
      */
     public function signupExhibitor($auth_code)
     {
-        if (!AuthCode::where('auth_code', $auth_code)->exists()) {
+        if (!Applicant::where('auth_code', $auth_code)->exists()) {
             return redirect('/');
         }
 
@@ -73,7 +116,6 @@ class UsersController extends Controller
     /**
      * 出品者登録処理
      */
-
     public function postExhibitor(ExhibitorStoreRequest $request)
     {
         User::create([

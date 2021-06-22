@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\AuthCode;
+use App\Applicant;
 use Illuminate\Support\Str;
 
-class AuthCodesTableSeeder extends Seeder
+class ApplicantsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,9 @@ class AuthCodesTableSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i < 10; $i++) {
-            AuthCode::create([
+            Applicant::create([
                 'auth_code' => Str::random(15).$i,
+                'email' => 'applicant'.(string)$i.'@example.com',
             ]);
         }
     }

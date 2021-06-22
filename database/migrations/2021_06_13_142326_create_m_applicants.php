@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMAuthCodes extends Migration
+class CreateMAppliCants extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateMAuthCodes extends Migration
      */
     public function up()
     {
-        Schema::create('m_auth_codes', function (Blueprint $table) {
+        Schema::create('m_applicants', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email', 128)->unique()->comment('メールアドレス');
             $table->string('auth_code', 16)->unique()->comment('認証コード');
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ class CreateMAuthCodes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_auth_codes');
+        Schema::dropIfExists('m_applicants');
     }
 }
