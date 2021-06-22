@@ -62,6 +62,16 @@
 				</div>
 		</div>
 
+		<div class="row justify-content-center">
+				<div class="col-sm-7">
+						会社名
+						<div class="row">
+								<div class="form-group col-sm-12 form-inline">
+										{!! Form::text('company_name', old('company_name'), ['class' => 'form-control offset-sm-1 col-sm-11']) !!}
+								</div>
+						</div>
+				</div>
+		</div>
 
 		<div class="row justify-content-center">
 				<div class="col-sm-7">

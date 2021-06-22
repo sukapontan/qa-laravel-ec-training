@@ -49,15 +49,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'last_name' => ['required', 'string', 'max:255'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'zipcode' => ['required', 'string', 'max:255'],
-            'prefecture' => ['required', 'string', 'max:255'],
-            'municipality' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'apartments' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:m_users'],
-            'phone_number' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:30'],
+            'first_name' => ['required', 'string', 'max:30'],
+            'zipcode' => ['required', 'string', 'max:7'],
+            'prefecture' => ['required', 'string', 'max:100'],
+            'municipality' => ['required', 'string', 'max:50'],
+            'address' => ['required', 'string', 'max:100'],
+            'apartments' => ['required', 'string', 'max:100'],
+            'company_name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:m_users'],
+            'phone_number' => ['required', 'string', 'max:13'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -80,6 +81,7 @@ class RegisterController extends Controller
             'municipality' => $data['municipality'],
             'address' => $data['address'],
             'apartments' => $data['apartments'],
+            'company_name' => $data['company_name'],
             'phone_number' => $data['phone_number'],
         ]);
     }
