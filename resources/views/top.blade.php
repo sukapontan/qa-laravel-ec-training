@@ -14,7 +14,7 @@
 			<div class="col-xs-12 col-md-6 text-center mt-5">
 				<h5>すでにアカウントを<br>お持ちの方はこちら</h5>
 					<div class="col-xs-12 col-md-12 text-center mt-4">
-						<a href="login" class="btn btn-primary btn-md">ログイン</a>
+						<a href="{{ route('auth.login') }}" class="btn btn-primary btn-md">ログイン</a>
 					</div>
 			</div>
 		</div>
