@@ -34,8 +34,23 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function salestatuse()
+    {
+        return $this->belongsTo(SaleStatuses::class);
+    }
+
+    public function productstatuse()
+    {
+        return $this->belongsTo(ProductStatuses::class);
+    }
+
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchases::class);
     }
 }

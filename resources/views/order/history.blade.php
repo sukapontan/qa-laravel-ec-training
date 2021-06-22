@@ -64,8 +64,10 @@
                             @endforeach
                         </p>
                     </td>
-                    <td type="submit" name="name" value="詳細" class="btn btn-primary">
-                        詳細
+                    <td>
+                        <a href="{{ route('order.details', ['order' => $order]) }}" type="submit" name="name" value="詳細" class="btn btn-primary">
+                            詳細
+                        </a>
                     </td>
                 </tr>
                 @endforeach

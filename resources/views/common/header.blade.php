@@ -25,7 +25,7 @@
                 <a class="nav-link" href="login">ログイン</a>
             </li>
             <li class="list-inline-item">
-                <a class="nav-link" href="#">新規登録</a>
+                <a class="nav-link" href="{{ route('auth.register') }}">新規登録</a>
             </li>
         </ul>
     </div>
