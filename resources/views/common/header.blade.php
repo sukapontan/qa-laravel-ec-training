@@ -8,7 +8,7 @@
                 <li class="list-inline-item"><a class="nav-link" href="{{ route('cart.index') }}">カート</a></li>
                 <li class="list-inline-item"><a class="nav-link" href="#">注文履歴</a></li>
                 <li class="list-inline-item"><a class="nav-link" href="#">ユーザー情報</a></li>
-                <li class="list-inline-item"><a class="nav-link" href="#">ログアウト</a></li>
+                <li class="list-inline-item"><a class="nav-link" href="{{ route('logout') }}">ログアウト</a></li>
             </ul>
         </ul>
     </nav>
@@ -22,7 +22,7 @@
         </a>
         <ul class="list-inline navbar-brand text-dark">
             <li class="list-inline-item">
-                <a class="nav-link" href="#">ログイン</a>
+                <a class="nav-link" href="{{ route('auth.login') }}">ログイン</a>
             </li>
             <li class="list-inline-item">
                 <a class="nav-link" href="{{ route('auth.register') }}">新規登録</a>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductStatuses extends Model
 {
-     /**
+    /**
      * 関連テーブル設定
      */
     protected $table = 'm_product_statuses';
