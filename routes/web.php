@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('top');
 });
 
+//ログイン
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// ユーザ登録
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+
 Route::prefix('products')->group(function () {
     Route::get('/', 'ProductsController@index')->name('product.index');
     Route::get('{id}', 'ProductsController@show')->name('product.show');

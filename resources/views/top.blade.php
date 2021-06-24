@@ -8,7 +8,7 @@
 			<div class="col-xs-12 col-md-6 text-center mt-5">
 				<h5>まだアカウントを<br>お持ちでない方はこちら</h5>
 				<div class="col-xs-12 col-md-12 text-center mt-4">
-					<button type="button" class="btn btn-primary btn-md">新規登録</button>
+					<a href="{{ route('auth.register') }}" class="btn btn-primary btn-md">新規登録</a>
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-6 text-center mt-5 mb-5">
