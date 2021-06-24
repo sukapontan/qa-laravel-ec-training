@@ -31,7 +31,7 @@ class ProductsController extends Controller
 
         $datas = $query->paginate(15);
 
-        return view('product.search', ['datas' => $datas]);
+        return view('product.search', ['datas' => $datas, 'product_name'=>$product_name,'category_id'=>$category_id]);
     }
     /**
      * 商品詳細画面

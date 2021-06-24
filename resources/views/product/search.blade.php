@@ -20,7 +20,7 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">商品名</h2>
-                <input type="text" name="product_name" class="form-control ">
+                <input type="text" name="product_name" class="form-control" value="@if (isset( $product_name )) {{$product_name}} @endif"> 
                 <span class="input-group-btn">
                     <input type="submit" class="btn btn-primary ml-4" value="検索">
                 </span>
@@ -32,8 +32,7 @@
                 <h2>商品カテゴリ</h2>
                 <select id="category_id" name="category_id" class="form-control">
                     @foreach(config('categories') as $id => $category)
-                    <option name="category_id" value="{{$id}}">{{$category}}</option>
-                    @endforeach
+                    <option name="category_id" value="{{$id}}"　@if ($id==$category_id) {{$id}} selected @endif>{{$category}}</option>                    @endforeach
                 </select>
             </div>
         </div>
