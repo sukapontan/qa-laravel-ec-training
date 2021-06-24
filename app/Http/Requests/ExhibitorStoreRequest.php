@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\PhoneRule;
 use App\Rules\ZipcodeRule;
+use App\Rules\MailCheck;
 
 class ExhibitorStoreRequest extends FormRequest
 {
@@ -33,10 +34,10 @@ class ExhibitorStoreRequest extends FormRequest
             'prefecture'=>['required','string','max:5'],
             'municipality' =>['required','string','max:10'],
             'address' =>['required','string','max:15'],
-            'email' =>['required','email','string','max:255','unique:m_users'],
+            'email' =>['required','email','string','max:255','unique:m_users',new MailCheck($this->auth_code)],
             'phone_number'=>['required','string','min:8','max:14', new PhoneRule()],
             'password'=>['string','confirmed','min:6','max:15'],
-            'auth_code'=>['required','max:16','min:16','string','exists:m_auth_codes,auth_code']
+            'auth_code'=>['required','max:16','min:16','string','exists:m_applicants,auth_code']
         ];
     }
 }

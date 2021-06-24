@@ -25,7 +25,17 @@ class ApplyExhibitorRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' =>['required','string','max:255','email',Rule::unique('m_users')->ignore($this->id)],
+            'email' =>['required','string','max:255','email', 'unique:m_users', 'unique:m_applicants'],
+        ];
+    }
+
+    /**
+     * メッセージのカスタマイズ
+     */
+    public function messages()
+    {
+        return [
+            'email.unique' => '入力された:attributeは使用されているので、別のメールアドレスをご利用ください。',
         ];
     }
 }

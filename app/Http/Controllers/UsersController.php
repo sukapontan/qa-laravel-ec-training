@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Applicant;
 use App\User;
-use App\AuthCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\ExhibitorStoreRequest;
 use App\Http\Requests\ApplyExhibitorRequest;
+use App\Mail\ApplicantMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -89,16 +89,10 @@ class UsersController extends Controller
 
         $url = url('exhibitor/signup')."/".$auth_code;
 
-        $data = [
-            'url' => $url,
-        ];
+        Mail::to($request->email)
+            ->send(new ApplicantMail($url));
 
-        Mail::send('emails.applicant', $data, function ($message) {
-            $message->to('hikkappi@yahoo.co.jp')
-            ->subject('出品者登録のご案内');
-        });
-
-        return redirect('/');
+        return redirect('/')->with('message', 'メールを送信しましたので、ご確認ください。');
     }
 
     /**
@@ -107,7 +101,7 @@ class UsersController extends Controller
     public function signupExhibitor($auth_code)
     {
         if (!Applicant::where('auth_code', $auth_code)->exists()) {
-            return redirect('/');
+            return redirect('/')->with('error', 'このURLは利用できません。');
         }
 
         return view('users.exhibitor_signup', ['auth_code'=>$auth_code]);
@@ -133,9 +127,8 @@ class UsersController extends Controller
             'user_classification_id'=>config('consts.common.USER_CLASSIFICATIONS.exhibitor.value'),
         ]);
 
-        AuthCode::where('auth_code', $request['auth_code'])->delete();
+        Applicant::where('auth_code', $request['auth_code'])->delete();
 
-        // TODO ログイン画面へリダイレクト
-        return redirect('/');
+        return redirect()->route('auth.login');
     }
 }
