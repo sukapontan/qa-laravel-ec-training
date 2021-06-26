@@ -58,4 +58,4 @@ class UsersController extends Controller
         return view('top');
     }
     
- }
+}
