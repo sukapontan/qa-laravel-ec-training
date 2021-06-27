@@ -8,6 +8,8 @@ use App\Product;
 use App\Purchases;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ProductsStore;
 
 class ProductsController extends Controller
 {
@@ -65,11 +67,8 @@ class ProductsController extends Controller
      * 商品保存
      *
      */
-    public function store(Request $request, Product $product, Purchases $purchases)
+    public function store(ProductsStore $request, Product $product, Purchases $purchases)
     {
-        $this->validate($request, [
-            'product_name' => 'required|max:5',
-        ]);
         DB::beginTransaction();
         try {
 

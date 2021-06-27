@@ -13,3 +13,9 @@
 .navbar-brand-02 {
     font-size: medium;
 }
+
+.alert-safe {
+    color: #2725A4;
+    background-color: #D7EBF8;
+    border-color: #D7EBF8;
+}

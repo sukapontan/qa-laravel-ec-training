@@ -166,6 +166,8 @@ return [
         'phone_number'=>'電話番号',
         //商品
         'product_name'=>'商品名',
+        'order_date'=>'発送日',
+        'purchase_date'=>'納品日',
         
     ],
 
