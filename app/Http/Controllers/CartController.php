@@ -12,8 +12,6 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $user->fullAddress = $user->getFullAddress();
-        $user->fullName = $user->getFullName();
 
         if ($request->session()->has('cartProducts')) {
             $cartProducts = $request->session()->get('cartProducts');
