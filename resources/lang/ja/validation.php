@@ -164,7 +164,7 @@ return [
         'apartments'=>'マンション部屋番号',
         'email'=>'メールアドレス',
         'phone_number'=>'電話番号',
-    
+        'company_name' => '会社名',
+        'password' => 'パスワード',
     ],
-
 ];

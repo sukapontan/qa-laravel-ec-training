@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="container">
-		
+    @include('common.error_card_list')
+
 		<div class="text-center mt-3">
 				<h3>お客様登録情報</h3>
 		</div>
@@ -43,7 +44,6 @@
 										{!! Form::label('prefecture','都道府県',['class' => 'col-sm-3']) !!}
 										{!! Form::text('prefecture', old('prefecture'), ['class' => 'form-control col-sm-9']) !!}
 								</div>
-								
 								<div class="form-group col-sm-12 form-inline">
 								{!! Form::label('municipality','市区町村',['class' => 'col-sm-3']) !!}
 										{!! Form::text('municipality', old('municipality'), ['class' => 'form-control col-sm-9']) !!}
@@ -123,9 +123,8 @@
 		</div>
 
 		<div class="text-center">
-				<a href="#">ログインはこちらから</a>
+				<a href="{{ route('auth.login') }}">ログインはこちらから</a>
 		</div>
-				
 </div>
 
 
