@@ -164,7 +164,9 @@ return [
         'apartments'=>'マンション部屋番号',
         'email'=>'メールアドレス',
         'phone_number'=>'電話番号',
-    
+        //商品
+        'product_name'=>'商品名',
+        
     ],
 
 ];

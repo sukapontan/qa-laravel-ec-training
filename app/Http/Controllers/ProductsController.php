@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Product;
+use App\Purchases;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -47,5 +49,51 @@ class ProductsController extends Controller
         }
 
         return view('product.show', ['product' => $product]);
+    }
+
+    /**
+     * 商品登録
+     *
+     */
+    public function create()
+    {
+        return view('product.create');
+    }
+
+    /**
+     * 商品保存
+     *
+     */
+    public function store(Request $request, Product $product, Purchases $purchases)
+    {
+        $this->validate($request, [
+            'product_name' => 'required|max:5',
+        ]);
+        DB::beginTransaction();
+        try {
+            // 商品情報をDBに保存
+            $product->product_name = $request->product_name;
+            $product->category_id = $request->category_id;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->sale_status_id = 1; //販売中をデフォルトで代入
+            $product->product_status_id=$request->product_status_id;
+            $product->user_id=1;//今回はユーザーid 1の人を代入
+            $product->save();
+            //商品id取得
+            $productId = $product->id;
+            // 仕入情報をDBに保存
+            $purchases->purchase_price = $request->purchase_price;
+            $purchases->purchase_quntity = $request->purchase_quntity;
+            $purchases->purchase_company = $request->purchase_company;
+            $purchases->order_date = $request->order_date;
+            $purchases->purchase_date = $request->purchase_date;
+            $purchases->product_id = $productId;
+            $purchases->save();
+            DB::commit();
+            return back()->with('message', '登録しました');
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
     }
 }
