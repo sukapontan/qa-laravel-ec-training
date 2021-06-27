@@ -7,7 +7,7 @@
                 <li class="list-inline-item"><a class="nav-link" href="{{ route('product.index') }}">商品検索</a></li>
                 <li class="list-inline-item"><a class="nav-link" href="{{ route('cart.index') }}">カート</a></li>
                 <li class="list-inline-item"><a class="nav-link" href="{{ route('order.all',['all' => 'all']) }}">注文履歴</a></li>
-                <li class="list-inline-item"><a class="nav-link" href="{{ route('user.show', ['id' => auth()->user()->id])}}">ユーザー情報</a></li>
+                <li class="list-inline-item"><a class="nav-link" href="{{ route('user.show', ['id' => Auth::id()])}}">ユーザー情報</a></li>
                 <li class="list-inline-item"><a class="nav-link" href="{{ route('logout') }}">ログアウト</a></li>
             </ul>
         </ul>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\OrderDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
@@ -44,8 +45,6 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $auth_user = auth()->user();
-
         // カート情報が存在しない場合
         if (!$request->session()->has('cartProducts')) {
             return redirect()->route('cart.index');
@@ -65,11 +64,11 @@ class OrdersController extends Controller
         try {
             // 注文情報をDBに保存
             $order = Order::create([
-                'user_id' => $auth_user->id,
+                'user_id' => Auth::id(),
             ]);
 
             // 注文番号取得
-            $orderDetailNumber = $this->getOrderDetailNumber($auth_user->id);
+            $orderDetailNumber = $this->getOrderDetailNumber(Auth::id());
 
             // 注文詳細情報をDBに保存
             $orderDetail = new OrderDetail();
