@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Purchases;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -71,14 +72,17 @@ class ProductsController extends Controller
         ]);
         DB::beginTransaction();
         try {
+
+            $user=Auth::id();
+
             // 商品情報をDBに保存
             $product->product_name = $request->product_name;
             $product->category_id = $request->category_id;
             $product->price = $request->price;
             $product->description = $request->description;
             $product->sale_status_id = 1; //販売中をデフォルトで代入
-            $product->product_status_id=$request->product_status_id;
-            $product->user_id=1;//今回はユーザーid 1の人を代入
+            $product->product_status_id = $request->product_status_id;
+            $product->user_id = $user;
             $product->save();
             //商品id取得
             $productId = $product->id;

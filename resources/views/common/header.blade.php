@@ -6,7 +6,7 @@
                 <li class="navbar bg-faded text-right" style="flex-direction: row-reverse;">Testさん</li>
 
                 @if(auth()->user()->user_classification_id === 2)
-                <li class="list-inline-item"><a class="nav-link" href="{{ route('product.index') }}">商品登録</a></li>
+                <li class="list-inline-item"><a class="nav-link" href="{{ route('product.create') }}">商品登録</a></li>
                 @endif
 
                 <li class="list-inline-item"><a class="nav-link" href="{{ route('product.index') }}">商品検索</a></li>
