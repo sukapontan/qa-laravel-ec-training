@@ -31,8 +31,12 @@ class ProductsController extends Controller
 
         $datas = $query->paginate(15);
 
-        return view('product.search', ['datas' => $datas]);
+        //型変換
+        $category_id_int = intval($category_id);
+
+        return view('product.search', ['datas' => $datas, 'product_name' => $product_name, 'category_id_int' => $category_id_int]);
     }
+    
     /**
      * 商品詳細画面
      * @param Illuminate\Http\Request $request

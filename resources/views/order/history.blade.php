@@ -10,7 +10,7 @@
                 @endif
 
                 @if($id === 'all')
-                <a href="{{route('order.threeSeach',['id'=>'three'])}}">直近3か月の注文を表示</a>
+                <a href="{{route('order.all',['id'=>'three'])}}">直近3か月の注文を表示</a>
                 @endif
                 @endforeach
             </span>
