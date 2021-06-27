@@ -6,8 +6,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderDetail;
-use Illuminate\Support\Facades\DB;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -18,20 +19,21 @@ class OrdersController extends Controller
     public function index($id)
     {
         $idArray = array('id' => $id);
+
+        $user=Auth::id();
         if ($id === 'three') {
             $carbon = new Carbon();
             $now = $carbon->now();
             $threeMonth = $carbon->subMonth(3);
 
-            //仮でユーザー１の注文履歴表示
-            $orders = Order::where('user_id', 1)
+            $orders = Order::where('user_id', $user)
                 ->whereBetween('updated_at', [$threeMonth, $now])
                 ->with(['user', 'orderDetails.shipmentStatus'])
-                ->orderBy('id', 'desc') //順番が分かりづらいためid1でソート
+                ->orderBy('id', 'desc')
                 ->paginate(15);
             return view('order.history', ['orders' => $orders, 'idArray' => $idArray]);
         } else {
-            $orders = Order::where('user_id', 1)
+            $orders = Order::where('user_id', $user)
                 ->with(['user', 'orderDetails.shipmentStatus'])
                 ->orderBy('id', 'desc')
                 ->paginate(15);

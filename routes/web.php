@@ -36,15 +36,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('order')->group(function () {
         Route::post('/', 'OrdersController@store')->name('order.store');
+        Route::get('/orderHistory/{all}', 'OrdersController@index')->name('order.all');
+        Route::get('/{id}', 'OrdersController@details')->name('order.details');
+        Route::delete('/{id}', 'OrdersController@destroy')->name('order.destroy');
     });
-
-    Route::get('orderHistory{all}', 'OrdersController@index')->name('order.all');
-    Route::get('orderHistory{three}', 'OrdersController@index')->name('order.threeSeach');
-
-    Route::get('orderHistory/{id}', 'OrdersController@details')->name('order.details');
-    Route::delete('orderHistory/{id}', 'OrdersController@destroy')->name('order.destroy');
-
-    Route::get('users/{id}', 'UsersController@show')->name('user.show');
 
     Route::get('users/{id}', 'UsersController@show')->name('user.show');
     Route::get('edit/{id}', 'UsersController@getEdit')->name('user.edit');
