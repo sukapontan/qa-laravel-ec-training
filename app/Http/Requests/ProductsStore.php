@@ -3,6 +3,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Comparison;
+use App\Rules\Category;
 
 class ProductsStore extends FormRequest
 {
@@ -25,10 +26,12 @@ class ProductsStore extends FormRequest
         $this->purches_price;
         return [
             'product_name' => ['required','max:10'],
-            'price' => ['required','integer',new Comparison($this->value)],
-            'purchase_price' => ['required','integer',new Comparison($this->purchase_price)],
+            'category_id' => [new Category($this->category_id) ],
+            // 'price' => ['required','integer',new Comparison($this->value)],
+            // 'purchase_price' => ['required','integer',new Comparison($this->purchase_price)],
             'purchase_quntity' => ['required','integer'],
             'purchase_company' => ['required','max:30'],
+            'order_date' => ['required','date'],
             'purchase_date' => ['required','date','after:order_date'],
         ];
     }

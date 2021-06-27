@@ -28,7 +28,7 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">商品名</h2>
-                <input type="text" name="product_name" class="form-control ">
+                <input type="text" name="product_name" class="form-control " value="{{old('product_name')}}">
             </div>
         </div>
         <div class="row">
@@ -44,13 +44,13 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">販売単価</h2>
-                <input type="text" name="price" class="form-control ">
+                <input type="text" name="price" class="form-control " value="{{old('price')}}">
             </div>
         </div>
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">商品説明</h2>
-                <input type="text" name="description" class="form-control ">
+                <input type="text" name="description" class="form-control " value="{{old('description')}}">
             </div>
         </div>
         <div class="row">
@@ -66,31 +66,31 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">仕入価格</h2>
-                <input type="text" name="purchase_price" class="form-control ">
+                <input type="text" name="purchase_price" class="form-control " value="{{old('purchase_price')}}">
             </div>
         </div>
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">仕入個数</h2>
-                <input type="text" name="purchase_quntity" class="form-control ">
+                <input type="text" name="purchase_quntity" class="form-control " value="{{old('purchase_quntity')}}">
             </div>
         </div>
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">仕入先会社</h2>
-                <input type="text" name="purchase_company" class="form-control ">
+                <input type="text" name="purchase_company" class="form-control " value="{{old('purchase_company')}}">
             </div>
         </div>
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">発送日</h2>
-                <input type="date" name="order_date" class="form-control ">
+                <input type="date" name="order_date" class="form-control " value="{{old('order_date')}}">
             </div>
         </div>
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">納品日</h2>
-                <input type="date" name="purchase_date" class="form-control ">
+                <input type="date" name="purchase_date" class="form-control " value="{{old('purchase_date')}}">
             </div>
         </div>
         <div class="text-center">
