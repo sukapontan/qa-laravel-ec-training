@@ -36,7 +36,7 @@
                 <h2>商品カテゴリ-</h2>
                 <select id="category_id" name="category_id" class="form-control">
                     @foreach(config('categories') as $id => $category)
-                    <option name="category_id" value="{{$id}}">{{$category}}</option>
+                    <option name="category_id" value="{{$id}}"　@if (old('category_id') == $id)  selected @endif>{{$category}}</option>
                     @endforeach
                 </select>
             </div>
@@ -58,7 +58,7 @@
                 <h2 class="mr-4">商品状態</h2>
                 <select id="product_status_id" name="product_status_id" class="form-control">
                     @foreach(config('productStatuses') as $id => $statuses)
-                    <option name="product_status_id" value="{{$id}}">{{$statuses}}</option>
+                    <option name="product_status_id" value="{{$id}}"　@if (old('product_status_id') == $id)  selected @endif>{{$statuses}}</option>
                     @endforeach
                 </select>
             </div>

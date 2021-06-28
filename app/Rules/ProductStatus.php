@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Category implements Rule
+class ProductStatus implements Rule
 {
     /**
      * Create a new rule instance.
@@ -39,6 +39,6 @@ class Category implements Rule
      */
     public function message()
     {
-        return '商品カテゴリーの未選択は選択できません';
+        return '商品状態の未選択は選択できません';
     }
 }
