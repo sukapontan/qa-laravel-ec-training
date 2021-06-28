@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\User;
 use App\Order;
 use App\OrderDetail;
 use App\Product;
@@ -48,9 +47,6 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO 認証ユーザを返す必要がある。
-        $user = User::find(1);
-
         // カート情報が存在しない場合
         if (!$request->session()->has('cartProducts')) {
             return redirect()->route('cart.index');
@@ -70,11 +66,11 @@ class OrdersController extends Controller
         try {
             // 注文情報をDBに保存
             $order = Order::create([
-                'user_id' => $user->id,
+                'user_id' => Auth::id(),
             ]);
 
             // 注文番号取得
-            $orderDetailNumber = $this->getOrderDetailNumber($user->id);
+            $orderDetailNumber = $this->getOrderDetailNumber(Auth::id());
 
             // 注文詳細情報をDBに保存
             $orderDetail = new OrderDetail();

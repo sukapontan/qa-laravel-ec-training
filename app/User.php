@@ -47,8 +47,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
-    
-    
+
     protected $dates = [
         'deleted_at'
     ];
@@ -84,7 +83,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getFullAddress() :string
+    public function getFullAddressAttribute() :string
     {
         return $this->prefecture.$this->municipality." ".$this->address.$this->apartments;
     }
@@ -94,7 +93,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getFullName() :string
+    public function getFullNameAttribute() :string
     {
         return $this->last_name." ".$this->first_name;
     }
