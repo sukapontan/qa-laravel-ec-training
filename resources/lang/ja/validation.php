@@ -164,7 +164,9 @@ return [
         'apartments'=>'マンション部屋番号',
         'email'=>'メールアドレス',
         'phone_number'=>'電話番号',
-        //商品
+        'company_name' => '会社名',
+        'password' => 'パスワード',
+        //商品登録
         'product_name'=>'商品名',
         'price'=>'販売単価',
         'description'=>'商品説明',

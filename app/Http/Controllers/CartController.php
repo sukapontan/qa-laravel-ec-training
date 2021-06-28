@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CartAddRequest;
-use App\User;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function index(Request $request)
     {
-        // TODO 認証ユーザを返す必要がある。
-        $user = User::find(1);
-        $user->fullAddress = $user->getFullAddress();
-        $user->fullName = $user->getFullName();
+        $user = Auth::user();
 
         if ($request->session()->has('cartProducts')) {
             $cartProducts = $request->session()->get('cartProducts');
