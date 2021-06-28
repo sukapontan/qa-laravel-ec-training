@@ -22,16 +22,18 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
-// 出品者登録
-Route::prefix('exhibitor')->group(function () {
-    Route::get('signup/{auth_code}', 'UsersController@signupExhibitor')->name('exhibitor.signup');
-    Route::post('register', 'UsersController@postExhibitor')->name('exhibitor.post');
-});
+Route::middleware('guest')->group(function () {
+    // 出品者登録
+    Route::prefix('exhibitor')->group(function () {
+        Route::get('signup/{auth_code}', 'UsersController@signupExhibitor')->name('exhibitor.signup');
+        Route::post('register', 'UsersController@postExhibitor')->name('exhibitor.post');
+    });
 
-// 出品者申請登録
-Route::prefix('applicant')->group(function () {
-    Route::get('/', 'UsersController@signupApplicant')->name('applicant.signup');
-    Route::post('/', 'UsersController@applyExhibitor')->name('applicant.apply');
+    // 出品者申請登録
+    Route::prefix('applicant')->group(function () {
+        Route::get('/', 'UsersController@signupApplicant')->name('applicant.signup');
+        Route::post('/', 'UsersController@applyExhibitor')->name('applicant.apply');
+    });
 });
 
 Route::middleware('auth')->group(function () {
