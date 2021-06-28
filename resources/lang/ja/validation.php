@@ -166,9 +166,12 @@ return [
         'phone_number'=>'電話番号',
         //商品
         'product_name'=>'商品名',
+        'price'=>'販売単価',
+        'description'=>'商品説明',
+        'purchase_price'=>'仕込価格',
+        'purchase_quntity'=>'仕込個数',
+        'purchase_company'=>'仕込先会社',
         'order_date'=>'発送日',
         'purchase_date'=>'納品日',
-        
     ],
-
 ];

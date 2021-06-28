@@ -2,7 +2,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\Comparison;
 use App\Rules\Category;
 use App\Rules\ProductStatus;
 
@@ -26,11 +25,12 @@ class ProductsStore extends FormRequest
     {
         $this->purches_price;
         return [
-            'product_name' => ['required','max:10'],
+            'product_name' => ['required','max:30'],
             'category_id' => [new Category($this->category_id) ],
+            'price' => ['required','integer'],
+            'description' => ['required','max:100'],
             'product_status_id' => [new ProductStatus($this->product_status_id) ],
-            // 'price' => ['required','integer',new Comparison($this->value)],
-            // 'purchase_price' => ['required','integer',new Comparison($this->purchase_price)],
+            'purchase_price' => ['required','integer','gt:price'],
             'purchase_quntity' => ['required','integer'],
             'purchase_company' => ['required','max:30'],
             'order_date' => ['required','date'],
