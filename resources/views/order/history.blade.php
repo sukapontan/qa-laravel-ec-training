@@ -33,7 +33,9 @@
                     <td>{{$order->id}}</td>
                     <td>
                         @foreach($order->orderDetails as $orderDetail)
-                        {{$orderDetail->order_detail_number}}
+                            @if ($loop->first)
+                            {{$orderDetail->order_detail_number}}
+                            @endif
                         @endforeach
                     </td>
                     <td>
