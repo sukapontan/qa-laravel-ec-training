@@ -13,10 +13,8 @@ use Illuminate\Validation\Rule;
 class UsersController extends Controller
 {
     public function show($id){
-        
+
         $user = User::findOrFail($id);
-        $user->fullAddress = $user->getFullAddress();
-        $user->fullName = $user->getFullName();
         //ログインしているアカウント出ない場合検索画面にリダイレクト
         if($user->id != Auth::id()){
             return redirect()->route('product.index')->with('message','不適切なURLです');
@@ -24,7 +22,7 @@ class UsersController extends Controller
         return view('users.show',['user'=> $user]);   
     }
     public function getEdit($id){
-        
+
         $user = User::findOrFail($id);
         if($user->id != Auth::id()){
             return redirect()->route('product.index')->with('message','不適切なURLです');
@@ -33,7 +31,7 @@ class UsersController extends Controller
     } 
     
     public function postEdit(UserRequest $request, $id){
-        
+
         $user = User::find($request->id);
         
         if($user->id != Auth::id()){
@@ -49,15 +47,15 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         $user->save();
-        
+
         return redirect()->route('user.show',$user->id);
-    } 
-    
+    }
+
     public function destroy($id){
         $user = User::findOrFail($id);
         $user->delete();
-        
+
         return view('top');
     }
-    
- }
+
+}

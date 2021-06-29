@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
+Route::get('/', 'TopController@index')->name('top');
 
-//ログイン
+// ログイン
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -24,31 +22,27 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
-Route::prefix('products')->group(function () {
-    Route::get('/', 'ProductsController@index')->name('product.index');
-    Route::get('{id}', 'ProductsController@show')->name('product.show');
+Route::middleware('auth')->group(function () {
+    Route::prefix('products')->group(function () {
+        Route::get('/', 'ProductsController@index')->name('product.index');
+        Route::get('{id}', 'ProductsController@show')->name('product.show');
+    });
+
+    Route::prefix('cart')->group(function () {
+        Route::get('/', 'CartController@index')->name('cart.index');
+        Route::post('add/{product}', 'CartController@add')->name('cart.add');
+        Route::delete('/', 'CartController@delete')->name('cart.destroy');
+    });
+
+    Route::prefix('order')->group(function () {
+        Route::post('/', 'OrdersController@store')->name('order.store');
+        Route::get('/orderHistory/{all}', 'OrdersController@index')->name('order.all');
+        Route::get('/{id}', 'OrdersController@details')->name('order.details');
+        Route::delete('/{id}', 'OrdersController@destroy')->name('order.destroy');
+    });
+
+    Route::get('users/{id}', 'UsersController@show')->name('user.show');
+    Route::get('edit/{id}', 'UsersController@getEdit')->name('user.edit');
+    Route::put('update/{id}', 'UsersController@postEdit')->name('user.postEdit');
+    Route::delete('destroy/{id}', 'UsersController@destroy')->name('user.destroy');
 });
-
-// TODO auth認証ミドルウェアを適用する必要がある。
-Route::prefix('cart')->group(function () {
-    Route::get('/', 'CartController@index')->name('cart.index');
-    Route::post('add/{product}', 'CartController@add')->name('cart.add');
-    Route::delete('/', 'CartController@delete')->name('cart.destroy');
-});
-
-Route::prefix('order')->group(function () {
-    Route::post('/', 'OrdersController@store')->name('order.store');
-});
-
-Route::get('orderHistory{all}', 'OrdersController@index')->name('order.all');
-Route::get('orderHistory{three}', 'OrdersController@index')->name('order.threeSeach');
-
-Route::get('orderHistory/{id}', 'OrdersController@details')->name('order.details');
-Route::delete('orderHistory/{id}', 'OrdersController@destroy')->name('order.destroy');
-
-Route::get('users/{id}','UsersController@show')->name('user.show');
-
-    Route::get('users/{id}','UsersController@show')->name('user.show');
-    Route::get('edit/{id}','UsersController@getEdit')->name('user.edit');
-    Route::put('update/{id}','UsersController@postEdit')->name('user.postEdit');
-    Route::delete('destroy/{id}','UsersController@destroy')->name('user.destroy');

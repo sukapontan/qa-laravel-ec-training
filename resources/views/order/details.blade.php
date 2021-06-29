@@ -6,7 +6,7 @@
         <h3>お届け先</h3>
         @if(isset($user))
         <p>〒
-            {{$user->zipcode}}
+            {{$user->ZipcodeWithHyphen}}
             (
             {{$user->prefecture}}
             {{$user->municipality}}
