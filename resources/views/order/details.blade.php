@@ -51,28 +51,30 @@
                 <th class="text-center">個数</th>
                 <th class="text-center">小計</th>
                 <th class="text-center">備考</th>
+                <th class="text-center">詳細</th>
             </tr>
         </thead>
         <tbody class="text-center border-bottom">
             @if(isset($orderQuantityMatchs))
-            @foreach($orderQuantityMatchs as $orderQuantityMatch)
-            @php
-            $total=$orderQuantityMatch->product->price * $orderQuantityMatch->order_quantity;
-            @endphp
-            <tr>
-                @if($orderQuantityMatch->shipment_status_id === 1)
-                <td>{{$orderQuantityMatch->product->id}}</td>
-                <td>{{$orderQuantityMatch->product->product_name}}</td>
-                <td>{{$orderQuantityMatch->product->category->category_name}}</td>
-                <td>{{$orderQuantityMatch->product->price}}</td>
-                <td>{{$orderQuantityMatch->order_quantity}}</td>
-                <td>{{$total}}</td>
-                <td>
-                    注文状態:発送前
-                </td>
-                @endif
-            </tr>
-            @endforeach
+                @foreach($orderQuantityMatchs as $orderQuantityMatch)
+                    @php
+                    $total=$orderQuantityMatch->product->price * $orderQuantityMatch->order_quantity;
+                    @endphp
+                    <tr>
+                        @if($orderQuantityMatch->shipment_status_id === 1)
+                            <td>{{$orderQuantityMatch->product->id}}</td>
+                            <td>{{$orderQuantityMatch->product->product_name}}</td>
+                            <td>{{$orderQuantityMatch->product->category->category_name}}</td>
+                            <td>{{$orderQuantityMatch->product->price}}</td>
+                            <td>{{$orderQuantityMatch->order_quantity}}</td>
+                            <td>{{$total}}</td>
+                            <td>
+                                注文状態:発送前
+                            </td>
+                            <td><a href="{{ route('product.show', ['id' => $orderQuantityMatch->product_id]) }}" class="btn btn-primary">商品詳細</a></td>
+                        @endif
+                    </tr>
+                @endforeach
         </tbody>
         <tbody class="text-center">
             <tr>
