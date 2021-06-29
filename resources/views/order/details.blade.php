@@ -30,7 +30,7 @@
             <div class="text-right px-3 my-3">
                 @if($detail->shipment_status_id === 1)
                     @if ($loop->first)
-                        <form class="btn btn-sm bg-danger" action="{{route('order.destroy', ['detail' => $detail])}}" method="post">
+                        <form class="btn btn-sm bg-danger" action="{{route('order.destroy', ['detail' => $detail->order_id])}}" method="post">
                             @csrf
                             @method('delete')
                             <input type="submit" value="&#xf1f8; 注文をキャンセルする" class="btn btn-danger" style="border: 0px none; color:white;" onclick='return confirm("削除しますか？");'>
