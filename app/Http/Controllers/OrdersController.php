@@ -130,12 +130,10 @@ class OrdersController extends Controller
         // 合計
         $totalPrice = 0;
         foreach ($orderQuantityMatchs as $orderQuantityMatch) {
-            if ($orderQuantityMatch->shipment_status_id === 1) {
                 $price = $orderQuantityMatch->product['price'];
                 $order_quantity = $orderQuantityMatch['order_quantity'];
                 $total = $price * $order_quantity;
                 $totalPrice += $total;
-            }
         }
 
         //ユーザー

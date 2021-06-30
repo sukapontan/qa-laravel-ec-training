@@ -54,14 +54,14 @@
                 <th class="text-center">詳細</th>
             </tr>
         </thead>
+        
+    @if(isset($orderQuantityMatchs))
         <tbody class="text-center border-bottom">
-            @if(isset($orderQuantityMatchs))
                 @foreach($orderQuantityMatchs as $orderQuantityMatch)
                     @php
                     $total=$orderQuantityMatch->product->price * $orderQuantityMatch->order_quantity;
                     @endphp
                     <tr>
-                        @if($orderQuantityMatch->shipment_status_id === 1)
                             <td>{{$orderQuantityMatch->product->id}}</td>
                             <td>{{$orderQuantityMatch->product->product_name}}</td>
                             <td>{{$orderQuantityMatch->product->category->category_name}}</td>
@@ -69,16 +69,21 @@
                             <td>{{$orderQuantityMatch->order_quantity}}</td>
                             <td>{{$total}}</td>
                             <td>
-                                注文状態:発送前
+                            注文状態：
+                            @if($orderQuantityMatch->shipment_status_id === 1)
+                                 発送前
+                                 @elseif($orderQuantityMatch->shipment_status_id === 2)
+                                 発送中
+                                 @else
+                                 発送済み
+                            @endif                           
                             </td>
                             <td><a href="{{ route('product.show', ['id' => $orderQuantityMatch->product_id]) }}" class="btn btn-primary">商品詳細</a></td>
-                        @endif
                     </tr>
                 @endforeach
         </tbody>
         <tbody class="text-center">
             <tr>
-                @if($orderQuantityMatch->shipment_status_id === 1)
                 <td></td>
                 <td></td>
                 <td></td>
@@ -87,13 +92,9 @@
                 <td>{{$totalPrice}}円</td>
                 <td></td>
                 <td></td>
-                @else
-                注文前はありません。<br>
-                注文履歴画面に戻り、やり直してください。
-                @endif
             </tr>
-            @endif
         </tbody>
+    @endif
     </table>
     <div class="text-right px-3 my-3">
         <a href="{{route('order.all',['id'=>'all'])}}" class="btn btn-primary">注文履歴に戻る</a>
