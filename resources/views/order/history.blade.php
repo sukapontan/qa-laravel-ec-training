@@ -37,7 +37,7 @@
                         @endforeach
                     </td>
                     <td>
-                        <p>〒{{$order->user->zipcode}}</p>
+                        <p>〒{{$order->user->ZipcodeWithHyphen}}</p>
                         <p>
                             {{$order->user->prefecture}}
                             {{$order->user->municipality}}

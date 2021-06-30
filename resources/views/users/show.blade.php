@@ -15,13 +15,13 @@
     <div class="row mb-5 h4">
       <div class="col-sm-4 col-5 text-center">住所</div>
       <div class="col-sm-4 col-5">
-        <p>〒{{ $user->zipcode }}</p>
+        <p>〒{{ $user->ZipcodeWithHyphen }}</p>
         <p>{{ $user->fullAddress }}</p>
       </div>
     </div>
     <div class="row mb-5 h4">
       <div class="col-sm-4 col-5 text-center">電話番号</div>
-      <div class="col-sm-4 col-5">{{ $user->phone_number }}</div>
+      <div class="col-sm-4 col-5">{{ $user->PhoneNumberWithHyphe }}</div>
     </div>
     <div class="row mb-5 h4">
       <div class="col-sm-4 col-5 text-center">メールアドレス</div>
