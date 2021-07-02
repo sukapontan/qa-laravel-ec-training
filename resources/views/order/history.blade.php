@@ -33,7 +33,9 @@
                     <td>{{$order->id}}</td>
                     <td>
                         @foreach($order->orderDetails as $orderDetail)
-                        {{$orderDetail->order_detail_number}}
+                            @if ($loop->first)
+                            {{$orderDetail->order_detail_number}}
+                            @endif
                         @endforeach
                     </td>
                     <td>
@@ -54,13 +56,15 @@
                         <p>注文日時: {{$order->updated_at->format('Y/m/d')}}</p>
                         <p>注文状態:
                             @foreach($order->orderDetails as $key =>$orderDetail)
-                            @if($orderDetail->shipmentStatus->shipment_status_name==='1')
-                            発送前
-                            @elseif($orderDetail->shipmentStatus->shipment_status_name==='2')
-                            発送中
-                            @else
-                            発送済み
-                            @endif
+                                @if ($loop->first)
+                                    @if($orderDetail->shipmentStatus->shipment_status_name==='1')
+                                    発送前
+                                    @elseif($orderDetail->shipmentStatus->shipment_status_name==='2')
+                                    発送中
+                                    @else
+                                    発送済み
+                                    @endif
+                                @endif
                             @endforeach
                         </p>
                     </td>
