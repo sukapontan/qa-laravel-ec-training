@@ -18,7 +18,7 @@ class CreateMUsersTable extends Migration
             $table->string('password', 64)->comment('パスワード');
             $table->string('last_name', 16)->comment('性');
             $table->string('first_name', 16)->comment('名');
-            $table->string('zipcode', 8)->comment('郵便番号');
+            $table->string('zipcode', 7)->comment('郵便番号');
             $table->string('prefecture', 16)->comment('都道府県');
             $table->string('municipality', 16)->comment('市町村区');
             $table->string('address', 32)->comment('番地');

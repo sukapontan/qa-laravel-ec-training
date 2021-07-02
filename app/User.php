@@ -74,7 +74,7 @@ class User extends Authenticatable
     {
         $telHigh = substr($this->phone_number, 0, 3);
         $telMiddle = substr($this->phone_number, 3, 4);
-        $telLow = substr($this->phone_number, 4, 4);
+        $telLow = substr($this->phone_number, 7, 4);
         return $telHigh.'-'.$telMiddle.'-'.$telLow;
     }
 
