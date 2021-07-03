@@ -130,12 +130,10 @@ class OrdersController extends Controller
         // 合計
         $totalPrice = 0;
         foreach ($orderQuantityMatchs as $orderQuantityMatch) {
-            if ($orderQuantityMatch->shipment_status_id === 1) {
                 $price = $orderQuantityMatch->product['price'];
                 $order_quantity = $orderQuantityMatch['order_quantity'];
                 $total = $price * $order_quantity;
                 $totalPrice += $total;
-            }
         }
 
         //ユーザー
@@ -150,30 +148,12 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
+        //注文id取得
         $order = Order::findOrFail($id);
 
-        //注文詳細
-        $details = $order->orderDetails;
-        foreach ($details as $detail) {
-            $product_id = $detail->product_id;
-            $order_quantity = $detail->order_quantity;
-            $order_detail_number = $detail->order_detail_number;
-        }
-
-        //ユーザーIDと注文番号で一致
-        $orderQuantityMatchs = OrderDetail::where('order_detail_number', $order_detail_number)
-            ->with('product')
-            ->get();
-
-        // 削除
-        foreach ($orderQuantityMatchs as $orderQuantityMatch) {
-            $id = $orderQuantityMatch->order['id'];
-            $orders = Order::findOrFail([$id]);
-
-            foreach ($orders as $order) {
-                $order->delete();
-            }
-        }
-        return view('order.details');
+        //削除
+        $order->delete();
+        
+        return redirect()->action('OrdersController@index', ['id' => 'all']);
     }
 }

@@ -59,7 +59,7 @@
                     <tr>
                         <td>{{ $data->product_name}}</td>
                         <td>{{ $data->category->category_name}}</td>
-                        <td>{{ $data->price}}</td>
+                        <td>{{ $data->price}}円</td>
                         <td><a href="{{ route('product.show', ['id' => $data->id]) }}" class="btn btn-primary">商品詳細</a></td>
                     </tr>
                     @endforeach

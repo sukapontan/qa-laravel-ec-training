@@ -155,7 +155,7 @@ return [
     */
 
     'attributes' => [
-        'last_name'=>'名字',
+        'last_name'=>'苗字',
         'first_name'=>'名前',
         'zipcode'=>'郵便番号',
         'prefecture'=>'都道府県',
@@ -166,6 +166,7 @@ return [
         'phone_number'=>'電話番号',
         'company_name' => '会社名',
         'password' => 'パスワード',
+        'auth_code'=>'認証コード',
         //商品登録
         'product_name'=>'商品名',
         'price'=>'販売単価',

@@ -63,18 +63,18 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function getZipcodeAttribute($value) :string
+    public function getZipcodeWithHyphenAttribute() :string
     {
-        $zipHigh = substr($value, 0, 3);
-        $zipLow = substr($value, 3, 4);
+        $zipHigh = substr($this->zipcode, 0, 3);
+        $zipLow = substr($this->zipcode, 3, 4);
         return $zipHigh.'-'.$zipLow;
     }
 
-    public function getPhoneNumberAttribute($value) :string
+    public function getPhoneNumberWithHypheAttribute() :string
     {
-        $telHigh = substr($value, 0, 3);
-        $telMiddle = substr($value, 3, 4);
-        $telLow = substr($value, 4, 4);
+        $telHigh = substr($this->phone_number, 0, 3);
+        $telMiddle = substr($this->phone_number, 3, 4);
+        $telLow = substr($this->phone_number, 7, 4);
         return $telHigh.'-'.$telMiddle.'-'.$telLow;
     }
 
