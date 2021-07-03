@@ -31,7 +31,7 @@ class ApplicantMail extends Mailable
     public function build()
     {
         return $this
-            ->from('hikkappi@yahoo.co.jp')
+            ->from('hikkappi1017@gmail.com')
             ->subject('出品者登録のご案内')
             ->view('emails.applicant')
             ->with(['url' => $this->url]);
