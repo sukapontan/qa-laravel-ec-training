@@ -63,20 +63,24 @@ class OrdersController extends Controller
 
         DB::beginTransaction();
 
+        $authId = Auth::id();
+
         try {
             // 注文情報をDBに保存
             $order = Order::create([
-                'user_id' => Auth::id(),
+                'user_id' => $authId,
             ]);
 
+            $orderId = $order->id;
+
             // 注文番号取得
-            $orderDetailNumber = $this->getOrderDetailNumber(Auth::id());
+            $orderDetailNumber = $this->getOrderDetailNumber($authId);
 
             // 注文詳細情報をDBに保存
             $orderDetail = new OrderDetail();
             foreach ($cartProducts as $cartProduct) {
                 $orderDetail->create([
-                    'order_id' => $order->id,
+                    'order_id' => $orderId,
                     'product_id' => $cartProduct['session_product_id'],
                     'shipment_status_id' => config('consts.common.SHIPMENT_STATUSES.before_shipping.value'),
                     'order_detail_number' => $orderDetailNumber,
@@ -153,7 +157,7 @@ class OrdersController extends Controller
 
         //削除
         $order->delete();
-        
+
         return redirect()->action('OrdersController@index', ['id' => 'all']);
     }
 }
