@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Rules\ZipcodeRule;
+use App\Rules\PhoneRule;
 
 class RegisterController extends Controller
 {
@@ -49,17 +51,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'last_name' => ['required', 'string', 'max:30'],
-            'first_name' => ['required', 'string', 'max:30'],
-            'zipcode' => ['required', 'string', 'max:7'],
-            'prefecture' => ['required', 'string', 'max:100'],
-            'municipality' => ['required', 'string', 'max:50'],
-            'address' => ['required', 'string', 'max:100'],
-            'apartments' => ['nullable', 'string', 'max:100'],
-            'company_name' => ['nullable', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:m_users'],
-            'phone_number' => ['required', 'string', 'max:13'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'max:64', 'confirmed'],
+            'last_name' => ['required', 'string', 'max:16'],
+            'first_name' => ['required', 'string', 'max:16'],
+            'zipcode' => ['required', 'string', 'min:7', 'max:7', new ZipcodeRule()],
+            'prefecture' => ['required', 'string', 'max:16'],
+            'municipality' => ['required', 'string', 'max:16'],
+            'address' => ['required', 'string', 'max:32'],
+            'apartments' => ['nullable', 'string', 'max:32'],
+            'email' => ['required', 'string', 'email', 'max:128', 'unique:m_users'],
+            'phone_number' => ['required', 'string', 'min:8', 'max:14', new PhoneRule()],
+            'company_name' => ['nullable', 'string', 'max:128'],
         ]);
     }
 

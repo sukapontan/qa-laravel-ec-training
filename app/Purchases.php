@@ -9,7 +9,9 @@ class Purchases extends Model
     /**
      * 関連テーブル設定
      */
-    protected $table = 'm_purchases';
+    protected $table = 't_purchases';
+    const CREATED_AT = null;
+    const UPDATED_AT = null;
 
     /**
      * The attributes that are mass assignable.

@@ -35,7 +35,7 @@ class UsersController extends Controller
         return view('users.edit', ['user'=>$user]);
     }
 
-    public function postEdit(UserRequest $request, $id)
+    public function postEdit(UserEditRequest $request, $id)
     {
 
         $user = User::find($request->id);
