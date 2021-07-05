@@ -20,7 +20,7 @@ class CreateTOrderDetailsTable extends Migration
             $table->integer('shipment_status_id')->unsigned()->comment('発送状態プライマリー');
             $table->string('order_detail_number', 64)->comment('注文番号');
             $table->integer('order_quantity')->unsigned()->comment('注文個数');
-            $table->timestamp('shipment_date')->comment('発送日');
+            $table->datetime('shipment_date')->comment('発送日');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
