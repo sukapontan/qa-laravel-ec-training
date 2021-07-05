@@ -61,43 +61,35 @@ class OrdersController extends Controller
             return redirect()->route('cart.index');
         }
 
-        DB::beginTransaction();
 
         $authId = Auth::id();
 
-        try {
-            // 注文情報をDBに保存
-            $order = Order::create([
-                'user_id' => $authId,
+        // 注文情報をDBに保存
+        $order = Order::create([
+            'user_id' => $authId,
+        ]);
+
+        $orderId = $order->id;
+
+        // 注文番号取得
+        $orderDetailNumber = $this->getOrderDetailNumber($authId);
+
+        // 注文詳細情報をDBに保存
+        $orderDetail = new OrderDetail();
+        foreach ($cartProducts as $cartProduct) {
+            $orderDetail->create([
+                'order_id' => $orderId,
+                'product_id' => $cartProduct['session_product_id'],
+                'shipment_status_id' => config('consts.common.SHIPMENT_STATUSES.before_shipping.value'),
+                'order_detail_number' => $orderDetailNumber,
+                'order_quantity' => $cartProduct['session_quantity'],
             ]);
-
-            $orderId = $order->id;
-
-            // 注文番号取得
-            $orderDetailNumber = $this->getOrderDetailNumber($authId);
-
-            // 注文詳細情報をDBに保存
-            $orderDetail = new OrderDetail();
-            foreach ($cartProducts as $cartProduct) {
-                $orderDetail->create([
-                    'order_id' => $orderId,
-                    'product_id' => $cartProduct['session_product_id'],
-                    'shipment_status_id' => config('consts.common.SHIPMENT_STATUSES.before_shipping.value'),
-                    'order_detail_number' => $orderDetailNumber,
-                    'order_quantity' => $cartProduct['session_quantity'],
-                ]);
-            }
-
-            DB::commit();
-
-            // カート内商品情報を削除
-            $request->session()->forget('cartProducts');
-
-            return view('order.complete', ['order_detail_number' => $orderDetailNumber]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->route('cart.index')->with('message', '注文に失敗しました。お手数ですがお時間を空けてから再度お試しください。');
         }
+
+        // カート内商品情報を削除
+        $request->session()->forget('cartProducts');
+
+        return view('order.complete', ['order_detail_number' => $orderDetailNumber]);
     }
 
     /**
