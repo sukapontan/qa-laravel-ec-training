@@ -29,6 +29,9 @@ class CreateMUsersTable extends Migration
             $table->string('company_name', 128);
             $table->char('delete_flag', 1);
             $table->timestamps();
+
+            // user_classification_idに外部キー制約
+            $table->foreign('user_classification_id')->references('id')->on('m_user_classifications');
         });
     }
 

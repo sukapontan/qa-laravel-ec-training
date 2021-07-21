@@ -17,9 +17,6 @@ class CreateMUserClassificationsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('user_classification_name', 32);
             $table->timestamps();
-
-            // user_classification_idに外部キー制約
-            // $table->foreign('id')->references('user_classification_id')->on('m_users');
         });
     }
 

@@ -16,7 +16,6 @@ class MUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        // 'name', 'email', 'password',
         'password', 'last_name', 'first_name', 'zipcode', 'prefecture', 'municipality', 'address', 'email', 'phone_number', 'user_classification_id', 'company_name', 'delete_flag',
     ];
 
