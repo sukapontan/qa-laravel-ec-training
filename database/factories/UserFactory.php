@@ -18,7 +18,7 @@ use Faker\Generator as Faker;
 
 $factory->define(MUser::class, function (Faker $faker) {
     return [
-        'password' => mt_Rand(100000,999999),  
+        'password' => Hash::make('password'),  
         'last_name'=> $faker->lastName(),
         'first_name'=> $faker->firstName(),
         'zipcode'=> $faker->postcode(),
