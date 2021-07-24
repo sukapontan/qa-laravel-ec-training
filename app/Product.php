@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'm_products';
-    // protected $table = ['m_products', 'm_categories', 'm_products_statuses', 'm_sales_statuses'];
 
     // user_idを追加
     protected $fillable = [
@@ -15,4 +14,29 @@ class Product extends Model
     ];
 
     public $timestamps = false;
+
+    // 商品は１つの仕入れと対応
+    public function purchase()
+    {
+        return $this->hasOne('App\Purchase');
+    }
+
+    // 商品は１つのカテゴリーに対応
+    public function categories()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    // 商品は１つの商品状態に対応
+    public function m_product_statuses()
+    {
+        return $this->belongsTo('App\MProductStatus');
+    }
+
+    // 商品は１つの販売状態に対応
+    public function m_sale_statues()
+    {
+        return $this->belongsTo('App\MSaleStatus');
+    }
+
 }

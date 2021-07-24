@@ -15,8 +15,8 @@ class CreateTPurchasesTable extends Migration
     {
         Schema::create('t_purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->Integer('purchase_price');
-            $table->Integer('purchase_quantity');
+            $table->integer('purchase_price');
+            $table->integer('purchase_quantity');
             $table->string('purchase_company', 128);
             // 発送日
             $table->timestamp('order_date');

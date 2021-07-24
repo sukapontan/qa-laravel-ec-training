@@ -20,7 +20,7 @@ class CreateMProductsTable extends Migration
             $table->string('product_name', 64);
             $table->unsignedBigInteger('category_id');
             // 販売単価
-            $table->Integer('price');
+            $table->integer('price');
             // 商品説明
             $table->text('discription', 256);
             $table->unsignedBigInteger('sale_status_id');
@@ -33,8 +33,8 @@ class CreateMProductsTable extends Migration
             $table->char('delete_flag', 1);
 
             $table->foreign('category_id')->references('id')->on('m_categories');
-            $table->foreign('sale_status_id')->references('id')->on('m_sales_statuses');
-            $table->foreign('product_status_id')->references('id')->on('m_products_statuses');
+            $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses');
+            $table->foreign('product_status_id')->references('id')->on('m_product_statuses');
             // $table->foreign('user_id')->references('id')->on('users');
 
         });
