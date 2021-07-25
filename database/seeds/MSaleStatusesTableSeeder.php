@@ -12,7 +12,7 @@ class MSaleStatusesTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_sale_statuses')->insert([
-            'sale_status_name' => '販売中',
+            'sale_status_name' => '入荷未定',
         ]);
         DB::table('m_sale_statuses')->insert([
             'sale_status_name' => '売り切れ',
