@@ -13,5 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(MUserClassificationTableSeeder::class);
         $this->call(MUsersTableSeeder::class);
+        $this->call(TOrdersTableSeeder::class);
+        $this->call(MShipmentStatusesTableSeeder::class);
+        $this->call(TOrderDetailsTableSeeder::class);
     }
 }
