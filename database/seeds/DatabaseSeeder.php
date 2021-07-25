@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MSaleStatusesTableSeeder::class);
         $this->call(MProductsTableSeeder::class);
         $this->call(TPurchasesTableSeeder::class);
+        $this->call(MUserClassificationTableSeeder::class);
+        $this->call(MUsersTableSeeder::class);
     }
 }
