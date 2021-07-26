@@ -57,7 +57,7 @@ class MUser extends Authenticatable
     // t_ordersテーブルとのリレーション
     public function tOrders()
     {
-        return $this->belongsTo('App\TOrder');
+        return $this->hasMany('App\TOrder');
     }
 
     // m_productsテーブルがマージされ次第、コメントアウトを解除

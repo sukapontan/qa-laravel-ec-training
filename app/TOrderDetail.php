@@ -37,9 +37,10 @@ class TOrderDetail extends Model
         return $this->belongsTo('App\MShipmentStatus');
     }
 
+    // m_productsテーブルがマージされ次第、コメントアウトを解除
     // m_productsテーブルとのリレーション
-    public function mProducts()
-    {
-        return $this->belongsTo('App\MProduct');
-    }
+    // public function mProduct()
+    // {
+    //     return $this->belongsTo('App\MProduct');
+    // }
 }

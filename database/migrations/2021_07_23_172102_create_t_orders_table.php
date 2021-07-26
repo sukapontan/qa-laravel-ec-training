@@ -16,7 +16,7 @@ class CreateTOrdersTable extends Migration
         Schema::create('t_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->timestamp('order_date')->nullable();
+            $table->timestamp('order_date');
         });
     }
 

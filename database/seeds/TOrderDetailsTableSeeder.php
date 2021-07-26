@@ -27,7 +27,7 @@ class TOrderDetailsTableSeeder extends Seeder
                 'products_id' => $i,
                 'order_id' => $i,
                 'shipment_status_id' => $shipment_status_id,
-                'order_detail_number' => sprintf('%009d', $i),
+                'order_detail_number' => $i,
                 'order_quantity' => $faker->numberBetween(1, 10),
                 'shipment_date' => $shipment_date,
             ]);
