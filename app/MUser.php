@@ -16,7 +16,18 @@ class MUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'password', 'last_name', 'first_name', 'zipcode', 'prefecture', 'municipality', 'address', 'email', 'phone_number', 'user_classification_id', 'company_name', 'delete_flag',
+        'password',
+        'last_name',
+        'first_name',
+        'zipcode',
+        'prefecture',
+        'municipality',
+        'address',
+        'email',
+        'phone_number',
+        'user_classification_id',
+        'company_name',
+        'delete_flag',
     ];
 
     /**
@@ -36,4 +47,23 @@ class MUser extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // m_userclassificationsテーブルとのリレーション
+    public function mUserClassification()
+    {
+        return $this->belongsTo('App\MUserClassfication');
+    }
+
+    // t_ordersテーブルとのリレーション
+    public function tOrders()
+    {
+        return $this->hasMany('App\TOrder');
+    }
+
+    // m_productsテーブルがマージされ次第、コメントアウトを解除
+    // // m_productsテーブルとのリレーション
+    // public function mProducts()
+    // {
+    //     return $this->hasMany('App\mProduct');
+    // }
 }
