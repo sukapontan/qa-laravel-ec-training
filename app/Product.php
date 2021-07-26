@@ -15,10 +15,10 @@ class Product extends Model
 
     public $timestamps = false;
 
-    // 商品は１つの仕入れと対応
+    // 商品は多数の仕入れと対応
     public function purchase()
     {
-        return $this->hasOne('App\Purchase');
+        return $this->hasMany('App\Purchase');
     }
 
     // 商品は１つのカテゴリーに対応
