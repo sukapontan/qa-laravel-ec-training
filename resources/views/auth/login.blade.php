@@ -17,7 +17,7 @@
             </div>
             <p>パスワード</p>
             <div class="form-group">
-                <input id="password" type="password" class="form-control" name="password" placeholder="">
+                <input id="password" type="password" class="form-control" name="password">
             </div>
             
             <div class="actions text-center">
