@@ -13,7 +13,7 @@
             {{ csrf_field() }}
             <p>メールアドレス</p>
             <div class="form-group">
-                <input id="email" type="email" class="form-control" name="email"  placeholder="" value="">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
             </div>
             <p>パスワード</p>
             <div class="form-group">
