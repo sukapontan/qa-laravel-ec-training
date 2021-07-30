@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('top');
 });
+
+Route::get('/products', 'ProductsController@index');
+Route::get('/search', 'ProductsController@search')->name('product.search');

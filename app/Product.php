@@ -24,7 +24,7 @@ class Product extends Model
     // 商品は１つのカテゴリーに対応
     public function categories()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category', 'category_id');
     }
 
     // 商品は１つの商品状態に対応

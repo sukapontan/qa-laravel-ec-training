@@ -8,11 +8,11 @@ class Category extends Model
 {
     protected $table = 'm_categories';
 
-    protected $fillable = 'category_name';
+    protected $fillable = ['category_name'];
 
     // 各カテゴリーには多数の商品が対応
     public function product_categories()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('Product::class');
     }
 }
