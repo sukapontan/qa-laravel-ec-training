@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+// Authのルーティング
+Auth::routes();
+
 // topへの画面遷移
 Route::get('/', function () {
     return view('top');

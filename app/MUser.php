@@ -60,10 +60,9 @@ class MUser extends Authenticatable
         return $this->hasMany('App\TOrder');
     }
 
-    // m_productsテーブルがマージされ次第、コメントアウトを解除
-    // // m_productsテーブルとのリレーション
-    // public function mProducts()
-    // {
-    //     return $this->hasMany('App\mProduct');
-    // }
+    // m_productsテーブルとのリレーション
+    public function mProducts()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

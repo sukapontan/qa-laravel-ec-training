@@ -22,7 +22,10 @@
         @yield('content')
     </div>
     @include('commons.footer')
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop_laravel_5
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
