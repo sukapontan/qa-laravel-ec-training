@@ -26,15 +26,15 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'last_name' => ['required', 'string', 'max:16'],
-            'first_name' => ['required', 'string', 'max:16'],
-            'zipcode' => ['required', 'string', 'max:8', new ZipCodeRule],
-            'prefecture' => ['required', 'string', 'max:16'],
-            'municipality' => ['required', 'string', 'max:16'],
-            'address' => ['required', 'string', 'max:32'],
-            'apartments' => ['max:32'],
-            'email' => ['required', 'string', 'email', 'max:128', Rule::unique('users')->ignore($this->id)],
-            'phone_number' => ['required', 'max:14'],
+            'last_name' => ['required', 'max:10'],
+            'first_name' => ['required', 'max:10'],
+            'zipcode' => ['required', 'digits:7'],
+            'prefecture' => ['required', 'max:5'],
+            'municipality' => ['required', 'max:10'],
+            'address' => ['required', 'max:15'],
+            'apartments' => ['required', 'max:20'],
+            'email' => ['email', 'max:128', Rule::unique('users')->ignore($this->id)],
+            'phone_number' => ['required', 'numeric', 'digits_between:1,14'],
         ];
     }
 }
