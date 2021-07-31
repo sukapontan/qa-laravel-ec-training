@@ -5,7 +5,7 @@
     <ul class="list-inline navbar-brand-01 text-dark">
         @if (Auth::check())
 
-            <p class="text-center offset-9 pt-1">{{-- {{ Auth::user()->last_name }}さん --}}</p>
+            <p class="text-center offset-9 pt-1">{{ Auth::user()->last_name }}さん</p>
             <li class="nav-item list-inline-item">
                 <a class="nav-link" href="#">商品検索</a>
             </li>

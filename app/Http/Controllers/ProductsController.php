@@ -10,10 +10,9 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::query()->paginate(15);
 
-        $categories = Category::all();
-
+        $categories = Category::query()->paginate(15);
         $params = [
             'products' => $products,
             'categories' => $categories,
@@ -27,15 +26,22 @@ class ProductsController extends Controller
     {
         // inputタグで入力した値を取得
         $keyProduct = $request->input('search');
+        $keyCategory = $request->input('category');
+        // dd($keyCategory);
         // クエリ作成
-        $query1 = Product::query();
+        $query = Product::query();
 
-        // キーワードが入力されている場合
-        if ($keyProduct) {
-            $query1->where('product_name', 'like', '%' . $keyProduct . '%');
+        // 商品名が入力されている場合
+        if (isset($keyProduct)) {
+            $query->where('product_name', 'like', '%' . $keyProduct . '%')->get();
         };
 
-        $products = $query1->paginate(10);
+        // カテゴリーが入力されている場合
+        if ($keyCategory != "未選択") {
+            $query->where('category_id', $keyCategory)->get();
+        };
+
+        $products = $query->orderBy('regist_date', 'desc')->paginate(15);
 
         return view('products.search', [
             'products' => $products,

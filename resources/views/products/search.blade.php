@@ -12,7 +12,7 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2 class="mr-4">商品名</h2>
-                <input type="text" name="search" value="{{ old('search') }}" required class="form-control ">
+                <input type="text" name="search" value="{{ old('search') }}" class="form-control ">
                 <span class="input-group-btn">
                     <input type="submit" class="btn btn-primary ml-4" value="検索">
                 </span>
@@ -22,12 +22,13 @@
         <div class="row">
             <div class="input-group mt-4 col-md-7 offset-2">
                 <h2>商品カテゴリ</h2>
-                <select class="ml-2" style=" width:50%; text-align-last:center;">
+                <select class="ml-2" name="category" style=" width:50%; text-align-last:center;">
                     <option>未選択</option>
-                    <option>食料品</option>
-                    <option>家電</option>
-                    <option>おもちゃ</option>
-                    <option>化粧品</option>
+                    <option value="1">家具</option>
+                    <option value="2">楽器</option>
+                    <option value="3">衣類</option>
+                    <option value="4">家電</option>
+                    <option value="5">本</option>
                 </select>
             </div>
         </div>
@@ -42,7 +43,7 @@
                 <thead class="bg-warning">
                     <tr>
                         <th>商品名</th>
-                        <th>商品化カテゴリ</th>
+                        <th>商品カテゴリ</th>
                         <th>価格</th>
                         <th>詳細</th>
                     </tr>
