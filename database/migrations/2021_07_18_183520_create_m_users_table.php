@@ -22,7 +22,7 @@ class CreateMUsersTable extends Migration
             $table->string('prefecture', 16);
             $table->string('municipality', 16);
             $table->string('address', 32);
-            $table->string('apartments', 32);
+            $table->string('apartments', 32)->nullable();
             $table->string('email', 128);
             $table->string('phone_number', 14);
             $table->bigInteger('user_classification_id')->unsigned();
