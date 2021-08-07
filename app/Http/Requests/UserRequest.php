@@ -32,9 +32,9 @@ class UserRequest extends FormRequest
             'prefecture' => ['required', 'max:5'],
             'municipality' => ['required', 'max:10'],
             'address' => ['required', 'max:15'],
-            'apartments' => ['required', 'max:20'],
+            'apartments' => ['max:20'],
             'email' => ['email', 'max:128', Rule::unique('users')->ignore($this->id)],
-            'phone_number' => ['required', 'numeric', 'digits_between:1,14'],
+            'phone_number' => ['required', 'digits_between:10,11'],
         ];
     }
 }

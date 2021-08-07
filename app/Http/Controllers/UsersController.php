@@ -29,7 +29,7 @@ class UsersController extends Controller
             // return view('top');
 
             // 検索画面にリダイレクト
-            return redirect('/products', ['user' => $user]);
+            return redirect('/products');
 
         }
         return view('users.detail', ['user' => $user]);
@@ -54,7 +54,7 @@ class UsersController extends Controller
             // return view('top');
 
             // 検索画面にリダイレクト
-            return redirect('/products', ['user' => $user]);
+            return redirect('/products');
         }
 
         //更新フォーム画面へ遷移
