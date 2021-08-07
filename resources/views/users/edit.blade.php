@@ -11,11 +11,11 @@
             <label class="col-sm-2 text-sm-center offset-sm-1">氏名</label>
             <label class="col-sm-1 text-sm-right col-2 col-form-label">姓</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" value="" name="last_name" placeholder="{{ $user->last_name }}">
+                <input type="text" class="form-control" value="{{ old('last_name') }}" name="last_name" placeholder="{{ $user->last_name }}">
             </div>
             <label class="col-sm-1 text-sm-right col-2 col-form-label">名</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" value="" name="first_name" placeholder="{{ $user->first_name }}">
+                <input type="text" class="form-control" value="{{ old('first_name') }}" name="first_name" placeholder="{{ $user->first_name }}">
             </div>
         </div>
 
@@ -23,49 +23,49 @@
             <label class="col-sm-2 text-sm-center col-12 col-form-label offset-sm-1">住所</label>
             <label class="col-sm-1 text-right col-2 col-form-label">〒</label>
             <div class="col-sm-3 col-8">
-                <input type="text" class="form-control" value="" name="zipcode" placeholder="{{ $user->zipcode }}">
+                <input type="text" class="form-control" value="{{ old('zipcode') }}" name="zipcode" placeholder="{{ $user->zipcode }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label text-sm-right">都道府県</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" value="" name="prefecture" placeholder="{{ $user->prefecture }}">
+                <input type="text" class="form-control" value="{{ old('prefecture') }}" name="prefecture" placeholder="{{ $user->prefecture }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label text-sm-right">市町村区</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" value="" name="municipality" placeholder="{{ $user->municipality }}">
+                <input type="text" class="form-control" value="{{ old('municipality') }}" name="municipality" placeholder="{{ $user->municipality }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label text-sm-right">番地</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" value="" name="address" placeholder="{{ $user->address }}">
+                <input type="text" class="form-control" value="{{ old('address') }}" name="address" placeholder="{{ $user->address }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label text-sm-right">マンション部屋番号</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" value="" name="apartments" placeholder="{{ $user->apartments }}">
+                <input type="text" class="form-control" value="{{ old('apartments') }}" name="apartments" placeholder="{{ $user->apartments }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-4 col-form-label text-sm-center">メールアドレス</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="" name="email" placeholder="{{ $user->email }}">
+                <input type="text" class="form-control" value="{{ old('email') }}" name="email" placeholder="{{ $user->email }}">
             </div>
         </div>
         
         <div class="form-group row">
             <label class="col-sm-4 col-form-label text-sm-center">電話番号</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="" name="phone_number" placeholder="{{ $user->phone_number }}">
+                <input type="text" class="form-control" value="{{ old('phone_number') }}" name="phone_number" placeholder="{{ $user->phone_number }}">
             </div>
         </div>
 
