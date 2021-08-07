@@ -6,7 +6,7 @@ use App\MUser;
 use App\Http\Controllers\Controller,
     Session;
 use App\Http\Requests\UserRequest;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -79,17 +79,20 @@ class UsersController extends Controller
             return back();
         }
 
-        //フォーム画面で入力された値でレコードを更新
-        $user->last_name = $request->last_name;
-        $user->first_name = $request->first_name;
-        $user->zipcode = $request->zipcode;
-        $user->prefecture = $request->prefecture;
-        $user->municipality = $request->municipality;
-        $user->address = $request->address;
-        $user->apartments = $request->apartments;
-        $user->email = $request->email;
-        $user->phone_number = $request->phone_number;
-        $user->save();
+        //処理が中断した場合、ロールバックさせるためトランザクション処理
+        DB::transaction(function () use($user, $request) {
+            //フォーム画面で入力された値でレコードを更新
+            $user->last_name = $request->last_name;
+            $user->first_name = $request->first_name;
+            $user->zipcode = $request->zipcode;
+            $user->prefecture = $request->prefecture;
+            $user->municipality = $request->municipality;
+            $user->address = $request->address;
+            $user->apartments = $request->apartments;
+            $user->email = $request->email;
+            $user->phone_number = $request->phone_number;
+            $user->save();
+        });
 
         // ユーザー情報画面に遷移
         return redirect()->route('users.show', ['id' => $user->id]);
