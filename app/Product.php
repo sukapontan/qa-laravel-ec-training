@@ -30,7 +30,6 @@ class Product extends Model
     // 商品は１つのカテゴリーに対応
     public function categories()
     {
-        // category_idがなぜ必要？
         return $this->belongsTo('App\Category', 'category_id');
     }
 
