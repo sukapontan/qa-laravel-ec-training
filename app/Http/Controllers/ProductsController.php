@@ -29,8 +29,6 @@ class ProductsController extends Controller
         $searchWord = $request->input('searchWord'); //商品名の値
         $categoryId = $request->input('categoryId'); //カテゴリの値
 
-        // dd($request);
-
         $query = Product::query();
         //商品名が入力された場合、m_productsテーブルから一致する商品を$queryに代入
         if (isset($searchWord)) {
@@ -39,7 +37,6 @@ class ProductsController extends Controller
         //カテゴリが選択された場合、m_categoriesテーブルからcategory_idが一致する商品を$queryに代入
         if (isset($categoryId)) {
             $query->where('category_id', $categoryId);
-            // dd($query);
         }
 
         //$queryをcategory_idの昇順に並び替えて$productsに代入
