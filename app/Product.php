@@ -10,7 +10,13 @@ class Product extends Model
 
     // user_idを追加
     protected $fillable = [
-        'product_name', 'category_id', 'price', 'discription', 'sale_status_id', 'product_status_id', 'regist_date', 'delete_flag',
+        'product_name',
+        'category_id',
+        'price', 'discription',
+        'sale_status_id',
+        'product_status_id',
+        'regist_date',
+        'delete_flag',
     ];
 
     public $timestamps = false;
@@ -24,7 +30,8 @@ class Product extends Model
     // 商品は１つのカテゴリーに対応
     public function categories()
     {
-        return $this->belongsTo('App\Category');
+        // category_idがなぜ必要？
+        return $this->belongsTo('App\Category', 'category_id');
     }
 
     // 商品は１つの商品状態に対応
