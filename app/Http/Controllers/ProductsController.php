@@ -15,12 +15,26 @@ class ProductsController extends Controller
         $categories = $category->getLists();
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
-        
+
         return view('products/search', [
             'categories' => $categories,
             'searchWord' => $searchWord,
             'categoryId' => $categoryId
         ]);
+    }
+
+    public function details($id)
+    {
+        // 引数で受け取った$idでデータを取得
+        $product = Product::find($id);
+
+        // 検索した結果商品がテーブルに存在しなかった場合
+        if ($product == null) {
+            // エラー画面に遷移
+            return view('products/details_error');
+        }
+        // 商品詳細画面に遷移
+        return view('products/details', ['product' => $product]);
     }
 
     public function search(Request $request)
@@ -62,5 +76,4 @@ class ProductsController extends Controller
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
-
 }

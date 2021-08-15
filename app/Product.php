@@ -12,7 +12,8 @@ class Product extends Model
     protected $fillable = [
         'product_name',
         'category_id',
-        'price', 'discription',
+        'price',
+        'discription',
         'sale_status_id',
         'product_status_id',
         'regist_date',
@@ -44,5 +45,4 @@ class Product extends Model
     {
         return $this->belongsTo('App\MSaleStatus');
     }
-
 }

@@ -36,5 +36,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'users'], function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'products'], function () {
     Route::get('/', 'ProductsController@show')->name('products.show');
     Route::get('searchproduct', 'ProductsController@search')->name('searchproduct');
-    
+    Route::get('/{id}', 'ProductsController@details')->name('products.details');
 });
