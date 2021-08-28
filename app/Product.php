@@ -45,4 +45,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\MSaleStatus');
     }
+
+    // 商品は多数の注文詳細に対応
+    public function t_order_details()
+    {
+        return $this->hasMany('App\TOrderDetail');
+    }
 }

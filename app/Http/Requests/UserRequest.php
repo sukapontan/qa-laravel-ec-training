@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
         return [
             'last_name' => ['required', 'max:10'],
             'first_name' => ['required', 'max:10'],
-            'zipcode' => ['required', 'digits:7'],
+            'zipcode' => ['required', 'string', 'min:8', 'max:8', new ZipcodeRule()],
             'prefecture' => ['required', 'max:5'],
             'municipality' => ['required', 'max:10'],
             'address' => ['required', 'max:15'],

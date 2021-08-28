@@ -24,13 +24,9 @@ class UsersController extends Controller
         if (\Auth::id() !== $user->id) {
             // フラッシュメッセージを設定
             Session::flash('flash_message', '不適切なURLです。');
-            
-            //検索画面がないため、動作確認用にトップページへ遷移して確認
-            // return view('top');
 
             // 検索画面にリダイレクト
             return redirect('/products');
-
         }
         return view('users.detail', ['user' => $user]);
     }
@@ -49,7 +45,7 @@ class UsersController extends Controller
 
             // フラッシュメッセージを設定
             Session::flash('flash_message', '不適切なURLです。');
-            
+
             //検索画面がないため、動作確認用にトップページへ遷移して確認
             // return view('top');
 
@@ -80,7 +76,7 @@ class UsersController extends Controller
         }
 
         //処理が中断した場合、ロールバックさせるためトランザクション処理
-        DB::transaction(function () use($user, $request) {
+        DB::transaction(function () use ($user, $request) {
             //フォーム画面で入力された値でレコードを更新
             $user->last_name = $request->last_name;
             $user->first_name = $request->first_name;

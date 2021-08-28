@@ -28,19 +28,18 @@ class TOrderDetail extends Model
     // t_ordersテーブルとのリレーション
     public function tOrder()
     {
-        return $this->belongsTo('App\TOrder');
+        return $this->belongsTo('App\TOrder', 'order_id');
     }
 
     // m_shipment_statusesテーブルとのリレーション
     public function mShipmentStatuses()
     {
-        return $this->belongsTo('App\MShipmentStatus');
+        return $this->belongsTo('App\MShipmentStatus', 'shipment_status_id');
     }
 
-    // m_productsテーブルがマージされ次第、コメントアウトを解除
     // m_productsテーブルとのリレーション
-    // public function mProduct()
-    // {
-    //     return $this->belongsTo('App\MProduct');
-    // }
+    public function mProduct()
+    {
+        return $this->belongsTo('App\Product', 'products_id');
+    }
 }

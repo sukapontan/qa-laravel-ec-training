@@ -13,14 +13,18 @@
             <a class="nav-link" href="#">カート</a>
         </li>
         <li class="nav-item list-inline-item">
-            <a class="nav-link" href="#">注文履歴</a>
+            <a class="nav-link" href="{{ route('orders.all', ['id' => 'all']) }}">注文履歴</a>
         </li>
         <li class="nav-item list-inline-item">
-            <a class="nav-link" href="#">ユーザー情報</a>
+            <a class="nav-link" href="{{ route('users.show', ['id' => \Auth::id()]) }}">ユーザー情報</a>
         </li>
         <li class="nav-item list-inline-item">
-            <a class="nav-link" href="#">ログアウト</a>
+            <a class="nav-link" href={{ route('logout') }} onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
         </li>
+
+        <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">
+            @csrf
+        </form>
 
         @else
         <ul class="list-inline navbar-brand text-dark">
