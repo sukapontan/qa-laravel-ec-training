@@ -21,12 +21,12 @@ class TOrder extends Model
     // t_order_detailsテーブルとのリレーション
     public function tOrderDetails()
     {
-        return $this->hasMany('App\TOrderDetails');
+        return $this->hasMany('App\TOrderDetail', 'order_id');
     }
 
     // m_usersテーブルとのリレーション
     public function mUser()
     {
-        return $this->belongsTo('App\MUser');
+        return $this->belongsTo('App\MUser', 'user_id');
     }
 }

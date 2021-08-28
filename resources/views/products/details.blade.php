@@ -34,12 +34,10 @@
         </div>
     </div>
 
-    <!-- ラベルを使用すると文字が小さくなる... -->
     <div class="row mt-5" style="justify-content:center">
         <form action="" method="post">
             <div class="input-group">
                 <h2>購入個数</h2>
-                <!-- <label class="control-label">購入個数</label> -->
                 <input class="form-control col-2 ml-5" type="number" min="0" required>
                 <h2>個</h2>
                 <input type="submit" class="btn btn-primary ml-5" value="カートへ">
