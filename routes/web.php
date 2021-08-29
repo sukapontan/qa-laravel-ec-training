@@ -25,6 +25,10 @@ Auth::routes();
 Route::get('/', function () {
     return view('top');
 });
+// ユーザー新規登録への画面遷移
+Route::get('/signup', function () {
+    return view('auth/register');
+})->name('signup');
 
 // ユーザー(user)関連のルーティング
 Route::group(['middleware' => 'auth', 'prefix' => 'users'], function () {

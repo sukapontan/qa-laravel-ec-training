@@ -23,6 +23,7 @@ class MUser extends Authenticatable
         'prefecture',
         'municipality',
         'address',
+        'apartments',
         'email',
         'phone_number',
         'user_classification_id',

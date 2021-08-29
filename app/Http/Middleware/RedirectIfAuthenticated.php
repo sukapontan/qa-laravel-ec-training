@@ -17,11 +17,10 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        // リダイレクト時、ログインしていない場合はホーム画面に遷移
         if (Auth::guard($guard)->check()) {
-            // トップページへの遷移でいいのか要検討  ※ログアウト処理をしないとダメ？
             return redirect('/');
         }
-
         return $next($request);
     }
 }

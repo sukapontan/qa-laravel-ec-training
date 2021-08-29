@@ -43,7 +43,7 @@ return [
     'dimensions'           => ':attribute ルールに合致する画像サイズのみ有効です',
     'distinct'             => ':attribute に重複している値があります',
     'email'                => ':attribute の書式のみ有効です',
-    'exists'               => ':attribute 無効な値です',
+    'exists'               => ':attribute は既に使用されています',
     'file'                 => ':attribute アップロード出来ないファイルです',
     'filled'               => ':attribute 値を入力してください',
     'gt'                   => [

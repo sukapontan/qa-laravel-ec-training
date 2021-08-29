@@ -23,13 +23,12 @@
         </li>
 
         <form id='logout-form' action={{ route('logout')}} method="POST" style="display: none;">
-            @csrf
-        </form>
+            @csrf</form>
 
         @else
         <ul class="list-inline navbar-brand text-dark">
             <li class="list-inline-item"><a class="nav-link" href="{{ route('login') }}">ログイン</a></li>
-            <li class="list-inline-item"><a class="nav-link" href="#">新規登録</a></li>
+            <li class="list-inline-item"><a class="nav-link" href="{{ route('register') }}">新規登録</a></li>
         </ul>
 
         @endif

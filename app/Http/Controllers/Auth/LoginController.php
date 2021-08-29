@@ -42,8 +42,6 @@ class LoginController extends Controller
     {
         $this->guard()->logout();
         $request->session()->invalidate();
-
-        // dd($request);
         // return view("auth/login");
         return redirect('/');
     }
